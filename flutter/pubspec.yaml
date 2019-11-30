@@ -1,0 +1,29 @@
+name: kids_quiz
+description: A new Flutter application.
+version: 1.0.0+1
+environment:
+  sdk: ">=2.6.0-dev <3.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+  mono_kit:
+    git:
+      url: https://github.com/mono0926/flutter_mono_kit.git
+      ref: develop
+  pedantic_mono:
+  provider:
+  flutter_text_to_speech:
+  vsync_provider:
+  audioplayers:
+  confetti:
+    git:
+      url: https://github.com/mono0926/flutter_confetti.git
+  disposable_provider:
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/sound/
