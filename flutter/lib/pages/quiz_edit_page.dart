@@ -54,38 +54,50 @@ class _Body extends StatelessWidget {
         final category = categories[index];
         return ExpansionTile(
           title: Text(category),
-          children: choices[category]
-              .map(
-                (c) => Dismissible(
-                  key: ValueKey(c.entity.name),
-                  background: Container(color: Theme.of(context).errorColor),
-                  onDismissed: (direction) => model.delete(c),
-                  confirmDismiss: (direction) => Future.value(c.id != null),
-                  child: ListTile(
-                    title: Text(c.entity.name),
-                    leading: Padding(
-                      padding: const EdgeInsets.all(4),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Container(
-                          color: Theme.of(context).canvasColor,
-                          child: AspectRatio(
-                            aspectRatio: 1,
-                            child: CachedNetworkImage(
-                              imageUrl: c.entity.imageUrl,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    trailing: c.id == null ? Icon(Icons.bookmark) : null,
-                  ),
-                ),
-              )
-              .toList(),
+          children: choices[category].map((doc) => _Tile(doc: doc)).toList(),
         );
       },
+    );
+  }
+}
+
+class _Tile extends StatelessWidget {
+  const _Tile({
+    Key key,
+    @required this.doc,
+  }) : super(key: key);
+
+  final ChoiceDoc doc;
+
+  @override
+  Widget build(BuildContext context) {
+    final choice = doc.entity;
+    final model = Provider.of<_Model>(context);
+    return Dismissible(
+      key: ValueKey(choice.name),
+      background: Container(color: Theme.of(context).errorColor),
+      onDismissed: (direction) => model.delete(doc),
+      confirmDismiss: (direction) => Future.value(doc.id != null),
+      child: ListTile(
+        title: Text(choice.name),
+        leading: Padding(
+          padding: const EdgeInsets.all(4),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Container(
+              color: Theme.of(context).canvasColor,
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: CachedNetworkImage(
+                  imageUrl: choice.imageUrl,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+        ),
+        trailing: doc.id == null ? Icon(Icons.bookmark) : null,
+      ),
     );
   }
 }

@@ -192,7 +192,7 @@ class _Model with ChangeNotifier, ProgressMixin {
   String get group => _group;
 
   List<String> _toCategories(List<ChoiceDoc> docs) =>
-      groupBy(docs, (ChoiceDoc d) => d.entity.group).keys.toList();
+      groupBy<ChoiceDoc, String>(docs, (d) => d.entity.group).keys.toList();
 
   Future<void> selectImage(BuildContext context) async {
     final file = await PhotoSelector(context: context).select();
@@ -256,7 +256,7 @@ class _Dialog extends StatelessWidget {
   static Widget wrapped() {
     return DisposableProvider(
       builder: (context) => _DialogModel(),
-      child: _Dialog._(),
+      child: const _Dialog._(),
     );
   }
 
