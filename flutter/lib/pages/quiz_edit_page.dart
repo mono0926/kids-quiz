@@ -43,14 +43,13 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = Provider.of<_Model>(context);
-    final docs = model.docs;
+    final choices = model.choices;
     return ListView.separated(
       padding: const EdgeInsets.symmetric(vertical: 8),
-      itemCount: docs.length,
+      itemCount: choices.length,
       separatorBuilder: (context, index) => const Divider(),
       itemBuilder: (context, index) {
-        final doc = docs[index];
-        final choice = doc.entity;
+        final choice = choices[index];
         return ListTile(
           title: Text(choice.name),
           subtitle: Text(choice.group),
@@ -66,13 +65,13 @@ class _Body extends StatelessWidget {
 
 class _Model with ChangeNotifier {
   _Model({@required this.observer}) {
-    _docs = observer.docs.value;
-    observer.docs.listen((docs) {
-      _docs = docs;
+    _choices = observer.choices.value;
+    observer.choices.listen((docs) {
+      _choices = docs;
       notifyListeners();
     });
   }
-  List<ChoiceDoc> _docs;
-  List<ChoiceDoc> get docs => _docs;
+  List<Choice> _choices;
+  List<Choice> get choices => _choices;
   final ChoicesObserver observer;
 }

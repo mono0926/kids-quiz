@@ -13,6 +13,6 @@ class Quiz {
 }
 
 class GroupNames {
-  static const animal = 'animal';
-  static const vehicle = 'vehicle';
+  static const animal = '動物';
+  static const vehicle = '乗り物';
 }
