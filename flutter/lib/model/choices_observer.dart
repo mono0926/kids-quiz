@@ -6,22 +6,19 @@ import 'package:rxdart/rxdart.dart';
 import 'model.dart';
 
 class ChoicesObserver with Disposable {
-  ChoicesObserver({
-    this.defaultChoices = _defaultChoices,
-  }) : _choices = BehaviorSubject.seeded(_defaultChoices) {
+  ChoicesObserver() : _choices = BehaviorSubject.seeded(_defaultChoices) {
     ChoicesRef.ref()
         .documents((r) => r.orderBy(
               EntityField.createdAt,
               descending: true,
             ))
-        .map((x) => x.map((x) => x.entity).toList()..addAll(_defaultChoices))
+        .map((x) => x..addAll(_defaultChoices))
         .pipe(_choices);
   }
 
-  final BehaviorSubject<List<Choice>> _choices;
-  final List<Choice> defaultChoices;
+  final BehaviorSubject<List<ChoiceDoc>> _choices;
 
-  ValueObservable<List<Choice>> get choices => _choices;
+  ValueObservable<List<ChoiceDoc>> get choices => _choices;
 
   @override
   void dispose() {
@@ -29,7 +26,7 @@ class ChoicesObserver with Disposable {
   }
 }
 
-const _defaultChoices = [
+final _defaultChoices = [
   Choice(
     name: 'にゃんにゃん',
     imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg',
@@ -107,4 +104,4 @@ const _defaultChoices = [
         'https://firebasestorage.googleapis.com/v0/b/kids-quiz-mono.appspot.com/o/images%2FIMG_9056.JPG?alt=media',
     group: GroupNames.vehicle,
   )
-];
+].map((c) => ChoiceDoc(null, c)).toList();

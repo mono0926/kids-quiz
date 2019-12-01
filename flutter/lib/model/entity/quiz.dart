@@ -8,8 +8,8 @@ class Quiz {
     @required this.choices,
     @required this.correctChoice,
   });
-  final List<Choice> choices;
-  final Choice correctChoice;
+  final List<ChoiceDoc> choices;
+  final ChoiceDoc correctChoice;
 }
 
 class GroupNames {

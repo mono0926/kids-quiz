@@ -29,6 +29,7 @@ dependencies:
   image_cropper:
   firebase_storage:
   rxdart:
+  collection:
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -13,13 +13,13 @@ class QuizGenerator {
   final ChoicesObserver observer;
   Quiz _quiz;
   Quiz get quiz => _quiz;
-  List<Choice> choices = [];
+  List<ChoiceDoc> choices = [];
 
   Quiz generate() {
     final choice = _decideCorrectChoice();
     return _quiz = Quiz(
       choices: choices
-          .where((c) => c.group == choice.group)
+          .where((c) => c.entity.group == choice.entity.group)
           .toList()
           .getRange(0, 4)
           .toList()
@@ -28,8 +28,8 @@ class QuizGenerator {
     );
   }
 
-  Choice _decideCorrectChoice() {
-    choices = List<Choice>.from(observer.choices.value)..shuffle();
+  ChoiceDoc _decideCorrectChoice() {
+    choices = List<ChoiceDoc>.from(observer.choices.value)..shuffle();
     final choice = choices.first;
     return choice == _quiz?.correctChoice ? _decideCorrectChoice() : choice;
   }

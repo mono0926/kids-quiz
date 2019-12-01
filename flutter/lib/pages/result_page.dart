@@ -54,9 +54,9 @@ class ResultPage extends StatelessWidget {
 
   Widget _buildName(Quiz quiz, BuildContext context) {
     return Hero(
-      tag: quiz.correctChoice.name,
+      tag: quiz.correctChoice.entity.name,
       child: Text(
-        quiz.correctChoice.name,
+        quiz.correctChoice.entity.name,
         style: Theme.of(context).textTheme.display1.copyWith(
               color: Theme.of(context).colorScheme.primaryVariant,
             ),
@@ -70,11 +70,11 @@ class ResultPage extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 1,
         child: Hero(
-          tag: quiz.correctChoice.imageUrl,
+          tag: quiz.correctChoice.entity.imageUrl,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: CachedNetworkImage(
-              imageUrl: quiz.correctChoice.imageUrl,
+              imageUrl: quiz.correctChoice.entity.imageUrl,
               fit: BoxFit.fitWidth,
             ),
           ),

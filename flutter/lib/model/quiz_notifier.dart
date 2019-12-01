@@ -21,13 +21,14 @@ class QuizNotifier with ChangeNotifier {
   final SpeechService speechService;
   final List<ShakeAnimation> _incorrectAnimations;
   final AppNavigator navigator;
-  final Set<Choice> _incorrectChoices = {};
+  final Set<ChoiceDoc> _incorrectChoices = {};
   final _audioPlayer = AudioCache(prefix: 'sound/');
 
-  Set<Choice> get incorrectChoices => _incorrectChoices;
+  Set<ChoiceDoc> get incorrectChoices => _incorrectChoices;
   Quiz get quiz => quizGenerator.quiz;
 
-  String get _questionMessage => '${quiz.correctChoice.name}。$questionSuffix';
+  String get _questionMessage =>
+      '${quiz.correctChoice.entity.name}。$questionSuffix';
   String get questionSuffix => 'はどれかな？';
 
   void playQuestion() {
@@ -40,15 +41,17 @@ class QuizNotifier with ChangeNotifier {
     playQuestion();
   }
 
-  ShakeAnimation incorrectAnimation(Choice choice) =>
+  ShakeAnimation incorrectAnimation(ChoiceDoc choice) =>
       _incorrectAnimations[quiz.choices.indexOf(choice)];
 
-  Future<void> select(Choice choice) async {
+  Future<void> select(ChoiceDoc choice) async {
     final correct = quiz.correctChoice == choice;
     logger.info('correct: $correct');
     // ignore: unawaited_futures
     speechService.speak(
-      correct ? 'あたり！すごいねー！${choice.name}だねー' : 'それは${choice.name}だよ、ほかのを選んでね',
+      correct
+          ? 'あたり！すごいねー！${choice.entity.name}だねー'
+          : 'それは${choice.entity.name}だよ、ほかのを選んでね',
     );
 
     if (correct) {

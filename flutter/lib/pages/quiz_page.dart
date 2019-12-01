@@ -39,7 +39,7 @@ class QuizPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Hero(
-              tag: quiz.correctChoice.name,
+              tag: quiz.correctChoice.entity.name,
               child: const _QuestionButton(),
             ),
             const SizedBox(height: 16),
@@ -78,7 +78,7 @@ class _QuestionButton extends StatelessWidget {
         child: Text.rich(
           TextSpan(children: [
             TextSpan(
-              text: model.quiz.correctChoice.name,
+              text: model.quiz.correctChoice.entity.name,
               style: Theme.of(context).accentTextTheme.headline,
             ),
             const TextSpan(text: ' '),
@@ -99,14 +99,14 @@ class ChoiceCard extends StatelessWidget {
     @required this.choice,
   }) : super(key: key);
 
-  final Choice choice;
+  final ChoiceDoc choice;
 
   @override
   Widget build(BuildContext context) {
     final model = Provider.of<QuizNotifier>(context, listen: false);
     final card = Card(
       child: Ink.image(
-        image: CachedNetworkImageProvider(choice.imageUrl),
+        image: CachedNetworkImageProvider(choice.entity.imageUrl),
         fit: BoxFit.cover,
         child: InkWell(
           onTap: () {
@@ -125,7 +125,7 @@ class ChoiceCard extends StatelessWidget {
                 width: double.infinity,
                 color: Theme.of(context).primaryColor.withOpacity(0.85),
                 child: Text(
-                  '${choice.name}',
+                  '${choice.entity.name}',
                   style: Theme.of(context).primaryTextTheme.subhead.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -140,7 +140,7 @@ class ChoiceCard extends StatelessWidget {
 
     if (choice == model.quiz.correctChoice) {
       return Hero(
-        tag: choice.imageUrl,
+        tag: choice.entity.imageUrl,
         child: card,
       );
     }
