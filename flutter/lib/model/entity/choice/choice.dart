@@ -48,10 +48,11 @@ class Choice extends Entity {
       super == other &&
           other is Choice &&
           runtimeType == other.runtimeType &&
-          name == other.name;
+          name == other.name &&
+          group == other.group;
 
   @override
-  int get hashCode => super.hashCode ^ name.hashCode;
+  int get hashCode => super.hashCode ^ name.hashCode ^ group.hashCode;
 }
 
 class ChoiceField {
