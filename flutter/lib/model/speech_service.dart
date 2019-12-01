@@ -15,13 +15,9 @@ class SpeechService {
     _completer.complete();
   }
 
-  void speak(String text) async {
-//    await Future<void>.delayed(Duration(seconds: 1));
-//    await _initialize();
+  Future<void> speak(String text) async {
     await _completer.future;
-
     await _speechController.stop();
-//    await Future<void>.delayed(Duration(seconds: 3));
     await _speechController.speak(text, const VoiceControllerOptions());
   }
 

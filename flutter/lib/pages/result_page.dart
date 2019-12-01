@@ -5,8 +5,7 @@ import 'package:confetti/confetti.dart';
 import 'package:disposable_provider/disposable_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:kids_quiz/model/model.dart';
-import 'package:kids_quiz/pages/home_page.dart';
-import 'package:mono_kit/mono_kit.dart';
+import 'package:kids_quiz/pages/quiz_page.dart';
 import 'package:provider/provider.dart';
 
 class ResultPage extends StatelessWidget {
@@ -18,6 +17,8 @@ class ResultPage extends StatelessWidget {
       child: const ResultPage._(),
     );
   }
+
+  static const routeName = '/result';
 
   @override
   Widget build(BuildContext context) {
@@ -72,11 +73,8 @@ class ResultPage extends StatelessWidget {
                       ),
                       onPressed: () {
                         notifier.next();
-                        Navigator.of(context).pushReplacement<void, void>(
-                          FadePageRoute(
-                            builder: (context) => const HomePage(),
-                          ),
-                        );
+                        Navigator.of(context)
+                            .pushReplacementNamed(QuizPage.routeName);
                       },
                     ),
                   ),
@@ -116,7 +114,7 @@ class _Model with Disposable {
     confettiController.play();
   }
 
-  final confettiController = ConfettiController(
+  final ConfettiController confettiController = ConfettiController(
     duration: const Duration(seconds: 5),
   );
 

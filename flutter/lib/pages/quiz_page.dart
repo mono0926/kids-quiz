@@ -4,8 +4,10 @@ import 'package:kids_quiz/model/entity/quiz.dart';
 import 'package:kids_quiz/model/model.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+class QuizPage extends StatelessWidget {
+  const QuizPage({Key key}) : super(key: key);
+
+  static const routeName = '/quiz';
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             Hero(
               tag: quiz.correctChoice.name,
-              child: _QuestionButton(),
+              child: const _QuestionButton(),
             ),
             const SizedBox(height: 16),
             GridView.count(

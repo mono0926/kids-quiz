@@ -17,7 +17,7 @@ class App extends StatelessWidget {
       theme: buildTheme(),
       title: title,
       navigatorKey: Provider.of<AppNavigator>(context).key,
-      home: const HomePage(),
+      home: const QuizPage(),
       onGenerateRoute: Provider.of<Router>(context).onGenerateRoute,
       builder: (context, child) => TextScaleFactor(
         min: MediaQuery.of(context).size.width / 375,

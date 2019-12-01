@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kids_quiz/pages/pages.dart';
 import 'package:mono_kit/mono_kit.dart';
 
+import 'pages/result_page.dart';
 import 'util/util.dart';
 
 typedef WidgetPageBuilder = Widget Function(
@@ -8,12 +10,14 @@ typedef WidgetPageBuilder = Widget Function(
   RouteSettings settings,
 );
 
-// ignore: avoid_classes_with_only_static_members
 class Router {
   static const root = '/';
 
   final _routes = <String, WidgetPageBuilder>{};
-  final _fadeRoutes = <String, WidgetPageBuilder>{};
+  final _fadeRoutes = <String, WidgetPageBuilder>{
+    QuizPage.routeName: (context, settings) => const QuizPage(),
+    ResultPage.routeName: (context, settings) => ResultPage.wrapped(),
+  };
   final _modalRoutes = <String, WidgetPageBuilder>{};
 
   Route<dynamic> onGenerateRoute(RouteSettings settings) {

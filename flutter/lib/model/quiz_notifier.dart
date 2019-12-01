@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:kids_quiz/model/model.dart';
 import 'package:kids_quiz/pages/result_page.dart';
 import 'package:kids_quiz/util/util.dart';
-import 'package:mono_kit/mono_kit.dart';
 
 class QuizNotifier with ChangeNotifier {
   QuizNotifier({
@@ -28,7 +27,7 @@ class QuizNotifier with ChangeNotifier {
   Set<Choice> get incorrectChoices => _incorrectChoices;
   Quiz get quiz => quizGenerator.quiz;
 
-  String get _questionMessage => '${quiz.correctChoice.name}。${questionSuffix}';
+  String get _questionMessage => '${quiz.correctChoice.name}。$questionSuffix';
   String get questionSuffix => 'はどれかな？';
 
   void playQuestion() {
@@ -47,17 +46,15 @@ class QuizNotifier with ChangeNotifier {
   Future<void> select(Choice choice) async {
     final correct = quiz.correctChoice == choice;
     logger.info('correct: $correct');
+    // ignore: unawaited_futures
     speechService.speak(
       correct ? 'あたり！すごいねー！${choice.name}だねー' : 'それは${choice.name}だよ、ほかのを選んでね',
     );
 
     if (correct) {
+      // ignore: unawaited_futures
       _audioPlayer.play('cheer.mp3');
-      await navigator.navigator.pushReplacement<void, void>(
-        FadePageRoute(
-          builder: (context) => ResultPage.wrapped(),
-        ),
-      );
+      await navigator.navigator.pushReplacementNamed(ResultPage.routeName);
     } else {
       final animation = incorrectAnimation(choice);
       await animation.controller.forward(from: 0);
