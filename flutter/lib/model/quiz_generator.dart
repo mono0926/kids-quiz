@@ -3,12 +3,15 @@ import 'package:kids_quiz/model/model.dart';
 
 class QuizGenerator {
   QuizGenerator({
-    @required this.choices,
+    @required this.observer,
+    @required this.defaultChoices,
   });
 
-  QuizGenerator.samples()
-      : this(
-          choices: [
+  QuizGenerator.samples({
+    @required ChoicesObserver observer,
+  }) : this(
+          observer: observer,
+          defaultChoices: [
             Choice(
               name: 'にゃんにゃん',
               imageUrl:
@@ -90,8 +93,10 @@ class QuizGenerator {
           ],
         );
 
+  final ChoicesObserver observer;
   Quiz _quiz;
   Quiz get quiz => _quiz;
+  List<Choice> choices = [];
 
   Quiz generate() {
     final choice = _decideCorrectChoice();
@@ -107,9 +112,12 @@ class QuizGenerator {
   }
 
   Choice _decideCorrectChoice() {
-    final choice = (choices..shuffle()).first;
+    choices = List<Choice>.from(defaultChoices)
+      ..addAll((observer.docs.value ?? []).map((r) => r.entity))
+      ..shuffle();
+    final choice = choices.first;
     return choice == _quiz?.correctChoice ? _decideCorrectChoice() : choice;
   }
 
-  final List<Choice> choices;
+  final List<Choice> defaultChoices;
 }

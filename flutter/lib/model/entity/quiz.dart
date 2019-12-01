@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import 'choice.dart';
-
-export 'choice.dart';
+import 'choice/choice.dart';
 
 @immutable
 class Quiz {

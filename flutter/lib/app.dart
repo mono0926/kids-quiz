@@ -19,7 +19,7 @@ class App extends StatelessWidget {
       theme: buildTheme(),
       title: appName,
       navigatorKey: Provider.of<AppNavigator>(context).key,
-      home: const QuizPage(),
+      home: QuizPage.wrapped(),
       onGenerateRoute: Provider.of<Router>(context).onGenerateRoute,
       builder: (context, child) {
         final mediaQuery = MediaQuery.of(context);

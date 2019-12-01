@@ -1,22 +1,37 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:disposable_provider/disposable_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:kids_quiz/consts.dart';
-import 'package:kids_quiz/model/entity/quiz.dart';
 import 'package:kids_quiz/model/model.dart';
+import 'package:kids_quiz/pages/quiz_edit_page.dart';
+import 'package:kids_quiz/util/app_feedback.dart';
+import 'package:kids_quiz/util/util.dart';
 import 'package:provider/provider.dart';
 
 class QuizPage extends StatelessWidget {
-  const QuizPage({Key key}) : super(key: key);
+  const QuizPage._({Key key}) : super(key: key);
+
+  static Widget wrapped() {
+    return DisposableProvider(
+      builder: (context) => _Model(),
+      child: const QuizPage._(),
+    );
+  }
 
   static const routeName = '/quiz';
 
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<QuizNotifier>(context);
-    final quiz = model.quiz;
+    final model = Provider.of<_Model>(context);
+    final notifier = Provider.of<QuizNotifier>(context);
+    final quiz = notifier.quiz;
     return Scaffold(
+      key: model.feedback.key,
       appBar: AppBar(
         title: const Text(appName),
+        actions: const [
+          MenuButton(),
+        ],
       ),
       body: SafeArea(
         child: Column(
@@ -134,4 +149,52 @@ class ChoiceCard extends StatelessWidget {
       child: card,
     );
   }
+}
+
+class _Model with Disposable {
+  final AppFeedback feedback = AppFeedback(GlobalKey());
+
+  @override
+  void dispose() {}
+
+  void notifyLongPressNeeded() {
+    feedback.show('メニューを表示するには、長押ししてください(お子さまの誤操作の防止のためです)。');
+  }
+}
+
+class MenuButton extends StatelessWidget {
+  const MenuButton({Key key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton<_Action>(
+      icon: Icon(Icons.more_horiz),
+      itemBuilder: (context) {
+        return <PopupMenuEntry<_Action>>[
+          PopupMenuItem(
+            child: ListTileTheme(
+              style: ListTileStyle.drawer,
+              child: ListTile(
+                title: const Text('クイズを編集'),
+                leading: Icon(Icons.edit),
+              ),
+            ),
+            value: _Action.editQuiz,
+          ),
+        ];
+      },
+      onSelected: (value) async {
+        logger.info(value);
+        Provider.of<AppNavigator>(context).popToRoot();
+        switch (value) {
+          case _Action.editQuiz:
+            await Navigator.of(context).pushNamed(QuizEditPage.routeName);
+            break;
+        }
+      },
+    );
+  }
+}
+
+enum _Action {
+  editQuiz,
 }

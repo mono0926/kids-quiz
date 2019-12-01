@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kids_quiz/pages/pages.dart';
+import 'package:kids_quiz/pages/quiz_add_page.dart';
+import 'package:kids_quiz/pages/quiz_edit_page.dart';
 import 'package:mono_kit/mono_kit.dart';
 
 import 'pages/result_page.dart';
@@ -15,10 +17,13 @@ class Router {
 
   final _routes = <String, WidgetPageBuilder>{};
   final _fadeRoutes = <String, WidgetPageBuilder>{
-    QuizPage.routeName: (context, settings) => const QuizPage(),
+    QuizPage.routeName: (context, settings) => QuizPage.wrapped(),
     ResultPage.routeName: (context, settings) => ResultPage.wrapped(),
+    QuizAddPage.routeName: (context, settings) => QuizAddPage.wrapped(),
   };
-  final _modalRoutes = <String, WidgetPageBuilder>{};
+  final _modalRoutes = <String, WidgetPageBuilder>{
+    QuizEditPage.routeName: (context, settings) => QuizEditPage.wrapped(),
+  };
 
   Route<dynamic> onGenerateRoute(RouteSettings settings) {
     logger.info(settings.name);

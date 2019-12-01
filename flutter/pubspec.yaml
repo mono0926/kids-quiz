@@ -23,6 +23,12 @@ dependencies:
       url: https://github.com/mono0926/flutter_confetti.git
   disposable_provider:
   cached_network_image: 2.0.0-rc
+  firestore_ref:
+  image_picker:
+  permission_handler:
+  image_cropper:
+  firebase_storage:
+  rxdart:
 dev_dependencies:
   flutter_test:
     sdk: flutter

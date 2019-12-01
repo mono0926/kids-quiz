@@ -46,6 +46,8 @@ class QuizNotifier with ChangeNotifier {
   Future<void> select(Choice choice) async {
     final correct = quiz.correctChoice == choice;
     logger.info('correct: $correct');
+    logger.info(quiz.correctChoice);
+    logger.info(choice);
     // ignore: unawaited_futures
     speechService.speak(
       correct ? 'あたり！すごいねー！${choice.name}だねー' : 'それは${choice.name}だよ、ほかのを選んでね',

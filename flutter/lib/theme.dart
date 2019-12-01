@@ -4,11 +4,11 @@ ThemeData buildTheme() {
   final base = ThemeData.light();
   const accentColor = Color(0xFFF07467);
   const fontFamily = 'Hiragino Maru Gothic ProN';
-  final primaryTextTheme = base.primaryTextTheme.apply(
-    fontFamily: fontFamily,
-  );
+
   return ThemeData(
-    primaryTextTheme: primaryTextTheme,
+    primaryTextTheme: base.primaryTextTheme.apply(
+      fontFamily: fontFamily,
+    ),
     accentTextTheme: base.accentTextTheme
         .copyWith(
           headline: TextStyle(
@@ -56,11 +56,26 @@ ThemeData buildTheme() {
       textTheme: ButtonTextTheme.accent,
     ),
     appBarTheme: AppBarTheme(
-      textTheme: primaryTextTheme.copyWith(
-        title: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 24,
+      textTheme: base.primaryTextTheme
+          .copyWith(
+            title: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+            ),
+          )
+          .apply(
+            fontFamily: fontFamily,
+          ),
+    ),
+    snackBarTheme: SnackBarThemeData(
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
         ),
+        backgroundColor: Colors.blue[900]),
+    dialogTheme: DialogTheme(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
       ),
     ),
   );

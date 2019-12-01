@@ -21,33 +21,33 @@ class AppNavigator {
     navigator.popUntil((r) => (r is PageRoute) && r.fullscreenDialog);
   }
 
-//  void showErrorDialog(dynamic error) {
-//    showDialog<dynamic>(
-//      context: descendantContext,
-//      builder: (context) => AlertDialog(
-//        title: Text(
-//          'エラーが発生しました',
-//          style: TextStyle(
-//            color: Theme.of(context).errorColor,
-//          ),
-//        ),
-//        content: Text(
+  void showErrorDialog(dynamic error) {
+    showDialog<dynamic>(
+      context: descendantContext,
+      builder: (context) => AlertDialog(
+        title: Text(
+          'エラーが発生しました',
+          style: TextStyle(
+            color: Theme.of(context).errorColor,
+          ),
+        ),
+        content: Text(error.toString()
 //          localizeError(
 //            error: error,
 //            l10n: l10n,
 //          ),
-//        ),
-//        actions: [
-//          FlatButton(
-//            child: Text(MaterialLocalizations.of(context).okButtonLabel),
-//            onPressed: () {
-//              Navigator.of(context).pop();
-//            },
-//          )
-//        ],
-//      ),
-//    );
-//  }
+            ),
+        actions: [
+          FlatButton(
+            child: Text(MaterialLocalizations.of(context).okButtonLabel),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          )
+        ],
+      ),
+    );
+  }
 
   Future<void> showOkDialog({
     @required String title,
