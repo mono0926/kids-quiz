@@ -72,7 +72,15 @@ class QuizAddPage extends StatelessWidget {
             child: model.imageUrl == null
                 ? RaisedButton(
                     color: Colors.grey[300],
-                    child: const Text('写真を追加'),
+                    child: Text(
+                      '写真を追加',
+                      style: Theme.of(context)
+                          .accentTextTheme
+                          .headline
+                          .copyWith(
+                            color: Theme.of(context).colorScheme.primaryVariant,
+                          ),
+                    ),
                     onPressed: () => model.selectImage(context),
                   )
                 : CachedNetworkImage(imageUrl: model.imageUrl),
