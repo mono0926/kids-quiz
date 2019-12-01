@@ -3,7 +3,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:kids_quiz/model/choices_observer.dart';
 import 'package:kids_quiz/model/entity/choice/choice.dart';
-import 'package:kids_quiz/pages/quiz_add_page.dart';
+import 'package:kids_quiz/pages/quiz_add_page/quiz_add_page.dart';
 import 'package:mono_kit/utils/utils.dart';
 import 'package:provider/provider.dart';
 

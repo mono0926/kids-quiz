@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kids_quiz/pages/pages.dart';
-import 'package:kids_quiz/pages/quiz_add_page.dart';
+import 'package:kids_quiz/pages/quiz_add_page/quiz_add_page.dart';
 import 'package:kids_quiz/pages/quiz_edit_page.dart';
 import 'package:mono_kit/mono_kit.dart';
 
