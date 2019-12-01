@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:kids_quiz/consts.dart';
 import 'package:kids_quiz/model/entity/quiz.dart';
 import 'package:kids_quiz/model/model.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +16,7 @@ class QuizPage extends StatelessWidget {
     final quiz = model.quiz;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('キッズクイズ'),
+        title: const Text(appName),
       ),
       body: SafeArea(
         child: Column(
