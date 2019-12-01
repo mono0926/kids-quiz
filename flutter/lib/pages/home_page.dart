@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:kids_quiz/model/entity/quiz.dart';
 import 'package:kids_quiz/model/model.dart';
@@ -21,17 +22,11 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             Hero(
               tag: quiz.correctChoice.name,
-              child: RaisedButton(
-                textTheme: ButtonTextTheme.accent,
-                onPressed: model.playQuestion,
-                child: Text(
-                  model.question,
-                  style: Theme.of(context).textTheme.title,
-                ),
-              ),
+              child: _QuestionButton(),
             ),
             const SizedBox(height: 16),
             GridView.count(
+              physics: const NeverScrollableScrollPhysics(),
               padding: const EdgeInsets.all(8),
               crossAxisSpacing: 4,
               mainAxisSpacing: 4,
@@ -52,6 +47,34 @@ class HomePage extends StatelessWidget {
   }
 }
 
+class _QuestionButton extends StatelessWidget {
+  const _QuestionButton({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final model = Provider.of<QuizNotifier>(context);
+    return FractionallySizedBox(
+      widthFactor: 0.9,
+      child: RaisedButton(
+        onPressed: model.playQuestion,
+        child: Text.rich(
+          TextSpan(children: [
+            TextSpan(
+              text: model.quiz.correctChoice.name,
+              style: Theme.of(context).accentTextTheme.headline,
+            ),
+            const TextSpan(text: ' '),
+            TextSpan(
+              text: model.questionSuffix,
+              style: Theme.of(context).accentTextTheme.title,
+            ),
+          ]),
+        ),
+      ),
+    );
+  }
+}
+
 class ChoiceCard extends StatelessWidget {
   const ChoiceCard({
     Key key,
@@ -65,7 +88,7 @@ class ChoiceCard extends StatelessWidget {
     final model = Provider.of<QuizNotifier>(context, listen: false);
     final card = Card(
       child: Ink.image(
-        image: Image.network(choice.imageUrl).image,
+        image: CachedNetworkImageProvider(choice.imageUrl),
         fit: BoxFit.cover,
         child: InkWell(
           onTap: () {

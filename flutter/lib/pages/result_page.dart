@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:confetti/confetti.dart';
 import 'package:disposable_provider/disposable_provider.dart';
 import 'package:flutter/material.dart';
@@ -8,13 +9,13 @@ import 'package:kids_quiz/pages/home_page.dart';
 import 'package:mono_kit/mono_kit.dart';
 import 'package:provider/provider.dart';
 
-class CorrectPage extends StatelessWidget {
-  const CorrectPage._({Key key}) : super(key: key);
+class ResultPage extends StatelessWidget {
+  const ResultPage._({Key key}) : super(key: key);
 
   static Widget wrapped() {
     return DisposableProvider(
       builder: (context) => _Model(),
-      child: const CorrectPage._(),
+      child: const ResultPage._(),
     );
   }
 
@@ -38,30 +39,36 @@ class CorrectPage extends StatelessWidget {
                     tag: quiz.correctChoice.name,
                     child: Text(
                       quiz.correctChoice.name,
-                      style: Theme.of(context).textTheme.display1,
-                    ),
-                  ),
-                  Hero(
-                    tag: quiz.correctChoice.imageUrl,
-                    child: FractionallySizedBox(
-                      widthFactor: 1,
-                      child: AspectRatio(
-                        aspectRatio: 1,
-                        child: Image.network(
-                          quiz.correctChoice.imageUrl,
-                          fit: BoxFit.fitWidth,
-                        ),
-                      ),
+                      style: Theme.of(context).textTheme.display1.copyWith(
+                            color: Theme.of(context).colorScheme.primaryVariant,
+                          ),
                     ),
                   ),
                   const SizedBox(height: 16),
                   FractionallySizedBox(
-                    widthFactor: 0.8,
+                    widthFactor: 0.9,
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: Hero(
+                        tag: quiz.correctChoice.imageUrl,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: CachedNetworkImage(
+                            imageUrl: quiz.correctChoice.imageUrl,
+                            fit: BoxFit.fitWidth,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  FractionallySizedBox(
+                    widthFactor: 0.9,
                     child: RaisedButton(
                       padding: const EdgeInsets.all(8),
                       child: Text(
                         'つぎへ',
-                        style: Theme.of(context).textTheme.headline,
+                        style: Theme.of(context).accentTextTheme.headline,
                       ),
                       onPressed: () {
                         notifier.next();

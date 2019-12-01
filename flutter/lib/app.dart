@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kids_quiz/util/app_navigator.dart';
+import 'package:mono_kit/mono_kit.dart';
 import 'package:provider/provider.dart';
 
 import 'pages/pages.dart';
@@ -18,6 +19,10 @@ class App extends StatelessWidget {
       navigatorKey: Provider.of<AppNavigator>(context).key,
       home: const HomePage(),
       onGenerateRoute: Provider.of<Router>(context).onGenerateRoute,
+      builder: (context, child) => TextScaleFactor(
+        min: MediaQuery.of(context).size.width / 375,
+        child: child,
+      ),
     );
   }
 }

@@ -10,13 +10,13 @@ class QuizGenerator {
       : this(
           choices: [
             Choice(
-              name: 'ねこ',
+              name: 'にゃんにゃん',
               imageUrl:
                   'https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg',
               group: GroupNames.animal,
             ),
             Choice(
-              name: 'いぬ',
+              name: 'ワンワン',
               imageUrl:
                   'https://firebasestorage.googleapis.com/v0/b/kids-quiz-mono.appspot.com/o/images%2Fdog.jpg?alt=media',
               group: GroupNames.animal,

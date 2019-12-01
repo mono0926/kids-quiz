@@ -1,7 +1,7 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kids_quiz/model/model.dart';
-import 'package:kids_quiz/pages/correct_page.dart';
+import 'package:kids_quiz/pages/result_page.dart';
 import 'package:kids_quiz/util/util.dart';
 import 'package:mono_kit/mono_kit.dart';
 
@@ -28,10 +28,11 @@ class QuizNotifier with ChangeNotifier {
   Set<Choice> get incorrectChoices => _incorrectChoices;
   Quiz get quiz => quizGenerator.quiz;
 
-  String get question => '「${quiz.correctChoice.name}」はどれかな？';
+  String get _questionMessage => '${quiz.correctChoice.name}。${questionSuffix}';
+  String get questionSuffix => 'はどれかな？';
 
   void playQuestion() {
-    speechService.speak(question);
+    speechService.speak(_questionMessage);
   }
 
   void next() {
@@ -54,7 +55,7 @@ class QuizNotifier with ChangeNotifier {
       _audioPlayer.play('cheer.mp3');
       await navigator.navigator.pushReplacement<void, void>(
         FadePageRoute(
-          builder: (context) => CorrectPage.wrapped(),
+          builder: (context) => ResultPage.wrapped(),
         ),
       );
     } else {
