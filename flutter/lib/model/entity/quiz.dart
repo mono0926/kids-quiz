@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
+import 'choice.dart';
+
+export 'choice.dart';
+
 @immutable
 class Quiz {
   const Quiz({
@@ -8,19 +12,6 @@ class Quiz {
   });
   final List<Choice> choices;
   final Choice correctChoice;
-}
-
-@immutable
-class Choice {
-  const Choice({
-    @required this.name,
-    @required this.imageUrl,
-    @required this.group,
-  });
-
-  final String name;
-  final String imageUrl;
-  final String group;
 }
 
 class GroupNames {

@@ -58,6 +58,7 @@ class QuizNotifier with ChangeNotifier {
     } else {
       final animation = incorrectAnimation(choice);
       await animation.controller.forward(from: 0);
+      // TODO(mono): Staggered animationにしたい
       await animation.controller.reverse();
       if (_incorrectChoices.add(choice)) {
         notifyListeners();
