@@ -17,7 +17,8 @@ class QuizGenerator {
             ),
             Choice(
               name: 'いぬ',
-              imageUrl: 'https://mono0926.com/images/love_logo.png',
+              imageUrl:
+                  'https://firebasestorage.googleapis.com/v0/b/kids-quiz-mono.appspot.com/o/images%2Fdog.jpg?alt=media',
               group: GroupNames.animal,
             ),
             Choice(
@@ -60,6 +61,30 @@ class QuizGenerator {
               name: 'しんかんせん',
               imageUrl:
                   'https://firebasestorage.googleapis.com/v0/b/kids-quiz-mono.appspot.com/o/images%2FIMG_4066.JPG?alt=media',
+              group: GroupNames.vehicle,
+            ),
+            Choice(
+              name: 'パトカー',
+              imageUrl:
+                  'https://firebasestorage.googleapis.com/v0/b/kids-quiz-mono.appspot.com/o/images%2FIMG_3452.JPG?alt=media',
+              group: GroupNames.vehicle,
+            ),
+            Choice(
+              name: 'ショベルカー',
+              imageUrl:
+                  'https://firebasestorage.googleapis.com/v0/b/kids-quiz-mono.appspot.com/o/images%2FIMG_5043.JPG?alt=media',
+              group: GroupNames.vehicle,
+            ),
+            Choice(
+              name: 'アンパンマンカー',
+              imageUrl:
+                  'https://firebasestorage.googleapis.com/v0/b/kids-quiz-mono.appspot.com/o/images%2FIMG_5410.JPG?alt=media',
+              group: GroupNames.vehicle,
+            ),
+            Choice(
+              name: 'ミキサー車',
+              imageUrl:
+                  'https://firebasestorage.googleapis.com/v0/b/kids-quiz-mono.appspot.com/o/images%2FIMG_9056.JPG?alt=media',
               group: GroupNames.vehicle,
             )
           ],

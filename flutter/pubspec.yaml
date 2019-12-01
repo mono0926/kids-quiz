@@ -14,8 +14,10 @@ dependencies:
   pedantic_mono:
   provider:
   flutter_text_to_speech:
+    git:
+      url: https://github.com/mono0926/flutter_text_to_speech.git
   vsync_provider:
-  audioplayers:
+  audioplayers: 0.13.2
   confetti:
     git:
       url: https://github.com/mono0926/flutter_confetti.git

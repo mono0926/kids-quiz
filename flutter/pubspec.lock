@@ -28,7 +28,7 @@ packages:
       name: audioplayers
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.3"
+    version: "0.13.2"
   boolean_selector:
     dependency: transitive
     description:
@@ -107,9 +107,11 @@ packages:
   flutter_text_to_speech:
     dependency: "direct main"
     description:
-      name: flutter_text_to_speech
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: aebd5fdde2e6abf67e1539e59556c4851fa82807
+      url: "https://github.com/mono0926/flutter_text_to_speech.git"
+    source: git
     version: "3.0.7"
   http:
     dependency: transitive

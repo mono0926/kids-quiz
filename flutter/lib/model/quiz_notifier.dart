@@ -47,7 +47,7 @@ class QuizNotifier with ChangeNotifier {
     final correct = quiz.correctChoice == choice;
     logger.info('correct: $correct');
     speechService.speak(
-      correct ? 'あたり！すごいねー！${choice.name}だねー' : 'それは${choice.name}だよ、他のを選んでね',
+      correct ? 'あたり！すごいねー！${choice.name}だねー' : 'それは${choice.name}だよ、ほかのを選んでね',
     );
 
     if (correct) {
