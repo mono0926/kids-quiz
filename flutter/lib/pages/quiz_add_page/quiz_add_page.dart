@@ -39,14 +39,17 @@ class QuizAddPage extends StatelessWidget {
           )
         ],
       ),
-      body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        children: <Widget>[
-          _buildImage(model, context),
-          _buildNameField(model),
-          const CategoryButton(),
-          const SizedBox(height: 32),
-        ],
+      body: UnfocusOnTap(
+        child: ListView(
+          children: <Widget>[
+            _buildNameField(model),
+            const SizedBox(height: 8),
+            const CategoryButton(),
+            const SizedBox(height: 16),
+            _buildImage(model, context),
+            const SizedBox(height: 32),
+          ],
+        ),
       ),
     );
   }
@@ -54,6 +57,7 @@ class QuizAddPage extends StatelessWidget {
   Widget _buildNameField(AddPageModel model) {
     return ListTile(
       title: TextField(
+        autofocus: true,
         controller: model.nameController,
         decoration: const InputDecoration(labelText: '名前'),
       ),

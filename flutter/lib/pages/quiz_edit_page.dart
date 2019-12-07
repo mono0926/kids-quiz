@@ -85,7 +85,7 @@ class _Tile extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Container(
-              color: Theme.of(context).canvasColor,
+              color: Theme.of(context).cardColor,
               child: AspectRatio(
                 aspectRatio: 1,
                 child: CachedNetworkImage(
@@ -97,6 +97,7 @@ class _Tile extends StatelessWidget {
           ),
         ),
         trailing: doc.id == null ? Icon(Icons.bookmark) : null,
+        onTap: () {},
       ),
     );
   }
