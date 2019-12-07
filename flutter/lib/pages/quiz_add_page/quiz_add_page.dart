@@ -63,28 +63,34 @@ class QuizAddPage extends StatelessWidget {
   Widget _buildImage(AddPageModel model, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(8),
-        child: Barrier(
-          showProgress: model.inProgress,
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: model.imageUrl == null
-                ? RaisedButton(
-                    color: Colors.grey[300],
-                    child: Text(
-                      '写真を追加',
-                      style: Theme.of(context)
-                          .accentTextTheme
-                          .headline
-                          .copyWith(
-                            color: Theme.of(context).colorScheme.primaryVariant,
-                          ),
+      child: Barrier(
+        showProgress: model.inProgress,
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: model.imageUrl == null
+              ? RaisedButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  color: Colors.grey[300],
+                  child: Text(
+                    '写真を追加',
+                    style: Theme.of(context).accentTextTheme.title.copyWith(
+                          color: Theme.of(context).colorScheme.primaryVariant,
+                        ),
+                  ),
+                  onPressed: () => model.selectImage(context),
+                )
+              : Card(
+                  color: Theme.of(context).buttonColor,
+                  margin: EdgeInsets.zero,
+                  child: Ink.image(
+                    image: CachedNetworkImageProvider(model.imageUrl),
+                    child: InkWell(
+                      onTap: () => model.selectImage(context),
                     ),
-                    onPressed: () => model.selectImage(context),
-                  )
-                : CachedNetworkImage(imageUrl: model.imageUrl),
-          ),
+                  ),
+                ),
         ),
       ),
     );
