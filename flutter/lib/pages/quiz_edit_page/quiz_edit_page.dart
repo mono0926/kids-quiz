@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kids_quiz/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
-import 'category_tile.dart';
+import 'group_tile.dart';
 import 'quiz_edit_model.dart';
 
 class QuizEditPage extends StatelessWidget {
@@ -25,7 +25,7 @@ class QuizEditPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('クイズを編集'),
       ),
-      floatingActionButton: const AddChoiceFab(),
+      floatingActionButton: const AddChoiceFab(group: null),
       body: const _Body(),
     );
   }
@@ -39,15 +39,15 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = Provider.of<QuizEditModel>(context);
-    final choicesByCategory = model.choicesByCategory;
+    final choicesByCategory = model.choicesByGroup;
     final categories = choicesByCategory.keys.toList();
     return ListView.builder(
       padding: const EdgeInsets.only(top: 8, bottom: 96),
       itemCount: categories.length,
       itemBuilder: (context, index) {
         final category = categories[index];
-        return CategoryTile.wrapped(
-          category: category,
+        return GroupTile.wrapped(
+          group: category,
         );
       },
     );

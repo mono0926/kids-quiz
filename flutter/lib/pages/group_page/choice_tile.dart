@@ -4,7 +4,7 @@ import 'package:kids_quiz/model/model.dart';
 import 'package:kids_quiz/pages/quiz_add_page/quiz_add_page.dart';
 import 'package:provider/provider.dart';
 
-import '../quiz_edit_page/category_tile.dart';
+import '../quiz_edit_page/group_tile.dart';
 
 class ChoiceTile extends StatelessWidget {
   const ChoiceTile({
@@ -17,7 +17,7 @@ class ChoiceTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final choice = doc.entity;
-    final model = Provider.of<CategoryModel>(context);
+    final model = Provider.of<GroupModel>(context);
     return Dismissible(
       key: ValueKey(choice.name),
       background: Container(color: Theme.of(context).errorColor),

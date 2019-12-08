@@ -33,7 +33,7 @@ class QuizAddPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('クイズ画像を追加'),
+        title: Text(model.choiceDoc?.id == null ? 'クイズを追加' : 'クイズを編集'),
         actions: <Widget>[
           FlatButton(
             colorBrightness: Brightness.dark,

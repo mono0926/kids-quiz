@@ -1,38 +1,38 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:kids_quiz/model/model.dart';
-import 'package:kids_quiz/pages/category_page/category_page.dart';
+import 'package:kids_quiz/pages/group_page/group_page.dart';
 import 'package:provider/provider.dart';
 
 import 'quiz_edit_model.dart';
 
-class CategoryTile extends StatelessWidget {
-  const CategoryTile._({Key key}) : super(key: key);
+class GroupTile extends StatelessWidget {
+  const GroupTile._({Key key}) : super(key: key);
 
   static Widget wrapped({
-    @required String category,
+    @required String group,
   }) {
-    return ChangeNotifierProxyProvider<QuizEditModel, CategoryModel>(
-      key: ValueKey(category),
-      create: (context) => CategoryModel(
-        category: category,
+    return ChangeNotifierProxyProvider<QuizEditModel, GroupModel>(
+      key: ValueKey(group),
+      create: (context) => GroupModel(
+        group: group,
       ),
       update: (context, quizEditModel, previous) {
         return previous
           ..updateChoiceDocs(
-            quizEditModel.choicesByCategory[previous.category],
+            quizEditModel.choicesByGroup[previous.group],
           );
       },
-      child: const CategoryTile._(),
+      child: const GroupTile._(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<CategoryModel>(context);
+    final model = Provider.of<GroupModel>(context);
     final choices = model.choiceDocs;
     return ListTile(
-      title: Text('${model.category} (${choices.length})'),
+      title: Text('${model.group} (${choices.length})'),
 //      title: Row(
 //        mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //        children: <Widget>[
@@ -64,18 +64,18 @@ class CategoryTile extends StatelessWidget {
           : null,
       trailing: Icon(Icons.chevron_right),
       onTap: () => Navigator.of(context).pushNamed(
-        CategoryPage.routeName,
+        GroupPage.routeName,
         arguments: model,
       ),
     );
   }
 }
 
-class CategoryModel with ChangeNotifier {
-  CategoryModel({
-    @required this.category,
+class GroupModel with ChangeNotifier {
+  GroupModel({
+    @required this.group,
   });
-  final String category;
+  final String group;
 
   List<ChoiceDoc> _choiceDocs;
   List<ChoiceDoc> get choiceDocs => _choiceDocs;

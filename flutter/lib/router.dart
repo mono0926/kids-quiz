@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kids_quiz/model/entity/choice/choice.dart';
-import 'package:kids_quiz/pages/category_page/category_page.dart';
+import 'package:kids_quiz/pages/group_page/group_page.dart';
 import 'package:kids_quiz/pages/pages.dart';
 import 'package:kids_quiz/pages/quiz_add_page/quiz_add_page.dart';
-import 'package:kids_quiz/pages/quiz_edit_page/category_tile.dart';
+import 'package:kids_quiz/pages/quiz_edit_page/group_tile.dart';
 import 'package:kids_quiz/pages/quiz_edit_page/quiz_edit_page.dart';
 import 'package:mono_kit/mono_kit.dart';
 
@@ -19,8 +19,8 @@ class Router {
   static const root = '/';
 
   final _routes = <String, WidgetPageBuilder>{
-    CategoryPage.routeName: (context, settings) => CategoryPage.wrapped(
-          model: settings.arguments as CategoryModel,
+    GroupPage.routeName: (context, settings) => GroupPage.wrapped(
+          model: settings.arguments as GroupModel,
         ),
   };
   final _fadeRoutes = <String, WidgetPageBuilder>{

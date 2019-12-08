@@ -1,5 +1,5 @@
-import 'package:disposable_provider/disposable_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:kids_quiz/widgets/text_input_dialog.dart';
 import 'package:provider/provider.dart';
 
 import 'add_page_model.dart';
@@ -10,48 +10,20 @@ class NameDialog extends StatelessWidget {
   static Widget wrapped({
     @required AddPageModel model,
   }) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider.value(value: model),
-        DisposableProvider(
-          builder: (context) => _Model(),
-        )
-      ],
+    return ChangeNotifierProvider.value(
+      value: model,
       child: const NameDialog._(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<_Model>(context);
-    return AlertDialog(
-      title: const Text('グループ名を入力'),
-      content: TextField(
-        autofocus: true,
-        controller: model.groupController,
-      ),
-      actions: <Widget>[
-        FlatButton(
-          child: Text(MaterialLocalizations.of(context).cancelButtonLabel),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        FlatButton(
-          child: const Text('追加'),
-          onPressed: () {
-            Provider.of<AddPageModel>(context)
-                .updateGroup(model.groupController.text);
-            Navigator.of(context).pop();
-          },
-        )
-      ],
+    return TextInputDialog(
+      okLabel: '追加',
+      titleLabel: 'グループ名を入力',
+      onOkPressed: (text) {
+        Provider.of<AddPageModel>(context).updateGroup(text);
+      },
     );
-  }
-}
-
-class _Model with Disposable {
-  final TextEditingController groupController = TextEditingController();
-  @override
-  void dispose() {
-    groupController.dispose();
   }
 }
