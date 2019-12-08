@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kids_quiz/model/entity/choice/choice.dart';
 import 'package:kids_quiz/pages/pages.dart';
 import 'package:kids_quiz/pages/quiz_add_page/quiz_add_page.dart';
-import 'package:kids_quiz/pages/quiz_edit_page.dart';
+import 'package:kids_quiz/pages/quiz_edit_page/quiz_edit_page.dart';
 import 'package:mono_kit/mono_kit.dart';
 
 import 'pages/result_page.dart';
@@ -19,7 +20,9 @@ class Router {
   final _fadeRoutes = <String, WidgetPageBuilder>{
     QuizPage.routeName: (context, settings) => QuizPage.wrapped(),
     ResultPage.routeName: (context, settings) => ResultPage.wrapped(),
-    QuizAddPage.routeName: (context, settings) => QuizAddPage.wrapped(),
+    QuizAddPage.routeName: (context, settings) => QuizAddPage.wrapped(
+          choiceDoc: settings.arguments as ChoiceDoc,
+        ),
   };
   final _modalRoutes = <String, WidgetPageBuilder>{
     QuizEditPage.routeName: (context, settings) => QuizEditPage.wrapped(),

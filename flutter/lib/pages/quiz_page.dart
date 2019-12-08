@@ -3,7 +3,7 @@ import 'package:disposable_provider/disposable_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:kids_quiz/consts.dart';
 import 'package:kids_quiz/model/model.dart';
-import 'package:kids_quiz/pages/quiz_edit_page.dart';
+import 'package:kids_quiz/pages/quiz_edit_page/quiz_edit_page.dart';
 import 'package:kids_quiz/util/app_feedback.dart';
 import 'package:kids_quiz/util/util.dart';
 import 'package:provider/provider.dart';

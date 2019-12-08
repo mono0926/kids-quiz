@@ -53,6 +53,8 @@ class Choice extends Entity {
 
   @override
   int get hashCode => super.hashCode ^ name.hashCode ^ group.hashCode;
+
+  static const minNumber = 4;
 }
 
 class ChoiceField {

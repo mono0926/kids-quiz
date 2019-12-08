@@ -10,12 +10,18 @@ import 'package:mono_kit/mono_kit.dart';
 
 class AddPageModel with ChangeNotifier, ProgressMixin {
   AddPageModel({
+    @required this.choiceDoc,
     @required this.imageCropper,
     @required this.uploader,
     @required this.navigator,
     @required this.observer,
   }) {
+    final choice = choiceDoc?.entity;
+    nameController.text = choice?.name;
+    _group = choice?.group;
+    _imageUrl = choice?.imageUrl;
     _groups = _toCategories(observer.choices.value);
+    notifyListeners();
     _sb.add(
       observer.choices.listen((choices) {
         _groups = _toCategories(choices);
@@ -23,6 +29,8 @@ class AddPageModel with ChangeNotifier, ProgressMixin {
       }),
     );
   }
+
+  final ChoiceDoc choiceDoc;
   final ImageCropper imageCropper;
   final Uploader uploader;
   final AppNavigator navigator;
@@ -30,13 +38,14 @@ class AddPageModel with ChangeNotifier, ProgressMixin {
   final ChoicesObserver observer;
   final _sb = SubscriptionHolder();
 
-  String imageUrl;
+  String _imageUrl;
   String get name => nameController.text;
-  String _group = '';
+  String _group;
   List<String> _groups = [];
 
   List<String> get groups => _groups;
-  String get group => _group;
+  String get group => _group ?? '';
+  String get imageUrl => _imageUrl;
 
   List<String> _toCategories(List<ChoiceDoc> docs) =>
       groupBy<ChoiceDoc, String>(docs, (d) => d.entity.group).keys.toList();
@@ -51,7 +60,7 @@ class AddPageModel with ChangeNotifier, ProgressMixin {
       return;
     }
     await executeWithProgress<void>(() async {
-      imageUrl = (await uploader.uploadImageFile(
+      _imageUrl = (await uploader.uploadImageFile(
         name: name.isEmpty ? 'unknown' : name,
         file: cropped,
       ))
@@ -71,7 +80,7 @@ class AddPageModel with ChangeNotifier, ProgressMixin {
   }
 
   Future<void> save() async {
-    if (name.isEmpty || _group.isEmpty || imageUrl == null) {
+    if (name.isEmpty || _group.isEmpty || _imageUrl == null) {
       await navigator.showOkDialog(
         title: '未記入の項目があります',
         message: '画像・名前・グループ名を指定してください。',
@@ -79,11 +88,11 @@ class AddPageModel with ChangeNotifier, ProgressMixin {
       return;
     }
     // ignore: unawaited_futures
-    ChoicesRef.ref().docRef().set(
+    ChoicesRef.ref().docRef(choiceDoc?.id).set(
           Choice(
             name: name,
             group: _group,
-            imageUrl: imageUrl,
+            imageUrl: _imageUrl,
           ),
         );
     navigator.navigator.pop();
