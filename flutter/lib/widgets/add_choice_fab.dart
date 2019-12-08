@@ -18,7 +18,7 @@ class AddChoiceFab extends StatelessWidget {
       onPressed: () => Navigator.of(context).pushNamed(
         QuizAddPage.routeName,
         arguments: ChoiceDoc(
-          '',
+          null,
           Choice(
             group: group,
             imageUrl: null,

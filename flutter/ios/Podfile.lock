@@ -74,6 +74,9 @@ PODS:
     - FirebaseCore (~> 6.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - Flutter (1.0.0)
+  - flutter_image_compress (0.0.1):
+    - Flutter
+    - Mantle
   - flutter_tts (0.0.1):
     - Flutter
   - FMDB (2.7.5):
@@ -130,6 +133,9 @@ PODS:
   - image_picker (0.0.1):
     - Flutter
   - leveldb-library (1.22)
+  - Mantle (2.1.0):
+    - Mantle/extobjc (= 2.1.0)
+  - Mantle/extobjc (2.1.0)
   - mono_kit (0.0.1):
     - Flutter
   - nanopb (0.3.9011):
@@ -155,6 +161,7 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
   - Flutter (from `Flutter`)
+  - flutter_image_compress (from `.symlinks/plugins/flutter_image_compress/ios`)
   - flutter_tts (from `.symlinks/plugins/flutter_tts/ios`)
   - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
   - image_picker (from `.symlinks/plugins/image_picker/ios`)
@@ -185,6 +192,7 @@ SPEC REPOS:
     - gRPC-Core
     - GTMSessionFetcher
     - leveldb-library
+    - Mantle
     - nanopb
     - Protobuf
     - TOCropViewController
@@ -200,6 +208,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_storage/ios"
   Flutter:
     :path: Flutter
+  flutter_image_compress:
+    :path: ".symlinks/plugins/flutter_image_compress/ios"
   flutter_tts:
     :path: ".symlinks/plugins/flutter_tts/ios"
   image_cropper:
@@ -220,7 +230,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   audioplayers: 84f968cea3f2deab00ec4f8ff53358b3c0b3992c
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
-  cloud_firestore: c6e28e89a1bf98faab7fc8fdec20dc6020799cd1
+  cloud_firestore: 10fd4a09ebffc33efd64708106e2e7de701fe9ae
   Firebase: da031bc7012374e3bed17a6731b89327b29863b9
   firebase_core: 15d27cd74b2e40f8c29540707c0486bb561a92e8
   firebase_storage: d83bfc0e0e849b2f871a34c474466bf5014ff304
@@ -233,6 +243,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: ebd2ea79ee38db0cb5f5167b17a0d387e1cc7b6e
   FirebaseStorage: b7c6d00997bc21d4465453bdcc5cc65513110fed
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_image_compress: f69d0e0e078ce52b4810695593bc861ee319ae7d
   flutter_tts: 0f492aab6accf87059b72354fcb4ba934304771d
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GoogleAppMeasurement: 037f46d1d8ae8b312720f1042585ab961a1289e3
@@ -245,6 +256,7 @@ SPEC CHECKSUMS:
   image_cropper: 3c16d7651730ffe85897f5a1c4e2547e6b54989a
   image_picker: e3eacd46b94694dde7cf2705955cece853aa1a8f
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   mono_kit: 67c15c1486e232d7f44ac47286933e80aa02f7a3
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d

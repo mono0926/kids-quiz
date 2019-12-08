@@ -1,4 +1,4 @@
-package com.mono0926.kids_quiz
+package com.mono0926.kids.quiz
 
 import android.os.Bundle
 import io.flutter.app.FlutterActivity

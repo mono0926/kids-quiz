@@ -28,6 +28,7 @@ dependencies:
   firebase_storage:
   rxdart:
   collection:
+  flutter_image_compress:
 dev_dependencies:
   flutter_test:
     sdk: flutter

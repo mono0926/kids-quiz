@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
+import 'package:kids_quiz/model/image_compressor.dart';
 import 'package:kids_quiz/model/image_cropper.dart';
 import 'package:kids_quiz/model/model.dart';
 import 'package:kids_quiz/model/uploader.dart';
@@ -12,6 +13,7 @@ class AddPageModel with ChangeNotifier, ProgressMixin {
   AddPageModel({
     @required this.choiceDoc,
     @required this.imageCropper,
+    @required this.imageCompressor,
     @required this.uploader,
     @required this.navigator,
     @required this.observer,
@@ -32,6 +34,7 @@ class AddPageModel with ChangeNotifier, ProgressMixin {
 
   final ChoiceDoc choiceDoc;
   final ImageCropper imageCropper;
+  final ImageCompressor imageCompressor;
   final Uploader uploader;
   final AppNavigator navigator;
   final TextEditingController nameController = TextEditingController();
@@ -59,10 +62,11 @@ class AddPageModel with ChangeNotifier, ProgressMixin {
     if (cropped == null) {
       return;
     }
+    final data = await imageCompressor.compress(cropped);
     await executeWithProgress<void>(() async {
-      _imageUrl = (await uploader.uploadImageFile(
+      _imageUrl = (await uploader.uploadImageData(
         name: name.isEmpty ? 'unknown' : name,
-        file: cropped,
+        data: data,
       ))
           .split('&token=')
           .first;

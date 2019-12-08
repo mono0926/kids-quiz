@@ -14,7 +14,7 @@ class ResultPage extends StatelessWidget {
 
   static Widget wrapped() {
     return DisposableProvider(
-      builder: (context) => _Model(),
+      create: (context) => _Model(),
       child: const ResultPage._(),
     );
   }

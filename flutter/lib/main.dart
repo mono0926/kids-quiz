@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:kids_quiz/model/downloader.dart';
+import 'package:kids_quiz/model/image_compressor.dart';
 import 'package:kids_quiz/model/image_cropper.dart';
 import 'package:kids_quiz/model/uploader.dart';
 import 'package:kids_quiz/util/util.dart';
@@ -22,6 +23,7 @@ void main() {
         ),
         Provider(create: (context) => ChoicesObserver()),
         Provider(create: (context) => AppNavigator()),
+        Provider(create: (context) => const ImageCompressor()),
         Provider(create: (context) => const ImageCropper()),
         Provider(
             create: (context) => QuizGenerator.samples(

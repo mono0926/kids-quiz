@@ -17,6 +17,7 @@ class QuizAddPage extends StatelessWidget {
       create: (context) => AddPageModel(
         choiceDoc: choiceDoc,
         imageCropper: Provider.of(context, listen: false),
+        imageCompressor: Provider.of(context, listen: false),
         uploader: Provider.of(context, listen: false),
         navigator: Provider.of(context, listen: false),
         observer: Provider.of(context, listen: false),

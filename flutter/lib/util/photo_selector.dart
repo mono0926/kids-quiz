@@ -42,12 +42,7 @@ class PhotoSelector {
     }
 
     try {
-      return await ImagePicker.pickImage(
-        source: source,
-        maxWidth: 700,
-        maxHeight: 700,
-        imageQuality: 70,
-      );
+      return await ImagePicker.pickImage(source: source);
     } on PlatformException catch (e) {
       logger.warning(e);
       if (![
