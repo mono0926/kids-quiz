@@ -153,15 +153,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_text_to_speech:
+  flutter_tts:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: aebd5fdde2e6abf67e1539e59556c4851fa82807
-      url: "https://github.com/mono0926/flutter_text_to_speech.git"
-    source: git
-    version: "3.0.7"
+      name: flutter_tts
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.7.0"
   http:
     dependency: transitive
     description:
