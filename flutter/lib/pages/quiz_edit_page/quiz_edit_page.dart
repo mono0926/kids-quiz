@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kids_quiz/pages/quiz_add_page/quiz_add_page.dart';
+import 'package:kids_quiz/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
 import 'category_tile.dart';
@@ -25,11 +25,7 @@ class QuizEditPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('クイズを編集'),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        label: const Text('追加'),
-        icon: Icon(Icons.add),
-        onPressed: () => Navigator.of(context).pushNamed(QuizAddPage.routeName),
-      ),
+      floatingActionButton: const AddChoiceFab(),
       body: const _Body(),
     );
   }
@@ -50,7 +46,9 @@ class _Body extends StatelessWidget {
       itemCount: categories.length,
       itemBuilder: (context, index) {
         final category = categories[index];
-        return CategoryTile(category: category);
+        return CategoryTile.wrapped(
+          category: category,
+        );
       },
     );
   }

@@ -5,25 +5,22 @@ import 'package:mono_kit/mono_kit.dart';
 
 class QuizEditModel with ChangeNotifier {
   QuizEditModel({@required this.observer}) {
-    _choices = _toMap(observer.choices.value);
+    _choicesByCategory = _groupByCategory(observer.choices.value);
     _sh.add(
       observer.choices.listen((choices) {
-        _choices = _toMap(choices);
+        _choicesByCategory = _groupByCategory(choices);
         notifyListeners();
       }),
     );
   }
-  Map<String, List<ChoiceDoc>> _choices;
-  Map<String, List<ChoiceDoc>> get choicesByCategory => _choices;
+  Map<String, List<ChoiceDoc>> _choicesByCategory;
+  Map<String, List<ChoiceDoc>> get choicesByCategory => _choicesByCategory;
   final ChoicesObserver observer;
   final _sh = SubscriptionHolder();
 
-  static Map<String, List<ChoiceDoc>> _toMap(List<ChoiceDoc> choices) =>
+  static Map<String, List<ChoiceDoc>> _groupByCategory(
+          List<ChoiceDoc> choices) =>
       groupBy(choices, (x) => x.entity.group);
-
-  void delete(ChoiceDoc doc) {
-    ChoicesRef.ref().docRef(doc.id).ref.delete();
-  }
 
   @override
   void dispose() {
