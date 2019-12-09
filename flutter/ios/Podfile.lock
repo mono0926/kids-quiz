@@ -230,7 +230,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   audioplayers: 84f968cea3f2deab00ec4f8ff53358b3c0b3992c
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
-  cloud_firestore: 10fd4a09ebffc33efd64708106e2e7de701fe9ae
+  cloud_firestore: c8bd5e4588f0c202cb68caf3217d6cbfa6794dd0
   Firebase: da031bc7012374e3bed17a6731b89327b29863b9
   firebase_core: 15d27cd74b2e40f8c29540707c0486bb561a92e8
   firebase_storage: d83bfc0e0e849b2f871a34c474466bf5014ff304

@@ -29,6 +29,12 @@ dependencies:
   rxdart:
   collection:
   flutter_image_compress:
+dependency_overrides:
+  cloud_firestore:
+    git:
+      url: https://github.com/mono0926/flutterfire.git
+      ref: fix-firestore-ios-settings
+      path: packages/cloud_firestore/cloud_firestore
 dev_dependencies:
   flutter_test:
     sdk: flutter
