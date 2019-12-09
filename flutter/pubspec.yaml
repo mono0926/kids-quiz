@@ -22,6 +22,8 @@ dependencies:
   disposable_provider:
   cached_network_image: 2.0.0-rc
   firestore_ref:
+    git:
+      url: https://github.com/mono0926/flutter_firestore_ref.git
   image_picker:
   permission_handler:
   image_cropper:
@@ -29,6 +31,9 @@ dependencies:
   rxdart:
   collection:
   flutter_image_compress:
+  google_sign_in:
+  firebase_auth:
+  flutter_auth_buttons:
 dependency_overrides:
   cloud_firestore:
     git:

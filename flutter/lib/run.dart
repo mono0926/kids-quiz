@@ -23,7 +23,7 @@ Future run({@required Environment environment}) async {
     case Environment.cloud:
       break;
     case Environment.local:
-      await Firestore.instance.settings(
+      await configureFirestore(
         host: 'localhost:8080',
         sslEnabled: false,
       );
