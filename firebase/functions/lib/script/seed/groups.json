@@ -1,0 +1,25 @@
+{
+    "animal": {
+        "name": "動物",
+        "choices": {
+            "zebra": {
+                "name": "しまうま"
+            },
+            "dog": {
+                "name": "いぬ"
+            },
+            "cat": {
+                "name": "ねこ"
+            },
+            "giraffe": {
+                "name": "きりん"
+            },
+            "lion": {
+                "name": "らいおん"
+            },
+            "panda": {
+                "name": "ぱんだ"
+            }
+        }
+    }
+}
