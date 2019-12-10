@@ -123,7 +123,7 @@ packages:
       name: firebase_auth_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.1.1"
   firebase_core:
     dependency: transitive
     description:
@@ -144,13 +144,13 @@ packages:
       name: firebase_storage
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.8"
+    version: "3.0.10"
   firestore_ref:
     dependency: "direct main"
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "04d6c8cca066b1ceeb4686ea09524033801d9efc"
+      resolved-ref: "2169cb5ea381c592900ee2e88aff95747d34c89d"
       url: "https://github.com/mono0926/flutter_firestore_ref.git"
     source: git
     version: "0.5.0"
@@ -203,14 +203,14 @@ packages:
       name: google_sign_in
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.14"
+    version: "4.0.16"
   google_sign_in_platform_interface:
     dependency: transitive
     description:
       name: google_sign_in_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.3"
   http:
     dependency: transitive
     description:
@@ -245,7 +245,7 @@ packages:
       name: image_picker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.2+1"
+    version: "0.6.2+3"
   js:
     dependency: transitive
     description:
@@ -296,7 +296,7 @@ packages:
       name: path_provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.5.0"
+    version: "1.5.1"
   pedantic:
     dependency: transitive
     description:
