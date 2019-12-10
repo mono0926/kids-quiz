@@ -6,7 +6,7 @@ import 'package:kids_quiz/util/app_navigator.dart';
 import 'package:mono_kit/mono_kit.dart';
 import 'package:provider/provider.dart';
 
-import 'pages/quiz_page.dart';
+import 'pages/account_registration_page.dart';
 import 'router.dart';
 import 'theme.dart';
 
