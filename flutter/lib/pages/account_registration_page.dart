@@ -11,34 +11,37 @@ class AccountRegistrationPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('アカウント登録'),
       ),
-      body: ListView(
-        padding: EdgeInsets.symmetric(vertical: 8),
-        children: <Widget>[
-          AppleSignInButton(
-            borderRadius: borderRadius,
-            text: 'Appleアカウントで始める',
-            onPressed: () {},
-          ),
-          GoogleSignInButton(
-            borderRadius: borderRadius,
-            text: 'Googleアカウントで始める',
-            onPressed: () {},
-          ),
-        ]
-            .map((w) => Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 8,
-                  ),
-                  child: CenteredMaxWidth(
-                    width: 320,
-                    child: SizedBox(
-                      height: 48,
-                      child: w,
+      body: TextScaleFactor(
+        max: 1,
+        child: ListView(
+          padding: EdgeInsets.symmetric(vertical: 8),
+          children: <Widget>[
+            AppleSignInButton(
+              borderRadius: borderRadius,
+              text: 'Appleアカウントで始める',
+              onPressed: () {},
+            ),
+            GoogleSignInButton(
+              borderRadius: borderRadius,
+              text: 'Googleアカウントで始める',
+              onPressed: () {},
+            ),
+          ]
+              .map((w) => Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
                     ),
-                  ),
-                ))
-            .toList(),
+                    child: CenteredMaxWidth(
+                      width: 320,
+                      child: SizedBox(
+                        height: 48,
+                        child: w,
+                      ),
+                    ),
+                  ))
+              .toList(),
+        ),
       ),
     );
   }
