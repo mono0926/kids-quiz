@@ -24,6 +24,7 @@ Future run({@required Environment environment}) async {
       break;
     case Environment.local:
       await configureFirestore(
+        persistenceEnabled: false,
         host: 'localhost:8080',
         sslEnabled: false,
       );
