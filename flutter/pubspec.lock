@@ -51,12 +51,14 @@ packages:
     source: hosted
     version: "1.1.2"
   cloud_firestore:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: cloud_firestore
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.13.0+1"
+      path: "packages/cloud_firestore/cloud_firestore"
+      ref: fix-firestore-ios-settings
+      resolved-ref: "4b16c9576452e3c7307a27cf84568bd66a060ce2"
+      url: "https://github.com/mono0926/flutterfire.git"
+    source: git
+    version: "0.13.0+2"
   collection:
     dependency: "direct main"
     description:
