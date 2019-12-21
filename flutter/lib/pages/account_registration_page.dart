@@ -12,7 +12,7 @@ class AccountRegistrationPage extends StatelessWidget {
   static Widget wrapped() {
     return Provider(
       create: (context) => Model(),
-      child: AccountRegistrationPage._(),
+      child: const AccountRegistrationPage._(),
     );
   }
 
@@ -26,7 +26,7 @@ class AccountRegistrationPage extends StatelessWidget {
       body: TextScaleFactor(
         max: 1,
         child: ListView(
-          padding: EdgeInsets.symmetric(vertical: 8),
+          padding: const EdgeInsets.symmetric(vertical: 8),
           children: <Widget>[
             AppleSignInButton(
               borderRadius: borderRadius,

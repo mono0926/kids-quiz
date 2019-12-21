@@ -8,8 +8,6 @@ import 'package:kids_quiz/util/util.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
-import 'app_navigator.dart';
-
 class PhotoSelector {
   const PhotoSelector({
     @required this.context,

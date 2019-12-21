@@ -1,6 +1,5 @@
 import 'package:disposable_provider/disposable_provider.dart';
 import 'package:firestore_ref/firestore_ref.dart';
-import 'package:kids_quiz/model/entity/choice/choice.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'model.dart';
@@ -18,7 +17,7 @@ class ChoicesObserver with Disposable {
 
   final BehaviorSubject<List<ChoiceDoc>> _choices;
 
-  ValueObservable<List<ChoiceDoc>> get choices => _choices;
+  ValueStream<List<ChoiceDoc>> get choices => _choices;
 
   @override
   void dispose() {
