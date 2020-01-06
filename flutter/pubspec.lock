@@ -102,7 +102,7 @@ packages:
       name: disposable_provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.0"
   firebase:
     dependency: transitive
     description:
@@ -158,14 +158,14 @@ packages:
       name: firebase_storage
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.0"
+    version: "3.1.1"
   firestore_ref:
     dependency: "direct main"
     description:
       name: firestore_ref
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.0+1"
+    version: "0.5.1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -203,7 +203,7 @@ packages:
       name: flutter_tts
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.0"
+    version: "0.8.5"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -236,7 +236,7 @@ packages:
       name: http
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.0+2"
+    version: "0.12.0+3"
   http_parser:
     dependency: transitive
     description:
@@ -299,7 +299,14 @@ packages:
       name: mono_kit
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.11.1"
+    version: "0.12.1"
+  nested:
+    dependency: transitive
+    description:
+      name: nested
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.4"
   path:
     dependency: transitive
     description:
@@ -327,7 +334,7 @@ packages:
       name: pedantic_mono
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.4.1"
+    version: "1.5.0"
   permission_handler:
     dependency: "direct main"
     description:
@@ -369,7 +376,7 @@ packages:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.2.0"
+    version: "4.0.1"
   quiver:
     dependency: transitive
     description:
@@ -397,7 +404,7 @@ packages:
       name: simple_logger
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.5.1+1"
+    version: "1.6.0+1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -528,7 +535,7 @@ packages:
       name: vsync_provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.0"
+    version: "0.3.0"
   xml:
     dependency: transitive
     description:

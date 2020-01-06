@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kids_quiz/widgets/text_input_dialog.dart';
+import 'package:mono_kit/mono_kit.dart';
 import 'package:provider/provider.dart';
 
 import 'add_page_model.dart';

@@ -51,7 +51,8 @@ class QuizNotifier with ChangeNotifier {
     speechService.speak(
       correct
           ? 'あたり！すごいねー！${choice.entity.name}だねー'
-          : 'それは${choice.entity.name}だよ、ほかのを選んでね',
+          : 'それは${choice.entity.name}だよ、'
+              '${quiz.correctChoice.entity.name} を選んでね',
     );
 
     if (correct) {
