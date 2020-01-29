@@ -54,7 +54,7 @@ class GroupTile extends StatelessWidget {
                 Expanded(
                   child: Text(
                     'クイズに出現させるには4つ以上の登録が必要です',
-                    style: Theme.of(context).textTheme.body2.copyWith(
+                    style: Theme.of(context).textTheme.bodyText1.copyWith(
                           color: Theme.of(context).hintColor,
                         ),
                   ),

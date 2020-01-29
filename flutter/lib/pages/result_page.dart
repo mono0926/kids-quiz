@@ -57,7 +57,7 @@ class ResultPage extends StatelessWidget {
       tag: quiz.correctChoice.entity.name,
       child: Text(
         quiz.correctChoice.entity.name,
-        style: Theme.of(context).textTheme.display1.copyWith(
+        style: Theme.of(context).textTheme.headline4.copyWith(
               color: Theme.of(context).colorScheme.primaryVariant,
             ),
       ),
@@ -90,7 +90,7 @@ class ResultPage extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         child: Text(
           'つぎへ',
-          style: Theme.of(context).accentTextTheme.headline,
+          style: Theme.of(context).accentTextTheme.headline5,
         ),
         onPressed: () {
           notifier.next();

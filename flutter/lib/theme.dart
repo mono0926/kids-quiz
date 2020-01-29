@@ -11,7 +11,7 @@ ThemeData buildTheme() {
     ),
     accentTextTheme: base.accentTextTheme
         .copyWith(
-          headline: TextStyle(
+          headline5: TextStyle(
             fontWeight: FontWeight.bold,
           ),
         )
@@ -20,7 +20,7 @@ ThemeData buildTheme() {
         ),
     textTheme: base.textTheme
         .copyWith(
-          display1: TextStyle(
+          headline4: TextStyle(
             color: Colors.black87,
             fontWeight: FontWeight.bold,
           ),
@@ -39,11 +39,7 @@ ThemeData buildTheme() {
       clipBehavior: Clip.hardEdge,
     ),
     splashFactory: InkRipple.splashFactory,
-    typography: base.typography.copyWith(
-      englishLike: Typography.englishLike2018,
-      dense: Typography.dense2018,
-      tall: Typography.tall2018,
-    ),
+    typography: Typography.material2018(),
     buttonTheme: base.buttonTheme.copyWith(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
@@ -58,7 +54,7 @@ ThemeData buildTheme() {
     appBarTheme: AppBarTheme(
       textTheme: base.primaryTextTheme
           .copyWith(
-            title: TextStyle(
+            headline6: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 24,
             ),

@@ -79,12 +79,12 @@ class _QuestionButton extends StatelessWidget {
           TextSpan(children: [
             TextSpan(
               text: model.quiz.correctChoice.entity.name,
-              style: Theme.of(context).accentTextTheme.headline,
+              style: Theme.of(context).accentTextTheme.headline5,
             ),
             const TextSpan(text: ' '),
             TextSpan(
               text: model.questionSuffix,
-              style: Theme.of(context).accentTextTheme.title,
+              style: Theme.of(context).accentTextTheme.headline6,
             ),
           ]),
         ),
@@ -126,7 +126,7 @@ class ChoiceCard extends StatelessWidget {
                 color: Theme.of(context).primaryColor.withOpacity(0.85),
                 child: Text(
                   '${choice.entity.name}',
-                  style: Theme.of(context).primaryTextTheme.subhead.copyWith(
+                  style: Theme.of(context).primaryTextTheme.subtitle1.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                   textAlign: TextAlign.center,

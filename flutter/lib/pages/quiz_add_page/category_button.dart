@@ -15,7 +15,9 @@ class CategoryButton extends StatelessWidget {
         children: <Widget>[
           Text(
             'グループ名',
-            style: TextStyle(color: Theme.of(context).textTheme.display4.color),
+            style: TextStyle(
+              color: Theme.of(context).textTheme.headline1.color,
+            ),
           ),
           const SizedBox(width: 16),
           Expanded(

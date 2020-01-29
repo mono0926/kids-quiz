@@ -84,7 +84,7 @@ class QuizAddPage extends StatelessWidget {
                   color: Colors.grey[300],
                   child: Text(
                     '写真を追加',
-                    style: Theme.of(context).accentTextTheme.title.copyWith(
+                    style: Theme.of(context).accentTextTheme.headline6.copyWith(
                           color: Theme.of(context).colorScheme.primaryVariant,
                         ),
                   ),
