@@ -8,7 +8,7 @@ class ChoicesObserver with Disposable {
   ChoicesObserver() : _choices = BehaviorSubject.seeded(_defaultChoices) {
     ChoicesRef.ref()
         .documents((r) => FirRefCollectionReferenceEx(r).orderBy(
-              EntityField.createdAt,
+              TimestampField.createdAt,
               descending: true,
             ))
         .map((x) => x..addAll(_defaultChoices))

@@ -69,14 +69,13 @@ class CategoryButton extends StatelessWidget {
                         )),
                   ];
                 },
-                onSelected: (value) {
+                onSelected: (value) async {
                   if (value == '') {
-                    showDialog<String>(
+                    final text = await showDialog<String>(
                       context: context,
-                      builder: (context) => NameDialog.wrapped(
-                        model: model,
-                      ),
+                      builder: (context) => const NameDialog(),
                     );
+                    model.updateGroup(text);
                   } else {
                     logger.info(value);
                     model.updateGroup(value);

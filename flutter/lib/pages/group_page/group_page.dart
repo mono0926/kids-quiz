@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kids_quiz/util/util.dart';
 import 'package:kids_quiz/widgets/widgets.dart';
 import 'package:mono_kit/mono_kit.dart';
 import 'package:provider/provider.dart';
@@ -47,18 +48,17 @@ class GroupPage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.edit),
-            onPressed: () {
-              showDialog<void>(
+            onPressed: () async {
+              final text = await showDialog<String>(
                 context: context,
                 builder: (context) => TextInputDialog(
                   titleLabel: 'グループ名を編集',
-                  onOkPressed: (text) {
-                    // TODO(mono): カテゴリー名を更新
-                  },
-                  okLabel: '更新',
+                  okButtonLabel: '更新',
                   initialText: model.group,
                 ),
               );
+              // TODO(mono): カテゴリー名を更新
+              logger.info(text);
             },
           )
         ],

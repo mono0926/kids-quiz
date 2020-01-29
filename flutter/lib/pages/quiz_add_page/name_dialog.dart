@@ -1,29 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:mono_kit/mono_kit.dart';
-import 'package:provider/provider.dart';
-
-import 'add_page_model.dart';
 
 class NameDialog extends StatelessWidget {
-  const NameDialog._({Key key}) : super(key: key);
-
-  static Widget wrapped({
-    @required AddPageModel model,
-  }) {
-    return ChangeNotifierProvider.value(
-      value: model,
-      child: const NameDialog._(),
-    );
-  }
+  const NameDialog({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextInputDialog(
-      okLabel: '追加',
+    return const TextInputDialog(
+      okButtonLabel: '追加',
       titleLabel: 'グループ名を入力',
-      onOkPressed: (text) {
-        Provider.of<AddPageModel>(context).updateGroup(text);
-      },
     );
   }
 }

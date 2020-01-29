@@ -1,41 +1,39 @@
 import 'package:firestore_ref/firestore_ref.dart';
 import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 export 'choice_doc.dart';
 export 'choices_ref.dart';
 
+part 'choice.g.dart';
+
 @immutable
-class Choice extends Entity {
-  const Choice({
+@JsonSerializable()
+class Choice with Entity, HasTimestamp {
+  Choice({
     @required this.name,
     @required this.imageUrl,
     @required this.group,
-    DateTime createdAt,
-    DateTime updatedAt,
-  }) : super(
-          createdAt: createdAt,
-          updatedAt: updatedAt,
-        );
+    this.createdAt,
+    this.updatedAt,
+  });
 
-  Choice.fromJson(Map<String, dynamic> json)
-      : this(
-          name: json[ChoiceField.name] as String,
-          imageUrl: json[ChoiceField.imageUrl] as String,
-          group: json[ChoiceField.group] as String,
-          createdAt: parseCreatedAt(json),
-          updatedAt: parseUpdatedAt(json),
-        );
+  factory Choice.fromJson(Map<String, dynamic> json) => _$ChoiceFromJson(json);
+
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        ..._$ChoiceToJson(this)..remove(TimestampField.createdAt),
+        ...timestampJson,
+      };
 
   final String name;
   final String imageUrl;
   final String group;
-
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        ChoiceField.name: name,
-        ChoiceField.imageUrl: imageUrl,
-        ChoiceField.group: group,
-        ...timestampJson,
-      };
+  @override
+  @timestampJsonKey
+  final DateTime createdAt;
+  @override
+  @timestampJsonKey
+  final DateTime updatedAt;
 
   @override
   String toString() {
