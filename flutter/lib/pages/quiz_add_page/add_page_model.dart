@@ -58,21 +58,20 @@ class AddPageModel with ChangeNotifier, ProgressMixin {
     if (file == null) {
       return;
     }
-    final cropped = await imageCropper.crop(file);
-    if (cropped == null) {
-      return;
-    }
-    final data = await imageCompressor.compress(cropped);
     await executeWithProgress<void>(() async {
+      final cropped = await imageCropper.crop(file);
+      if (cropped == null) {
+        return;
+      }
+      final data = await imageCompressor.compress(cropped);
       _imageUrl = (await uploader.uploadImageData(
         name: name.isEmpty ? 'unknown' : name,
         data: data,
       ))
           .split('&token=')
           .first;
+      notifyListeners();
     });
-
-    notifyListeners();
   }
 
   void updateGroup(String name) {
