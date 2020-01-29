@@ -576,10 +576,12 @@ packages:
   provider:
     dependency: "direct main"
     description:
-      name: provider
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.0.2"
+      path: "."
+      ref: extensions
+      resolved-ref: "9120e5cb3763689882284fdcb8a439b23e3da9f8"
+      url: "https://github.com/rrousselGit/provider.git"
+    source: git
+    version: "4.1.0"
   pub_semver:
     dependency: transitive
     description:

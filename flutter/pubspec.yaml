@@ -15,8 +15,7 @@ dependencies:
   vsync_provider:
   audioplayers:
   confetti:
-    git:
-      url: https://github.com/mono0926/flutter_confetti.git
+    git: https://github.com/mono0926/flutter_confetti.git
   disposable_provider:
   cached_network_image:
   firestore_ref:
@@ -38,6 +37,10 @@ dependency_overrides:
     git:
       url: https://github.com/mono0926/flutterfire.git
       path: packages/cloud_firestore
+  provider:
+    git:
+      url: https://github.com/rrousselGit/provider.git
+      ref: extensions
 dev_dependencies:
   flutter_test:
     sdk: flutter
