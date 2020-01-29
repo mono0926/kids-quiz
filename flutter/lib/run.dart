@@ -35,27 +35,20 @@ Future run({@required Environment environment}) async {
       providers: [
         Provider(create: (context) => Downloader()),
         Provider(
-          create: (context) =>
-              Uploader(downloader: Provider.of(context, listen: false)),
+          create: (context) => Uploader(locator: context.read),
         ),
         Provider(create: (context) => ChoicesObserver()),
         Provider(create: (context) => AppNavigator()),
         Provider(create: (context) => const ImageCompressor()),
         Provider(create: (context) => const ImageCropper()),
         Provider(
-            create: (context) => QuizGenerator.samples(
-                  observer: Provider.of(context, listen: false),
-                )),
+          create: (context) => QuizGenerator.samples(locator: context.read),
+        ),
         Provider(create: (context) => Router()),
         Provider(create: (context) => SpeechService()),
         VsyncProvider(isSingleTicker: false),
         ChangeNotifierProvider(
-          create: (context) => QuizNotifier(
-            quizGenerator: Provider.of(context, listen: false),
-            speechService: Provider.of(context, listen: false),
-            navigator: Provider.of(context, listen: false),
-            tickerProvider: VsyncProvider.of(context),
-          ),
+          create: (context) => QuizNotifier(locator: context.read),
         )
       ],
       child: const App(),

@@ -1,16 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:kids_quiz/model/model.dart';
+import 'package:provider/provider.dart';
 
 class QuizGenerator {
   QuizGenerator({
-    @required this.observer,
+    @required this.locator,
   });
 
   QuizGenerator.samples({
-    @required ChoicesObserver observer,
-  }) : this(observer: observer);
+    @required Locator locator,
+  }) : this(locator: locator);
 
-  final ChoicesObserver observer;
+  final Locator locator;
+  ChoicesObserver get _observer => locator();
   Quiz _quiz;
   Quiz get quiz => _quiz;
   List<ChoiceDoc> choices = [];
@@ -29,7 +31,7 @@ class QuizGenerator {
   }
 
   ChoiceDoc _decideCorrectChoice() {
-    choices = List<ChoiceDoc>.from(observer.choices.value)..shuffle();
+    choices = List<ChoiceDoc>.from(_observer.choices.value)..shuffle();
     final choice = choices.first;
     return choice == _quiz?.correctChoice ? _decideCorrectChoice() : choice;
   }

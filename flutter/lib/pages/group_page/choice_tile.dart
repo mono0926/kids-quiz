@@ -17,7 +17,7 @@ class ChoiceTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final choice = doc.entity;
-    final model = Provider.of<GroupModel>(context);
+    final model = context.watch<GroupModel>();
     return Dismissible(
       key: ValueKey(choice.name),
       background: Container(color: Theme.of(context).errorColor),

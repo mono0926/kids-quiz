@@ -23,8 +23,8 @@ class ResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final notifier = Provider.of<QuizNotifier>(context);
-    final model = Provider.of<_Model>(context);
+    final notifier = context.watch<QuizNotifier>();
+    final model = context.watch<_Model>();
     final quiz = notifier.quiz;
     return Stack(
       children: [

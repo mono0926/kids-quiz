@@ -29,7 +29,7 @@ class GroupTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<GroupModel>(context);
+    final model = context.watch<GroupModel>();
     final choices = model.choiceDocs;
     return ListTile(
       title: Text('${model.group} (${choices.length})'),

@@ -39,7 +39,7 @@ class AccountRegistrationPage extends StatelessWidget {
               borderRadius: borderRadius,
               text: 'Googleアカウントで始める',
               onPressed: () {
-                Provider.of<Model>(context).signIn();
+                context.read<Model>().signIn();
               },
             ),
           ]

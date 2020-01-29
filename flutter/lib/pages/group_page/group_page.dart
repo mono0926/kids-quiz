@@ -23,7 +23,7 @@ class GroupPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<GroupModel>(context);
+    final model = context.watch<GroupModel>();
     final docs = model.choiceDocs;
     return Scaffold(
       appBar: AppBar(

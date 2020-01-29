@@ -8,15 +8,12 @@ import 'package:kids_quiz/model/uploader.dart';
 import 'package:kids_quiz/util/app_navigator.dart';
 import 'package:kids_quiz/util/photo_selector.dart';
 import 'package:mono_kit/mono_kit.dart';
+import 'package:provider/provider.dart';
 
 class AddPageModel with ChangeNotifier, ProgressMixin {
   AddPageModel({
+    @required this.locator,
     @required this.choiceDoc,
-    @required this.imageCropper,
-    @required this.imageCompressor,
-    @required this.uploader,
-    @required this.navigator,
-    @required this.observer,
   }) {
     final choice = choiceDoc?.entity;
     nameController.text = choice?.name;
@@ -32,13 +29,14 @@ class AddPageModel with ChangeNotifier, ProgressMixin {
     );
   }
 
+  final Locator locator;
   final ChoiceDoc choiceDoc;
-  final ImageCropper imageCropper;
-  final ImageCompressor imageCompressor;
-  final Uploader uploader;
-  final AppNavigator navigator;
+  ImageCropper get imageCropper => locator();
+  ImageCompressor get imageCompressor => locator();
+  ChoicesObserver get observer => locator();
+  Uploader get uploader => locator();
+  AppNavigator get navigator => locator();
   final TextEditingController nameController = TextEditingController();
-  final ChoicesObserver observer;
   final _sb = SubscriptionHolder();
 
   String _imageUrl;

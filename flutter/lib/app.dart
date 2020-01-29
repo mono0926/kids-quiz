@@ -18,10 +18,10 @@ class App extends StatelessWidget {
     return MaterialApp(
       theme: buildTheme(),
       title: appName,
-      navigatorKey: Provider.of<AppNavigator>(context).key,
+      navigatorKey: context.watch<AppNavigator>().key,
 //      home: AccountRegistrationPage.wrapped(),
       home: QuizPage.wrapped(),
-      onGenerateRoute: Provider.of<Router>(context).onGenerateRoute,
+      onGenerateRoute: context.watch<Router>().onGenerateRoute,
       builder: (context, child) {
         final mediaQuery = MediaQuery.of(context);
         return TextScaleFactor(

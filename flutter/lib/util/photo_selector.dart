@@ -19,7 +19,7 @@ class PhotoSelector {
 
   Future<File> select() async {
     final source =
-        await Provider.of<AppNavigator>(context).showConfirmSheet<ImageSource>(
+        await context.read<AppNavigator>().showConfirmSheet<ImageSource>(
       title: '画像の選択',
       actions: [
         SheetAction(
@@ -47,13 +47,13 @@ class PhotoSelector {
         ImagePickerErrorCodes.cameraAccessRestricted,
         ImagePickerErrorCodes.cameraAccessDenied,
       ].contains(e.code)) {
-        Provider.of<AppNavigator>(context).showErrorDialog(e);
+        context.read<AppNavigator>().showErrorDialog(e);
         return null;
       }
 
       const okKey = 'ok';
       final result =
-          await Provider.of<AppNavigator>(context).showConfirmDialog<String>(
+          await context.read<AppNavigator>().showConfirmDialog<String>(
         title: '設定画面での許可が必要です',
         message: '設定アプリで写真アクセスの許可をお願いします。',
         actions: [

@@ -15,12 +15,8 @@ class QuizAddPage extends StatelessWidget {
   }) {
     return ChangeNotifierProvider(
       create: (context) => AddPageModel(
+        locator: context.read,
         choiceDoc: choiceDoc,
-        imageCropper: Provider.of(context, listen: false),
-        imageCompressor: Provider.of(context, listen: false),
-        uploader: Provider.of(context, listen: false),
-        navigator: Provider.of(context, listen: false),
-        observer: Provider.of(context, listen: false),
       ),
       child: const QuizAddPage._(),
     );
@@ -30,7 +26,7 @@ class QuizAddPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<AddPageModel>(context);
+    final model = context.watch<AddPageModel>();
 
     return Scaffold(
       appBar: AppBar(

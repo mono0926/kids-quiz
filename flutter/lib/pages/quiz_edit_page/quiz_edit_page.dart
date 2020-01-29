@@ -10,9 +10,7 @@ class QuizEditPage extends StatelessWidget {
 
   static Widget wrapped() {
     return ChangeNotifierProvider(
-      create: (context) => QuizEditModel(
-        observer: Provider.of(context, listen: false),
-      ),
+      create: (context) => QuizEditModel(locator: context.read),
       child: const QuizEditPage._(),
     );
   }
@@ -38,7 +36,7 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<QuizEditModel>(context);
+    final model = context.read<QuizEditModel>();
     final choicesByCategory = model.choicesByGroup;
     final categories = choicesByCategory.keys.toList();
     return ListView.builder(

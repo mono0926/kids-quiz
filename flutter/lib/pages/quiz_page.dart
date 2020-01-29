@@ -22,8 +22,8 @@ class QuizPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<_Model>(context);
-    final notifier = Provider.of<QuizNotifier>(context);
+    final model = context.watch<_Model>();
+    final notifier = context.watch<QuizNotifier>();
     final quiz = notifier.quiz;
     return Scaffold(
       key: model.feedback.key,
@@ -70,7 +70,7 @@ class _QuestionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<QuizNotifier>(context);
+    final model = context.watch<QuizNotifier>();
     return FractionallySizedBox(
       widthFactor: 0.9,
       child: RaisedButton(
@@ -103,7 +103,7 @@ class ChoiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<QuizNotifier>(context, listen: false);
+    final model = context.read<QuizNotifier>();
     final card = Card(
       child: Ink.image(
         image: CachedNetworkImageProvider(choice.entity.imageUrl),
@@ -184,7 +184,7 @@ class MenuButton extends StatelessWidget {
       },
       onSelected: (value) async {
         logger.info(value);
-        Provider.of<AppNavigator>(context).popToRoot();
+        context.read<AppNavigator>().popToRoot();
         switch (value) {
           case _Action.editQuiz:
             await Navigator.of(context).pushNamed(QuizEditPage.routeName);

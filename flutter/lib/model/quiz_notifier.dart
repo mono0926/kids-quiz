@@ -3,24 +3,23 @@ import 'package:flutter/widgets.dart';
 import 'package:kids_quiz/model/model.dart';
 import 'package:kids_quiz/pages/result_page.dart';
 import 'package:kids_quiz/util/util.dart';
+import 'package:provider/provider.dart';
 
 class QuizNotifier with ChangeNotifier {
   QuizNotifier({
-    @required this.quizGenerator,
-    @required this.speechService,
-    @required this.navigator,
-    @required TickerProvider tickerProvider,
+    @required this.locator,
   }) : _incorrectAnimations = List.generate(
           4,
-          (_) => ShakeAnimation(tickerProvider: tickerProvider),
+          (_) => ShakeAnimation(tickerProvider: locator()),
         ) {
     next();
   }
 
-  final QuizGenerator quizGenerator;
-  final SpeechService speechService;
+  final Locator locator;
+  QuizGenerator get quizGenerator => locator();
+  SpeechService get speechService => locator();
+  AppNavigator get navigator => locator();
   final List<ShakeAnimation> _incorrectAnimations;
-  final AppNavigator navigator;
   final Set<ChoiceDoc> _incorrectChoices = {};
   final _audioPlayer = AudioCache(prefix: 'sound/');
 

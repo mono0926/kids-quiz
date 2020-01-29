@@ -5,16 +5,16 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kids_quiz/util/util.dart';
 import 'package:meta/meta.dart';
+import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
-
-import 'downloader.dart';
 
 class Uploader {
   Uploader({
-    @required this.downloader,
+    @required this.locator,
   });
 
-  final Downloader downloader;
+  final Locator locator;
+//  Downloader get _downloader => locator<Downloader>();
 
   // TODO(mono): 元画像がJPEG前提になっている
   Future<String> uploadImageData({

@@ -9,7 +9,7 @@ class CategoryButton extends StatelessWidget {
   const CategoryButton({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<AddPageModel>(context);
+    final model = context.watch<AddPageModel>();
     return ListTile(
       title: Row(
         children: <Widget>[
