@@ -3,21 +3,22 @@ description: A new Flutter application.
 version: 1.0.0+1
 environment:
   sdk: ">=2.6.0 <3.0.0"
+  flutter: ">=1.14.6 <2.0.0"
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^0.1.2
+  cupertino_icons:
   mono_kit:
   pedantic_mono:
   provider:
   flutter_tts:
   vsync_provider:
-  audioplayers: 0.13.2
+  audioplayers:
   confetti:
     git:
       url: https://github.com/mono0926/flutter_confetti.git
   disposable_provider:
-  cached_network_image: 2.0.0-rc
+  cached_network_image:
   firestore_ref:
   image_picker:
   permission_handler:
@@ -35,8 +36,7 @@ dependency_overrides:
   cloud_firestore:
     git:
       url: https://github.com/mono0926/flutterfire.git
-      ref: fix-firestore-ios-settings
-      path: packages/cloud_firestore/cloud_firestore
+      path: packages/cloud_firestore
 dev_dependencies:
   flutter_test:
     sdk: flutter
