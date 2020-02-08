@@ -5,7 +5,6 @@ import 'package:kids_quiz/model/image_compressor.dart';
 import 'package:kids_quiz/model/image_cropper.dart';
 import 'package:kids_quiz/model/model.dart';
 import 'package:kids_quiz/model/uploader.dart';
-import 'package:kids_quiz/util/app_navigator.dart';
 import 'package:kids_quiz/util/photo_selector.dart';
 import 'package:mono_kit/mono_kit.dart';
 import 'package:provider/provider.dart';

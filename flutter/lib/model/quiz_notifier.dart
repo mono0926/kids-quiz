@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:kids_quiz/model/model.dart';
 import 'package:kids_quiz/pages/result_page.dart';
 import 'package:kids_quiz/util/util.dart';
+import 'package:mono_kit/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class QuizNotifier with ChangeNotifier {

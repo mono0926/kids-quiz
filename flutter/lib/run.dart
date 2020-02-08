@@ -4,7 +4,7 @@ import 'package:kids_quiz/model/downloader.dart';
 import 'package:kids_quiz/model/image_compressor.dart';
 import 'package:kids_quiz/model/image_cropper.dart';
 import 'package:kids_quiz/model/uploader.dart';
-import 'package:kids_quiz/util/util.dart';
+import 'package:mono_kit/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:vsync_provider/vsync_provider.dart';
 
