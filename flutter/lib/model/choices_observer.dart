@@ -7,7 +7,7 @@ import 'model.dart';
 class ChoicesObserver with Disposable {
   ChoicesObserver() : _choices = BehaviorSubject.seeded(_defaultChoices) {
     ChoicesRef.ref()
-        .documents((r) => FirRefCollectionReferenceEx(r).orderBy(
+        .documents((r) => r.orderBy(
               TimestampField.createdAt,
               descending: true,
             ))

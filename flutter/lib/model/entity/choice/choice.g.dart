@@ -6,8 +6,8 @@ part of 'choice.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Choice _$ChoiceFromJson(Map<String, dynamic> json) {
-  return Choice(
+_$_Choice _$_$_ChoiceFromJson(Map<String, dynamic> json) {
+  return _$_Choice(
     name: json['name'] as String,
     imageUrl: json['imageUrl'] as String,
     group: json['group'] as String,
@@ -16,7 +16,7 @@ Choice _$ChoiceFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ChoiceToJson(Choice instance) => <String, dynamic>{
+Map<String, dynamic> _$_$_ChoiceToJson(_$_Choice instance) => <String, dynamic>{
       'name': instance.name,
       'imageUrl': instance.imageUrl,
       'group': instance.group,

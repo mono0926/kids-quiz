@@ -1,56 +1,22 @@
 import 'package:firestore_ref/firestore_ref.dart';
 import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-export 'choice_doc.dart';
-export 'choices_ref.dart';
-
+part 'choice.freezed.dart';
 part 'choice.g.dart';
 
-@immutable
-@JsonSerializable()
-class Choice with Entity, HasTimestamp {
-  Choice({
-    @required this.name,
-    @required this.imageUrl,
-    @required this.group,
-    this.createdAt,
-    this.updatedAt,
-  });
+@freezed
+abstract class Choice with _$Choice {
+  factory Choice({
+    @required String name,
+    @required String imageUrl,
+    @required String group,
+    @timestampJsonKey DateTime createdAt,
+    @timestampJsonKey DateTime updatedAt,
+  }) = _Choice;
 
   factory Choice.fromJson(Map<String, dynamic> json) => _$ChoiceFromJson(json);
-
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        ..._$ChoiceToJson(this)..remove(TimestampField.createdAt),
-        ...timestampJson,
-      };
-
-  final String name;
-  final String imageUrl;
-  final String group;
-  @override
-  @timestampJsonKey
-  final DateTime createdAt;
-  @override
-  @timestampJsonKey
-  final DateTime updatedAt;
-
-  @override
-  String toString() {
-    return 'Choice{name: $name, group: $group}';
-  }
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      super == other &&
-          other is Choice &&
-          runtimeType == other.runtimeType &&
-          name == other.name &&
-          group == other.group;
-
-  @override
-  int get hashCode => super.hashCode ^ name.hashCode ^ group.hashCode;
 
   static const minNumber = 4;
 }
@@ -59,4 +25,52 @@ class ChoiceField {
   static const name = 'name';
   static const imageUrl = 'imageUrl';
   static const group = 'group';
+}
+
+class ChoiceDoc extends Document<Choice> {
+  const ChoiceDoc(
+    String id,
+    Choice entity,
+  ) : super(
+          id,
+          entity,
+        );
+}
+
+class ChoiceRef extends DocumentRef<Choice, ChoiceDoc> {
+  const ChoiceRef({
+    @required DocumentReference ref,
+    @required DocumentDecoder<ChoiceDoc> decoder,
+    @required EntityEncoder<Choice> encoder,
+  }) : super(
+          ref: ref,
+          decoder: decoder,
+          encoder: encoder,
+        );
+}
+
+class ChoicesRef extends CollectionRef<Choice, ChoiceDoc> {
+  ChoicesRef.ref()
+      : super(
+          ref: Firestore.instance.collection(collection),
+          decoder: (snap) => ChoiceDoc(
+            snap.documentID,
+            Choice.fromJson(snap.data),
+          ),
+          encoder: (entity) => replacingTimestamp(
+            json: entity.toJson(),
+            createdAt: entity.createdAt,
+          ),
+        );
+
+  static const collection = 'choices';
+
+  @override
+  ChoiceRef docRef([String id]) {
+    return ChoiceRef(
+      ref: docRefRaw(id),
+      encoder: encoder,
+      decoder: decoder,
+    );
+  }
 }
