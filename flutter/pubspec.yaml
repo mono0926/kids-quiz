@@ -8,6 +8,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons:
+  freezed_annotation:
   mono_kit:
   pedantic_mono:
   provider:
@@ -18,7 +19,7 @@ dependencies:
     git: https://github.com/mono0926/flutter_confetti.git
   disposable_provider:
   cached_network_image:
-  firestore_ref:
+  firestore_ref: ^0.8.0-dev
   image_picker:
   permission_handler:
   image_cropper:
@@ -33,18 +34,12 @@ dependencies:
   firebase_auth_web:
   flutter_auth_buttons:
 dependency_overrides:
-  cloud_firestore:
-    git:
-      url: https://github.com/mono0926/flutterfire.git
-      path: packages/cloud_firestore
-  provider:
-    git:
-      url: https://github.com/rrousselGit/provider.git
-      ref: extensions
+  provider: 4.1.0-dev
 dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner: any
+  freezed: any
   json_serializable: any
 flutter:
   uses-material-design: true

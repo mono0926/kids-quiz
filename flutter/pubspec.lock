@@ -128,14 +128,26 @@ packages:
     source: hosted
     version: "1.0.2"
   cloud_firestore:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "packages/cloud_firestore"
-      ref: HEAD
-      resolved-ref: "9a7da0d19ba196600a305cb5963c5c2d5d20eb10"
-      url: "https://github.com/mono0926/flutterfire.git"
-    source: git
-    version: "0.12.10"
+      name: cloud_firestore
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.13.2+1"
+  cloud_firestore_platform_interface:
+    dependency: transitive
+    description:
+      name: cloud_firestore_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
+  cloud_firestore_web:
+    dependency: transitive
+    description:
+      name: cloud_firestore_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0+3"
   code_builder:
     dependency: transitive
     description:
@@ -235,7 +247,7 @@ packages:
       name: firebase_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.3+3"
+    version: "0.4.4"
   firebase_core_platform_interface:
     dependency: transitive
     description:
@@ -263,7 +275,7 @@ packages:
       name: firestore_ref
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.0"
+    version: "0.8.0-dev+2"
   fixnum:
     dependency: transitive
     description:
@@ -321,6 +333,20 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  freezed:
+    dependency: "direct dev"
+    description:
+      name: freezed
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.1"
+  freezed_annotation:
+    dependency: "direct main"
+    description:
+      name: freezed_annotation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.0"
   glob:
     dependency: transitive
     description:
@@ -348,7 +374,7 @@ packages:
       name: google_sign_in_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.3"
+    version: "0.8.3+1"
   graphs:
     dependency: transitive
     description:
@@ -576,11 +602,9 @@ packages:
   provider:
     dependency: "direct main"
     description:
-      path: "."
-      ref: extensions
-      resolved-ref: "28831c0c8e6a555195bf64abdedca49e476d2089"
-      url: "https://github.com/rrousselGit/provider.git"
-    source: git
+      name: provider
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "4.1.0-dev"
   pub_semver:
     dependency: transitive
@@ -588,7 +612,7 @@ packages:
       name: pub_semver
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.4.2"
+    version: "1.4.3"
   pubspec_parse:
     dependency: transitive
     description:
@@ -819,5 +843,5 @@ packages:
     source: hosted
     version: "2.2.0"
 sdks:
-  dart: ">=2.7.0-dev <3.0.0"
+  dart: ">=2.7.0 <3.0.0"
   flutter: ">=1.14.6 <2.0.0"
