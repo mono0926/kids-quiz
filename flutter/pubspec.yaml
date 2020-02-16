@@ -28,9 +28,7 @@ dependencies:
   collection:
   flutter_image_compress:
   google_sign_in:
-  google_sign_in_web:
   firebase_auth:
-  firebase_auth_web:
   flutter_auth_buttons:
 dependency_overrides:
   provider: 4.1.0-dev
