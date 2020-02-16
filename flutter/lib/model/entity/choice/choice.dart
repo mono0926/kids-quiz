@@ -22,12 +22,12 @@ abstract class Choice with _$Choice {
 
 final CollectionRef<Choice, Document<Choice>> choicesRef = CollectionRef(
   Firestore.instance.collection('choices'),
-  decoder: (snap) => Document(
-    snap.documentID,
-    Choice.fromJson(snap.data),
+  decoder: (snapshot) => Document(
+    snapshot.documentID,
+    Choice.fromJson(snapshot.data),
   ),
-  encoder: (entity) => replacingTimestamp(
-    json: entity.toJson(),
-    createdAt: entity.createdAt,
+  encoder: (choice) => replacingTimestamp(
+    json: choice.toJson(),
+    createdAt: choice.createdAt,
   ),
 );
