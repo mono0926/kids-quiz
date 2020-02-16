@@ -9,7 +9,7 @@ dependencies:
     sdk: flutter
   cupertino_icons:
   freezed_annotation:
-  mono_kit:
+  mono_kit: ^0.14.0-dev
   pedantic_mono:
   provider:
   flutter_tts:

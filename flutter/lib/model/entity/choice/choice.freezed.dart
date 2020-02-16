@@ -12,8 +12,11 @@ Choice _$ChoiceFromJson(Map<String, dynamic> json) {
 }
 
 mixin _$Choice {
+  @nullable
   String get name;
+  @nullable
   String get imageUrl;
+  @nullable
   String get group;
   @timestampJsonKey
   DateTime get createdAt;
@@ -21,9 +24,9 @@ mixin _$Choice {
   DateTime get updatedAt;
 
   Choice copyWith(
-      {String name,
-      String imageUrl,
-      String group,
+      {@nullable String name,
+      @nullable String imageUrl,
+      @nullable String group,
       @timestampJsonKey DateTime createdAt,
       @timestampJsonKey DateTime updatedAt});
 
@@ -33,23 +36,23 @@ mixin _$Choice {
 @JsonSerializable()
 class _$_Choice with DiagnosticableTreeMixin implements _Choice {
   _$_Choice(
-      {@required this.name,
-      @required this.imageUrl,
-      @required this.group,
+      {@required @nullable this.name,
+      @required @nullable this.imageUrl,
+      @required @nullable this.group,
       @timestampJsonKey this.createdAt,
-      @timestampJsonKey this.updatedAt})
-      : assert(name != null),
-        assert(imageUrl != null),
-        assert(group != null);
+      @timestampJsonKey this.updatedAt});
 
   factory _$_Choice.fromJson(Map<String, dynamic> json) =>
       _$_$_ChoiceFromJson(json);
 
   @override
+  @nullable
   final String name;
   @override
+  @nullable
   final String imageUrl;
   @override
+  @nullable
   final String group;
   @override
   @timestampJsonKey
@@ -111,9 +114,6 @@ class _$_Choice with DiagnosticableTreeMixin implements _Choice {
     Object createdAt = freezed,
     Object updatedAt = freezed,
   }) {
-    assert(name != null);
-    assert(imageUrl != null);
-    assert(group != null);
     return _$_Choice(
       name: name == freezed ? this.name : name as String,
       imageUrl: imageUrl == freezed ? this.imageUrl : imageUrl as String,
@@ -131,19 +131,22 @@ class _$_Choice with DiagnosticableTreeMixin implements _Choice {
 
 abstract class _Choice implements Choice {
   factory _Choice(
-      {@required String name,
-      @required String imageUrl,
-      @required String group,
+      {@required @nullable String name,
+      @required @nullable String imageUrl,
+      @required @nullable String group,
       @timestampJsonKey DateTime createdAt,
       @timestampJsonKey DateTime updatedAt}) = _$_Choice;
 
   factory _Choice.fromJson(Map<String, dynamic> json) = _$_Choice.fromJson;
 
   @override
+  @nullable
   String get name;
   @override
+  @nullable
   String get imageUrl;
   @override
+  @nullable
   String get group;
   @override
   @timestampJsonKey
@@ -154,9 +157,9 @@ abstract class _Choice implements Choice {
 
   @override
   _Choice copyWith(
-      {String name,
-      String imageUrl,
-      String group,
+      {@nullable String name,
+      @nullable String imageUrl,
+      @nullable String group,
       @timestampJsonKey DateTime createdAt,
       @timestampJsonKey DateTime updatedAt});
 }

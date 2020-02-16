@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:kids_quiz/model/model.dart';
 import 'package:kids_quiz/pages/result_page.dart';
 import 'package:kids_quiz/util/util.dart';
-import 'package:mono_kit/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class QuizNotifier with ChangeNotifier {
@@ -19,7 +18,7 @@ class QuizNotifier with ChangeNotifier {
   final Locator locator;
   QuizGenerator get quizGenerator => locator();
   SpeechService get speechService => locator();
-  AppNavigator get navigator => locator();
+  GlobalKey<NavigatorState> get navigatorKey => locator();
   final List<ShakeAnimation> _incorrectAnimations;
   final Set<ChoiceDoc> _incorrectChoices = {};
   final _audioPlayer = AudioCache(prefix: 'sound/');
@@ -58,7 +57,8 @@ class QuizNotifier with ChangeNotifier {
     if (correct) {
       // ignore: unawaited_futures
       _audioPlayer.play('cheer.mp3');
-      await navigator.navigator.pushReplacementNamed(ResultPage.routeName);
+      await navigatorKey.currentState
+          .pushReplacementNamed(ResultPage.routeName);
     } else {
       final animation = incorrectAnimation(choice);
       await animation.controller.forward(from: 0);

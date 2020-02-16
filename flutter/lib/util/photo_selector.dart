@@ -7,7 +7,6 @@ import 'package:kids_quiz/model/model.dart';
 import 'package:kids_quiz/util/util.dart';
 import 'package:mono_kit/utils/utils.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:provider/provider.dart';
 
 class PhotoSelector {
   const PhotoSelector({
@@ -19,8 +18,8 @@ class PhotoSelector {
   final String title;
 
   Future<File> select() async {
-    final source =
-        await context.read<AppNavigator>().showConfirmSheet<ImageSource>(
+    final source = await showConfirmSheet<ImageSource>(
+      context: context,
       title: '画像の選択',
       actions: [
         SheetAction(
@@ -48,13 +47,13 @@ class PhotoSelector {
         ImagePickerErrorCodes.cameraAccessRestricted,
         ImagePickerErrorCodes.cameraAccessDenied,
       ].contains(e.code)) {
-        context.read<AppNavigator>().showErrorDialog(e);
+        showErrorDialog(context: context, error: e);
         return null;
       }
 
       const okKey = 'ok';
-      final result =
-          await context.read<AppNavigator>().showConfirmDialog<String>(
+      final result = await showConfirmDialog<String>(
+        context: context,
         title: '設定画面での許可が必要です',
         message: '設定アプリで写真アクセスの許可をお願いします。',
         actions: [

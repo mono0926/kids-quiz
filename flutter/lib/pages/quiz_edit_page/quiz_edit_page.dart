@@ -36,7 +36,7 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = context.read<QuizEditModel>();
+    final model = context.watch<QuizEditModel>();
     final choicesByCategory = model.choicesByGroup;
     final categories = choicesByCategory.keys.toList();
     return ListView.builder(

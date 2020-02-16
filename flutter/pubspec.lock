@@ -339,14 +339,14 @@ packages:
       name: freezed
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.1"
+    version: "0.6.1"
   freezed_annotation:
     dependency: "direct main"
     description:
       name: freezed_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.0"
+    version: "0.6.0"
   glob:
     dependency: transitive
     description:
@@ -493,7 +493,7 @@ packages:
       name: mono_kit
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.6+2"
+    version: "0.14.0-dev+5"
   nested:
     dependency: transitive
     description:

@@ -34,7 +34,7 @@ class AddPageModel with ChangeNotifier, ProgressMixin {
   ImageCompressor get imageCompressor => locator();
   ChoicesObserver get observer => locator();
   Uploader get uploader => locator();
-  AppNavigator get navigator => locator();
+  GlobalKey<NavigatorState> get navigatorKey => locator();
   final TextEditingController nameController = TextEditingController();
   final _sb = SubscriptionHolder();
 
@@ -81,7 +81,8 @@ class AddPageModel with ChangeNotifier, ProgressMixin {
 
   Future<void> save() async {
     if (name.isEmpty || _group.isEmpty || _imageUrl == null) {
-      await navigator.showOkDialog(
+      await showOkDialog(
+        context: navigatorKey.currentState.descendantContext,
         title: '未記入の項目があります',
         message: '画像・名前・グループ名を指定してください。',
       );
@@ -95,7 +96,7 @@ class AddPageModel with ChangeNotifier, ProgressMixin {
             imageUrl: _imageUrl,
           ),
         );
-    navigator.navigator.pop();
+    navigatorKey.currentState.pop();
   }
 
   @override

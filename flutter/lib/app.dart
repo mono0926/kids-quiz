@@ -17,7 +17,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       theme: buildTheme(),
       title: appName,
-      navigatorKey: context.watch<AppNavigator>().key,
+      navigatorKey: context.watch(),
 //      home: AccountRegistrationPage.wrapped(),
       home: QuizPage.wrapped(),
       onGenerateRoute: context.watch<Router>().onGenerateRoute,

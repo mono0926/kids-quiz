@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:kids_quiz/consts.dart';
 import 'package:kids_quiz/model/model.dart';
 import 'package:kids_quiz/pages/quiz_edit_page/quiz_edit_page.dart';
-import 'package:kids_quiz/util/app_feedback.dart';
 import 'package:kids_quiz/util/util.dart';
-import 'package:mono_kit/utils/utils.dart';
+import 'package:mono_kit/mono_kit.dart';
 import 'package:provider/provider.dart';
 
 class QuizPage extends StatelessWidget {
@@ -27,7 +26,7 @@ class QuizPage extends StatelessWidget {
     final notifier = context.watch<QuizNotifier>();
     final quiz = notifier.quiz;
     return Scaffold(
-      key: model.feedback.key,
+      key: model.scaffoldKey,
       appBar: AppBar(
         title: const Text(appName),
         actions: const [
@@ -153,13 +152,15 @@ class ChoiceCard extends StatelessWidget {
 }
 
 class _Model with Disposable {
-  final AppFeedback feedback = AppFeedback(GlobalKey());
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
   @override
   void dispose() {}
 
   void notifyLongPressNeeded() {
-    feedback.show('メニューを表示するには、長押ししてください(お子さまの誤操作の防止のためです)。');
+    scaffoldKey.currentState.showSimpleSnackBar(
+      'メニューを表示するには、長押ししてください(お子さまの誤操作の防止のためです)。',
+    );
   }
 }
 
@@ -185,7 +186,7 @@ class MenuButton extends StatelessWidget {
       },
       onSelected: (value) async {
         logger.info(value);
-        context.read<AppNavigator>().popToRoot();
+        context.read<GlobalKey<NavigatorState>>().currentState.popToRoot();
         switch (value) {
           case _Action.editQuiz:
             await Navigator.of(context).pushNamed(QuizEditPage.routeName);

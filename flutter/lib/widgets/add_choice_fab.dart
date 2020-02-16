@@ -20,9 +20,9 @@ class AddChoiceFab extends StatelessWidget {
         arguments: ChoiceDoc(
           null,
           Choice(
-            group: group,
-            imageUrl: null,
             name: null,
+            imageUrl: null,
+            group: group,
           ),
         ),
       ),

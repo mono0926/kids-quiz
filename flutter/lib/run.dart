@@ -4,7 +4,6 @@ import 'package:kids_quiz/model/downloader.dart';
 import 'package:kids_quiz/model/image_compressor.dart';
 import 'package:kids_quiz/model/image_cropper.dart';
 import 'package:kids_quiz/model/uploader.dart';
-import 'package:mono_kit/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:vsync_provider/vsync_provider.dart';
 
@@ -38,7 +37,7 @@ Future run({@required Environment environment}) async {
           create: (context) => Uploader(locator: context.read),
         ),
         Provider(create: (context) => ChoicesObserver()),
-        Provider(create: (context) => AppNavigator()),
+        Provider(create: (context) => GlobalKey<NavigatorState>()),
         Provider(create: (context) => const ImageCompressor()),
         Provider(create: (context) => const ImageCropper()),
         Provider(

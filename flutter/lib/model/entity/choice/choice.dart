@@ -9,9 +9,9 @@ part 'choice.g.dart';
 @freezed
 abstract class Choice with _$Choice {
   factory Choice({
-    @required String name,
-    @required String imageUrl,
-    @required String group,
+    @required @nullable String name,
+    @required @nullable String imageUrl,
+    @required @nullable String group,
     @timestampJsonKey DateTime createdAt,
     @timestampJsonKey DateTime updatedAt,
   }) = _Choice;
