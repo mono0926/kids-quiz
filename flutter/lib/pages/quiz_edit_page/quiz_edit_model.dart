@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:kids_quiz/model/model.dart';
 import 'package:mono_kit/mono_kit.dart';
@@ -16,13 +17,14 @@ class QuizEditModel with ChangeNotifier {
       }),
     );
   }
-  Map<String, List<ChoiceDoc>> _choicesByGroup;
-  Map<String, List<ChoiceDoc>> get choicesByGroup => _choicesByGroup;
+  Map<String, List<Document<Choice>>> _choicesByGroup;
+  Map<String, List<Document<Choice>>> get choicesByGroup => _choicesByGroup;
   final Locator locator;
   ChoicesObserver get observer => locator();
   final _sh = SubscriptionHolder();
 
-  static Map<String, List<ChoiceDoc>> _groupByGroup(List<ChoiceDoc> choices) =>
+  static Map<String, List<Document<Choice>>> _groupByGroup(
+          List<Document<Choice>> choices) =>
       groupBy(choices, (x) => x.entity.group);
 
   @override

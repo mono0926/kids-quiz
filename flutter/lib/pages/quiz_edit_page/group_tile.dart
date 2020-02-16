@@ -19,7 +19,7 @@ class GroupTile extends StatelessWidget {
       ),
       update: (context, quizEditModel, previous) {
         return previous
-          ..updateChoiceDocs(
+          ..updateDocument(
             quizEditModel.choicesByGroup[previous.group],
           );
       },
@@ -77,10 +77,10 @@ class GroupModel with ChangeNotifier {
   });
   final String group;
 
-  List<ChoiceDoc> _choiceDocs;
-  List<ChoiceDoc> get choiceDocs => _choiceDocs;
+  List<Document<Choice>> _choiceDocs;
+  List<Document<Choice>> get choiceDocs => _choiceDocs;
 
-  void updateChoiceDocs(List<ChoiceDoc> docs) {
+  void updateDocument(List<Document<Choice>> docs) {
     if (listEquals(_choiceDocs, docs)) {
       return;
     }
@@ -88,7 +88,7 @@ class GroupModel with ChangeNotifier {
     notifyListeners();
   }
 
-  void delete(ChoiceDoc doc) {
-    ChoicesRef.ref().docRef(doc.id).ref.delete();
+  void delete(Document<Choice> doc) {
+    choicesRef.docRef(doc.id).ref.delete();
   }
 }

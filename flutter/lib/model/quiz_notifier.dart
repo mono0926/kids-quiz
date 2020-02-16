@@ -1,4 +1,5 @@
 import 'package:audioplayers/audio_cache.dart';
+
 import 'package:flutter/widgets.dart';
 import 'package:kids_quiz/model/model.dart';
 import 'package:kids_quiz/pages/result_page.dart';
@@ -20,10 +21,10 @@ class QuizNotifier with ChangeNotifier {
   SpeechService get speechService => locator();
   GlobalKey<NavigatorState> get navigatorKey => locator();
   final List<ShakeAnimation> _incorrectAnimations;
-  final Set<ChoiceDoc> _incorrectChoices = {};
+  final Set<Document<Choice>> _incorrectChoices = {};
   final _audioPlayer = AudioCache(prefix: 'sound/');
 
-  Set<ChoiceDoc> get incorrectChoices => _incorrectChoices;
+  Set<Document<Choice>> get incorrectChoices => _incorrectChoices;
   Quiz get quiz => quizGenerator.quiz;
 
   String get _questionMessage =>
@@ -40,10 +41,10 @@ class QuizNotifier with ChangeNotifier {
     playQuestion();
   }
 
-  ShakeAnimation incorrectAnimation(ChoiceDoc choice) =>
+  ShakeAnimation incorrectAnimation(Document<Choice> choice) =>
       _incorrectAnimations[quiz.choices.indexOf(choice)];
 
-  Future<void> select(ChoiceDoc choice) async {
+  Future<void> select(Document<Choice> choice) async {
     final correct = quiz.correctChoice == choice;
     logger.info('correct: $correct');
     // ignore: unawaited_futures

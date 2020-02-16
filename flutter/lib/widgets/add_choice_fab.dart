@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kids_quiz/model/entity/choice/choice.dart';
+import 'package:kids_quiz/model/model.dart';
 import 'package:kids_quiz/pages/quiz_add_page/quiz_add_page.dart';
 
 class AddChoiceFab extends StatelessWidget {
@@ -17,7 +18,7 @@ class AddChoiceFab extends StatelessWidget {
       icon: Icon(Icons.add),
       onPressed: () => Navigator.of(context).pushNamed(
         QuizAddPage.routeName,
-        arguments: ChoiceDoc(
+        arguments: Document<Choice>(
           null,
           Choice(
             name: null,

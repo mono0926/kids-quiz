@@ -1,6 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 
 import 'choice/choice.dart';
+import 'entity.dart';
 
 @immutable
 class Quiz {
@@ -8,8 +9,8 @@ class Quiz {
     @required this.choices,
     @required this.correctChoice,
   });
-  final List<ChoiceDoc> choices;
-  final ChoiceDoc correctChoice;
+  final List<Document<Choice>> choices;
+  final Document<Choice> correctChoice;
 }
 
 class GroupNames {

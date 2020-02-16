@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:kids_quiz/model/entity/choice/choice.dart';
+import 'package:kids_quiz/model/model.dart';
 import 'package:mono_kit/mono_kit.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +12,7 @@ class QuizAddPage extends StatelessWidget {
   const QuizAddPage._({Key key}) : super(key: key);
 
   static Widget wrapped({
-    @required ChoiceDoc choiceDoc,
+    @required Document<Choice> choiceDoc,
   }) {
     return ChangeNotifierProvider(
       create: (context) => AddPageModel(

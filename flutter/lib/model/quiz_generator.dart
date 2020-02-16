@@ -15,7 +15,7 @@ class QuizGenerator {
   ChoicesObserver get _observer => locator();
   Quiz _quiz;
   Quiz get quiz => _quiz;
-  List<ChoiceDoc> choices = [];
+  List<Document<Choice>> choices = [];
 
   Quiz generate() {
     final choice = _decideCorrectChoice();
@@ -30,8 +30,8 @@ class QuizGenerator {
     );
   }
 
-  ChoiceDoc _decideCorrectChoice() {
-    choices = List<ChoiceDoc>.from(_observer.choices.value)..shuffle();
+  Document<Choice> _decideCorrectChoice() {
+    choices = List<Document<Choice>>.from(_observer.choices.value)..shuffle();
     final choice = choices.first;
     return choice == _quiz?.correctChoice ? _decideCorrectChoice() : choice;
   }

@@ -7,6 +7,7 @@ import 'package:kids_quiz/pages/quiz_edit_page/group_tile.dart';
 import 'package:kids_quiz/pages/quiz_edit_page/quiz_edit_page.dart';
 import 'package:mono_kit/mono_kit.dart';
 
+import 'model/model.dart';
 import 'pages/result_page.dart';
 import 'util/util.dart';
 
@@ -27,7 +28,7 @@ class Router {
     QuizPage.routeName: (context, settings) => QuizPage.wrapped(),
     ResultPage.routeName: (context, settings) => ResultPage.wrapped(),
     QuizAddPage.routeName: (context, settings) => QuizAddPage.wrapped(
-          choiceDoc: settings.arguments as ChoiceDoc,
+          choiceDoc: settings.arguments as Document<Choice>,
         ),
   };
   final _modalRoutes = <String, WidgetPageBuilder>{

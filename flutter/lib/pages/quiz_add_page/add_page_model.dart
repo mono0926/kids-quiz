@@ -29,7 +29,7 @@ class AddPageModel with ChangeNotifier, ProgressMixin {
   }
 
   final Locator locator;
-  final ChoiceDoc choiceDoc;
+  final Document<Choice> choiceDoc;
   ImageCropper get imageCropper => locator();
   ImageCompressor get imageCompressor => locator();
   ChoicesObserver get observer => locator();
@@ -47,8 +47,10 @@ class AddPageModel with ChangeNotifier, ProgressMixin {
   String get group => _group ?? '';
   String get imageUrl => _imageUrl;
 
-  List<String> _toCategories(List<ChoiceDoc> docs) =>
-      groupBy<ChoiceDoc, String>(docs, (d) => d.entity.group).keys.toList();
+  List<String> _toCategories(List<Document<Choice>> docs) =>
+      groupBy<Document<Choice>, String>(docs, (d) => d.entity.group)
+          .keys
+          .toList();
 
   Future<void> selectImage(BuildContext context) async {
     final file = await PhotoSelector(context: context).select();
@@ -89,7 +91,7 @@ class AddPageModel with ChangeNotifier, ProgressMixin {
       return;
     }
     // ignore: unawaited_futures
-    ChoicesRef.ref().docRef(choiceDoc?.id).set(
+    choicesRef.docRef(choiceDoc?.id).set(
           Choice(
             name: name,
             group: _group,

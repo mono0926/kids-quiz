@@ -1,12 +1,12 @@
 import 'package:disposable_provider/disposable_provider.dart';
-import 'package:firestore_ref/firestore_ref.dart';
+
 import 'package:rxdart/rxdart.dart';
 
 import 'model.dart';
 
 class ChoicesObserver with Disposable {
   ChoicesObserver() : _choices = BehaviorSubject.seeded(_defaultChoices) {
-    ChoicesRef.ref()
+    choicesRef
         .documents((r) => r.orderBy(
               TimestampField.createdAt,
               descending: true,
@@ -15,9 +15,9 @@ class ChoicesObserver with Disposable {
         .pipe(_choices);
   }
 
-  final BehaviorSubject<List<ChoiceDoc>> _choices;
+  final BehaviorSubject<List<Document<Choice>>> _choices;
 
-  ValueStream<List<ChoiceDoc>> get choices => _choices;
+  ValueStream<List<Document<Choice>>> get choices => _choices;
 
   @override
   void dispose() {
@@ -25,7 +25,7 @@ class ChoicesObserver with Disposable {
   }
 }
 
-final _defaultChoices = [
+final _defaultChoices = const [
   Choice(
     name: 'にゃんにゃん',
     imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg',
@@ -103,4 +103,4 @@ final _defaultChoices = [
         'https://firebasestorage.googleapis.com/v0/b/kids-quiz-mono.appspot.com/o/images%2FIMG_9056.JPG?alt=media',
     group: GroupNames.vehicle,
   )
-].map((c) => ChoiceDoc(null, c)).toList();
+].map((c) => Document<Choice>(null, c)).toList();

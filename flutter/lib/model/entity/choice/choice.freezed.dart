@@ -35,7 +35,7 @@ mixin _$Choice {
 
 @JsonSerializable()
 class _$_Choice with DiagnosticableTreeMixin implements _Choice {
-  _$_Choice(
+  const _$_Choice(
       {@required @nullable this.name,
       @required @nullable this.imageUrl,
       @required @nullable this.group,
@@ -130,7 +130,7 @@ class _$_Choice with DiagnosticableTreeMixin implements _Choice {
 }
 
 abstract class _Choice implements Choice {
-  factory _Choice(
+  const factory _Choice(
       {@required @nullable String name,
       @required @nullable String imageUrl,
       @required @nullable String group,

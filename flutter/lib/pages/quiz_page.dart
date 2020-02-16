@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:disposable_provider/disposable_provider.dart';
+
 import 'package:flutter/material.dart';
 import 'package:kids_quiz/consts.dart';
 import 'package:kids_quiz/model/model.dart';
@@ -99,7 +100,7 @@ class ChoiceCard extends StatelessWidget {
     @required this.choice,
   }) : super(key: key);
 
-  final ChoiceDoc choice;
+  final Document<Choice> choice;
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,3 @@
-import 'package:firestore_ref/firestore_ref.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kids_quiz/model/downloader.dart';
 import 'package:kids_quiz/model/image_compressor.dart';

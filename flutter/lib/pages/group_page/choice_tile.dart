@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:flutter/material.dart';
 import 'package:kids_quiz/model/model.dart';
 import 'package:kids_quiz/pages/quiz_add_page/quiz_add_page.dart';
@@ -12,7 +13,7 @@ class ChoiceTile extends StatelessWidget {
     @required this.doc,
   }) : super(key: key);
 
-  final ChoiceDoc doc;
+  final Document<Choice> doc;
 
   @override
   Widget build(BuildContext context) {
