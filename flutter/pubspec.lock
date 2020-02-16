@@ -275,7 +275,7 @@ packages:
       name: firestore_ref
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.0-dev+3"
+    version: "0.8.0-dev+4"
   fixnum:
     dependency: transitive
     description:
