@@ -551,7 +551,7 @@ packages:
     source: hosted
     version: "1.8.0+1"
   pedantic_mono:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: pedantic_mono
       url: "https://pub.dartlang.org"
