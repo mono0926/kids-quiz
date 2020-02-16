@@ -20,10 +20,9 @@ abstract class Choice with _$Choice {
   static const minNumber = 4;
 }
 
-final CollectionRef<Choice, Document<Choice>> choicesRef =
-    CollectionRef<Choice, Document<Choice>>(
+final CollectionRef<Choice, Document<Choice>> choicesRef = CollectionRef(
   Firestore.instance.collection('choices'),
-  decoder: (snap) => Document<Choice>(
+  decoder: (snap) => Document(
     snap.documentID,
     Choice.fromJson(snap.data),
   ),
