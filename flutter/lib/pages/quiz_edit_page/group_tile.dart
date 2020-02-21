@@ -7,16 +7,15 @@ import 'package:provider/provider.dart';
 
 import 'quiz_edit_model.dart';
 
-class GroupTileContainer extends StatelessWidget {
-  const GroupTileContainer({
+class GroupTile extends StatelessWidget {
+  const GroupTile._({
     Key key,
-    @required this.group,
+    @required this.openContainer,
   }) : super(key: key);
 
-  final String group;
-
-  @override
-  Widget build(BuildContext context) {
+  static Widget wrapped({
+    @required String group,
+  }) {
     return ChangeNotifierProxyProvider<QuizEditModel, GroupModel>(
       key: ValueKey(group),
       create: (context) => GroupModel(
@@ -47,13 +46,6 @@ class GroupTileContainer extends StatelessWidget {
       ),
     );
   }
-}
-
-class GroupTile extends StatelessWidget {
-  const GroupTile._({
-    Key key,
-    @required this.openContainer,
-  }) : super(key: key);
 
   final VoidCallback openContainer;
 
