@@ -7,6 +7,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  animations:
   cupertino_icons:
   freezed_annotation:
   mono_kit: ^0.14.0-dev

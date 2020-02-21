@@ -23,9 +23,14 @@ class App extends StatelessWidget {
       onGenerateRoute: context.watch<Router>().onGenerateRoute,
       builder: (context, child) {
         final mediaQuery = MediaQuery.of(context);
-        return TextScaleFactor(
-          min: min(mediaQuery.size.width, mediaQuery.size.height) / 375,
-          max: 2,
+        return MultiProvider(
+          providers: [
+            TextScaleFactor(
+              min: min(mediaQuery.size.width, mediaQuery.size.height) / 375,
+              max: 2,
+            ),
+            const BarrierKit(),
+          ],
           child: child,
         );
       },
