@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 
-const _minWidth = 700;
+const _minWidth = 700 - 1;
 const _minHeight = 700;
 const _quality = 70;
 
