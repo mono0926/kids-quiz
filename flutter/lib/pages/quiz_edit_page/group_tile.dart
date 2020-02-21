@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:kids_quiz/model/model.dart';
@@ -7,7 +8,10 @@ import 'package:provider/provider.dart';
 import 'quiz_edit_model.dart';
 
 class GroupTile extends StatelessWidget {
-  const GroupTile._({Key key}) : super(key: key);
+  const GroupTile._({
+    Key key,
+    @required this.openContainer,
+  }) : super(key: key);
 
   static Widget wrapped({
     @required String group,
@@ -23,9 +27,27 @@ class GroupTile extends StatelessWidget {
             quizEditModel.choicesByGroup[previous.group],
           );
       },
-      child: const GroupTile._(),
+      builder: (context, child) => OpenContainer(
+        transitionType: ContainerTransitionType.fade,
+        openBuilder: (_context, _openContainer) {
+          return GroupPage.wrapped(model: context.read());
+        },
+        tappable: false,
+        closedShape: const RoundedRectangleBorder(),
+        closedElevation: 0,
+        closedBuilder: (_context, openContainer) {
+          return ChangeNotifierProvider.value(
+            value: context.read<GroupModel>(),
+            child: GroupTile._(
+              openContainer: openContainer,
+            ),
+          );
+        },
+      ),
     );
   }
+
+  final VoidCallback openContainer;
 
   @override
   Widget build(BuildContext context) {
@@ -53,10 +75,7 @@ class GroupTile extends StatelessWidget {
             )
           : null,
       trailing: Icon(Icons.chevron_right),
-      onTap: () => Navigator.of(context).pushNamed(
-        GroupPage.routeName,
-        arguments: model,
-      ),
+      onTap: openContainer,
     );
   }
 }
