@@ -19,11 +19,7 @@ typedef WidgetPageBuilder = Widget Function(
 class Router {
   static const root = '/';
 
-  final _routes = <String, WidgetPageBuilder>{
-    GroupPage.routeName: (context, settings) => GroupPage.wrapped(
-          model: settings.arguments as GroupModel,
-        ),
-  };
+  final _routes = <String, WidgetPageBuilder>{};
   final _fadeRoutes = <String, WidgetPageBuilder>{
     QuizPage.routeName: (context, settings) => QuizPage.wrapped(),
     ResultPage.routeName: (context, settings) => ResultPage.wrapped(),
