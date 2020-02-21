@@ -33,16 +33,6 @@ class GroupTile extends StatelessWidget {
     final choices = model.choiceDocs;
     return ListTile(
       title: Text('${model.group} (${choices.length})'),
-//      title: Row(
-//        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//        children: <Widget>[
-//          Text('$category (${choices.length})'),
-//          Switch(
-//            value: true,
-//            onChanged: (_) {},
-//          ),
-//        ],
-//      ),
       subtitle: choices.length < Choice.minNumber
           ? Row(
               children: <Widget>[
