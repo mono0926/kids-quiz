@@ -70,7 +70,7 @@ class QuizAddPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Barrier(
-        showProgress: model.inProgress,
+        showProgress: model.barrierController.inProgress,
         child: AspectRatio(
           aspectRatio: 1,
           child: model.imageUrl == null

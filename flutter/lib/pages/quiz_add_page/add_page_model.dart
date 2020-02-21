@@ -37,7 +37,7 @@ class AddPageModel with ChangeNotifier {
   GlobalKey<NavigatorState> get navigatorKey => locator();
   final TextEditingController nameController = TextEditingController();
   final _sb = SubscriptionHolder();
-  final _inProgress = ValueNotifier(false);
+  final BarrierController barrierController = BarrierController();
 
   String _imageUrl;
   String get name => nameController.text;
@@ -47,7 +47,6 @@ class AddPageModel with ChangeNotifier {
   List<String> get groups => _groups;
   String get group => _group ?? '';
   String get imageUrl => _imageUrl;
-  ValueListenable<bool> get inProgress => _inProgress;
 
   List<String> _toCategories(List<Document<Choice>> docs) =>
       groupBy<Document<Choice>, String>(docs, (d) => d.entity.group)
@@ -59,7 +58,7 @@ class AddPageModel with ChangeNotifier {
     if (file == null) {
       return;
     }
-    await _inProgress.executeWithProgress<void>(() async {
+    await barrierController.executeWithProgress<void>(() async {
       final cropped = await imageCropper.crop(file);
       if (cropped == null) {
         return;
@@ -106,7 +105,7 @@ class AddPageModel with ChangeNotifier {
   @override
   void dispose() {
     _sb.dispose();
-    _inProgress.dispose();
+    barrierController.dispose();
 
     super.dispose();
   }

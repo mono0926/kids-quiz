@@ -21,7 +21,7 @@ packages:
       name: animations
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0+3"
+    version: "1.0.0+5"
   archive:
     dependency: transitive
     description:
@@ -353,14 +353,14 @@ packages:
       name: freezed
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.1"
+    version: "0.7.0"
   freezed_annotation:
     dependency: "direct main"
     description:
       name: freezed_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.0"
+    version: "0.7.0"
   glob:
     dependency: transitive
     description:
@@ -507,7 +507,7 @@ packages:
       name: mono_kit
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.0-dev+23"
+    version: "0.14.0-dev+25"
   nested:
     dependency: transitive
     description:
