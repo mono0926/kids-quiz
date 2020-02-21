@@ -44,7 +44,9 @@ class _Body extends StatelessWidget {
       itemCount: categories.length,
       itemBuilder: (context, index) {
         final category = categories[index];
-        return GroupTile.wrapped(group: category);
+        return GroupTile.wrapped(
+          group: category,
+        );
       },
     );
   }
