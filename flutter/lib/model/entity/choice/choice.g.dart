@@ -11,8 +11,10 @@ _$_Choice _$_$_ChoiceFromJson(Map<String, dynamic> json) {
     name: json['name'] as String,
     imageUrl: json['imageUrl'] as String,
     group: json['group'] as String,
-    createdAt: dateFromTimestampValue(json['createdAt']),
-    updatedAt: dateFromTimestampValue(json['updatedAt']),
+    createdAt:
+        const TimestampConverter().fromJson(json['createdAt'] as Timestamp),
+    updatedAt:
+        const TimestampConverter().fromJson(json['updatedAt'] as Timestamp),
   );
 }
 
@@ -20,6 +22,6 @@ Map<String, dynamic> _$_$_ChoiceToJson(_$_Choice instance) => <String, dynamic>{
       'name': instance.name,
       'imageUrl': instance.imageUrl,
       'group': instance.group,
-      'createdAt': timestampFromDateValue(instance.createdAt),
-      'updatedAt': timestampFromDateValue(instance.updatedAt),
+      'createdAt': const TimestampConverter().toJson(instance.createdAt),
+      'updatedAt': const TimestampConverter().toJson(instance.updatedAt),
     };

@@ -29,7 +29,9 @@ dependencies:
   collection:
   flutter_image_compress:
   google_sign_in:
-  firebase_auth:
+  # TODO(mono): Bug: https://github.com/FirebaseExtended/flutterfire/issues/1858#issuecomment-592439327
+  firebase_core: 0.4.4
+  firebase_auth: 0.15.4
   flutter_auth_buttons:
 dependency_overrides:
   provider: 4.1.0-dev

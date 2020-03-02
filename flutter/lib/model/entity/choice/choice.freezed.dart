@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
 
 part of 'choice.dart';
 
@@ -18,20 +18,41 @@ mixin _$Choice {
   String get imageUrl;
   @nullable
   String get group;
-  @timestampJsonKey
+  @TimestampConverter()
   DateTime get createdAt;
-  @timestampJsonKey
+  @TimestampConverter()
   DateTime get updatedAt;
 
   Choice copyWith(
       {@nullable String name,
       @nullable String imageUrl,
       @nullable String group,
-      @timestampJsonKey DateTime createdAt,
-      @timestampJsonKey DateTime updatedAt});
+      @TimestampConverter() DateTime createdAt,
+      @TimestampConverter() DateTime updatedAt});
 
   Map<String, dynamic> toJson();
 }
+
+class _$ChoiceTearOff {
+  const _$ChoiceTearOff();
+
+  _Choice call(
+      {@required @nullable String name,
+      @required @nullable String imageUrl,
+      @required @nullable String group,
+      @TimestampConverter() DateTime createdAt,
+      @TimestampConverter() DateTime updatedAt}) {
+    return _Choice(
+      name: name,
+      imageUrl: imageUrl,
+      group: group,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+    );
+  }
+}
+
+const $Choice = _$ChoiceTearOff();
 
 @JsonSerializable()
 class _$_Choice with DiagnosticableTreeMixin implements _Choice {
@@ -39,8 +60,8 @@ class _$_Choice with DiagnosticableTreeMixin implements _Choice {
       {@required @nullable this.name,
       @required @nullable this.imageUrl,
       @required @nullable this.group,
-      @timestampJsonKey this.createdAt,
-      @timestampJsonKey this.updatedAt});
+      @TimestampConverter() this.createdAt,
+      @TimestampConverter() this.updatedAt});
 
   factory _$_Choice.fromJson(Map<String, dynamic> json) =>
       _$_$_ChoiceFromJson(json);
@@ -55,10 +76,10 @@ class _$_Choice with DiagnosticableTreeMixin implements _Choice {
   @nullable
   final String group;
   @override
-  @timestampJsonKey
+  @TimestampConverter()
   final DateTime createdAt;
   @override
-  @timestampJsonKey
+  @TimestampConverter()
   final DateTime updatedAt;
 
   @override
@@ -100,11 +121,11 @@ class _$_Choice with DiagnosticableTreeMixin implements _Choice {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      name.hashCode ^
-      imageUrl.hashCode ^
-      group.hashCode ^
-      createdAt.hashCode ^
-      updatedAt.hashCode;
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(imageUrl) ^
+      const DeepCollectionEquality().hash(group) ^
+      const DeepCollectionEquality().hash(createdAt) ^
+      const DeepCollectionEquality().hash(updatedAt);
 
   @override
   _$_Choice copyWith({
@@ -134,8 +155,8 @@ abstract class _Choice implements Choice {
       {@required @nullable String name,
       @required @nullable String imageUrl,
       @required @nullable String group,
-      @timestampJsonKey DateTime createdAt,
-      @timestampJsonKey DateTime updatedAt}) = _$_Choice;
+      @TimestampConverter() DateTime createdAt,
+      @TimestampConverter() DateTime updatedAt}) = _$_Choice;
 
   factory _Choice.fromJson(Map<String, dynamic> json) = _$_Choice.fromJson;
 
@@ -149,10 +170,10 @@ abstract class _Choice implements Choice {
   @nullable
   String get group;
   @override
-  @timestampJsonKey
+  @TimestampConverter()
   DateTime get createdAt;
   @override
-  @timestampJsonKey
+  @TimestampConverter()
   DateTime get updatedAt;
 
   @override
@@ -160,6 +181,6 @@ abstract class _Choice implements Choice {
       {@nullable String name,
       @nullable String imageUrl,
       @nullable String group,
-      @timestampJsonKey DateTime createdAt,
-      @timestampJsonKey DateTime updatedAt});
+      @TimestampConverter() DateTime createdAt,
+      @TimestampConverter() DateTime updatedAt});
 }

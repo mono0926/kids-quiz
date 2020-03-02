@@ -12,8 +12,8 @@ abstract class Choice with _$Choice {
     @required @nullable String name,
     @required @nullable String imageUrl,
     @required @nullable String group,
-    @timestampJsonKey DateTime createdAt,
-    @timestampJsonKey DateTime updatedAt,
+    @TimestampConverter() DateTime createdAt,
+    @TimestampConverter() DateTime updatedAt,
   }) = _Choice;
   factory Choice.fromJson(Map<String, dynamic> json) => _$ChoiceFromJson(json);
 
