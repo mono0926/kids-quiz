@@ -1,3 +1,4 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
@@ -84,7 +85,7 @@ class AddPageModel with ChangeNotifier {
 
   Future<void> save() async {
     if (name.isEmpty || _group.isEmpty || _imageUrl == null) {
-      await showOkDialog(
+      await showOkAlertDialog(
         context: navigatorKey.currentState.descendantContext,
         title: '未記入の項目があります',
         message: '画像・名前・グループ名を指定してください。',

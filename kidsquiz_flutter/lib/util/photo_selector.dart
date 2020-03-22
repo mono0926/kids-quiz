@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -18,7 +19,7 @@ class PhotoSelector {
   final String title;
 
   Future<File> select() async {
-    final source = await showConfirmSheet<ImageSource>(
+    final source = await showModalActionSheet<ImageSource>(
       context: context,
       title: '画像の選択',
       actions: [
@@ -52,15 +53,15 @@ class PhotoSelector {
       }
 
       const okKey = 'ok';
-      final result = await showConfirmDialog<String>(
+      final result = await showModalActionSheet<String>(
         context: context,
         title: '設定画面での許可が必要です',
         message: '設定アプリで写真アクセスの許可をお願いします。',
         actions: [
-          DialogAction(
+          SheetAction(
             label: MaterialLocalizations.of(context).cancelButtonLabel,
           ),
-          const DialogAction(
+          const SheetAction(
             label: '設定アプリで許可',
             key: okKey,
           ),
