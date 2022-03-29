@@ -172,15 +172,14 @@ class _ChoiceCard extends HookConsumerWidget {
       ),
     );
 
-    if (choice == quiz.correctChoice) {
-      return Hero(
-        tag: choice.entity.imageUrl,
-        child: card,
-      );
-    }
-    return SlideTransition(
-      position: animation,
-      child: card,
-    );
+    return choice == quiz.correctChoice
+        ? Hero(
+            tag: choice.entity.imageUrl,
+            child: card,
+          )
+        : SlideTransition(
+            position: animation,
+            child: card,
+          );
   }
 }

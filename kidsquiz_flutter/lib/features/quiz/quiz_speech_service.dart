@@ -3,8 +3,9 @@ import 'package:kidsquiz/model/model.dart';
 
 import 'quiz_notifier.dart';
 
-final quizSpeechServiceProvider =
-    Provider((ref) => QuizSpeechService(ref.read));
+final quizSpeechServiceProvider = Provider(
+  (ref) => QuizSpeechService(ref.read),
+);
 
 class QuizSpeechService {
   const QuizSpeechService(this._read);

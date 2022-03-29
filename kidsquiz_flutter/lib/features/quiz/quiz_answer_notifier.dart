@@ -7,7 +7,7 @@ import 'package:kidsquiz/util/util.dart';
 
 import 'quiz_notifier.dart';
 
-part 'quiz_answer_service.freezed.dart';
+part 'quiz_answer_notifier.freezed.dart';
 
 final quizAnswerProvider =
     StateNotifierProvider.autoDispose<QuizAnswerNotifier, QuizAnswerState>(

@@ -17,7 +17,6 @@ class QuizResultPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quiz = ref.watch(quizProvider).value!;
     return Stack(
       children: [
         Scaffold(
