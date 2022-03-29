@@ -110,9 +110,8 @@ class _ChoiceCard extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final quiz = ref.watch(quizProvider).value!;
-    final showLabel = ref.watch(
-      quizAnswerProvider.select((s) => s.incorrectChoices.contains(choice)),
-    );
+    final showLabel =
+        quizAnswerProvider.select((s) => s.incorrectChoices.contains(choice));
     final animationController = useAnimationController(
       duration: const Duration(milliseconds: 500),
     );
@@ -122,26 +121,22 @@ class _ChoiceCard extends HookConsumerWidget {
             .drive(CurveTween(curve: Curves.elasticIn))
             .drive(
               Tween(
-                begin: const Offset(0, 0),
+                begin: Offset.zero,
                 end: const Offset(0.2, 0),
               ),
             );
       },
       [animationController],
     );
-    useEffect(
-      () {
-        if (showLabel) {
-          Future(() async {
-            await animationController.forward(from: 0);
-            // TODO(mono): Staggered animationにしたい
-            await animationController.reverse();
-          });
-        }
-        return null;
-      },
-      [showLabel],
-    );
+    ref.listen(showLabel, (_, bool showLabel) {
+      if (showLabel) {
+        Future(() async {
+          // TODO(mono): Staggered animationにしたい
+          await animationController.forward(from: 0);
+          await animationController.reverse();
+        });
+      }
+    });
     final card = Card(
       clipBehavior: Clip.hardEdge,
       child: Ink.image(
@@ -153,7 +148,7 @@ class _ChoiceCard extends HookConsumerWidget {
           },
           child: AnimatedOpacity(
             duration: const Duration(milliseconds: 400),
-            opacity: showLabel ? 1 : 0,
+            opacity: ref.watch(showLabel) ? 1 : 0,
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Container(
