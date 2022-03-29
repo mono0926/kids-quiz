@@ -11,6 +11,9 @@ final choicesRef = Provider(
 );
 
 final choicesProvider = StreamProvider((ref) {
+  // アップロードしたクイズの権限周りを真っ当に整えるまではデフォルトのクイズのみ
+  return Stream.value(_defaultChoices);
+  // ignore: dead_code
   return ref
       .watch(choicesRef)
       .orderBy(TimestampField.createdAt, descending: true)
