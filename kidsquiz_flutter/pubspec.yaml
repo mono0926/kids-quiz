@@ -1,47 +1,44 @@
-name: kids_quiz
-description: A new Flutter application.
+name: kidsquiz
+description: A new Flutter project.
+publish_to: 'none'
 version: 1.0.0+1
 environment:
-  sdk: ">=2.6.0 <3.0.0"
-  flutter: ">=1.14.6 <2.0.0"
+  sdk: '>=2.16.2 <3.0.0'
 dependencies:
+  audioplayers:
+  cloud_firestore:
+  confetti:
+  cupertino_icons:
+  extended_image:
+  firebase_analytics: any
+  firebase_app_check: any
+  firebase_auth: any
+  firebase_core:
+  firebase_crashlytics:
+  firebase_dynamic_links: any
+  firebase_in_app_messaging: any
+  firebase_messaging: any
+  firebase_performance: any
+  firebase_remote_config: any
+  firebase_storage: any
   flutter:
     sdk: flutter
-  adaptive_dialog:
-  animations:
-  cupertino_icons:
-  freezed_annotation:
-  mono_kit: ^0.14.0-dev
-  provider:
+  flutter_hooks:
+  flutter_riverpod:
   flutter_tts:
-  vsync_provider:
-  audioplayers:
-  confetti:
-    git: https://github.com/mono0926/flutter_confetti.git
-  disposable_provider:
-  cached_network_image:
-  firestore_ref: ^0.8.0-dev
-  image_picker:
-  permission_handler:
-  image_cropper:
+  freezed_annotation:
+  gap:
+  go_router: any
+  hooks_riverpod:
   json_annotation:
-  firebase_storage:
-  rxdart:
-  collection:
-  flutter_image_compress:
-  google_sign_in:
-  # TODO(mono): Bug: https://github.com/FirebaseExtended/flutterfire/issues/1858#issuecomment-592439327
-  firebase_core: 0.4.4
-  firebase_auth: 0.15.4
-  flutter_auth_buttons:
-dependency_overrides:
-  provider: 4.1.0-dev
+  simple_logger:
 dev_dependencies:
+  build_runner:
+  flutter_lints:
   flutter_test:
     sdk: flutter
-  build_runner: any
   freezed: any
-  json_serializable: any
+  json_serializable:
   pedantic_mono:
 flutter:
   uses-material-design: true

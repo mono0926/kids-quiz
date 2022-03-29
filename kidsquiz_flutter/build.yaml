@@ -1,0 +1,15 @@
+targets:
+  $default:
+    builders:
+      # freezed:
+      #   generate_for:
+      #     include:
+      #       - lib/model/entity/**/*.dart
+      #       - lib/util/firestore/**/*.dart
+      json_serializable:
+        # generate_for:
+        #   include:
+        #     - lib/model/entity/**/*.dart
+        options:
+          any_map: true
+          explicit_to_json: true

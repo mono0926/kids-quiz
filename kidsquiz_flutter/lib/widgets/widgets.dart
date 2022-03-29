@@ -1,1 +1,5 @@
-export 'add_choice_fab.dart';
+import 'package:flutter/material.dart';
+
+const centeredCircularProgressIndicator = Center(
+  child: CircularProgressIndicator.adaptive(),
+);

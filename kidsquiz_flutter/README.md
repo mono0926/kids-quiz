@@ -1,4 +1,4 @@
-# kids_quiz
+# kidsquiz
 
 A new Flutter project.
 
