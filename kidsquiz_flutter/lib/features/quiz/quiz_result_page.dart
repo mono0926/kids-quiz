@@ -31,9 +31,10 @@ class QuizResultPage extends ConsumerWidget {
                 children: const [
                   _Name(),
                   Gap(16),
-                  _Image(),
+                  Expanded(child: _Image()),
                   Gap(24),
                   _NextButton(),
+                  Gap(8),
                 ],
               ),
             ),
@@ -69,15 +70,17 @@ class _Image extends ConsumerWidget {
     final quiz = ref.watch(quizProvider).value!;
     return FractionallySizedBox(
       widthFactor: 0.9,
-      child: AspectRatio(
-        aspectRatio: 1,
-        child: Hero(
-          tag: quiz.correctChoice.entity.imageUrl,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: ExtendedImage.network(
-              quiz.correctChoice.entity.imageUrl,
-              fit: BoxFit.fitWidth,
+      child: Center(
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Hero(
+            tag: quiz.correctChoice.entity.imageUrl,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: ExtendedImage.network(
+                quiz.correctChoice.entity.imageUrl,
+                fit: BoxFit.fitWidth,
+              ),
             ),
           ),
         ),

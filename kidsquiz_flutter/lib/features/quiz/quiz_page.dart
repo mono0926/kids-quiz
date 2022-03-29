@@ -29,28 +29,35 @@ class QuizPage extends ConsumerWidget {
             ),
             body: SafeArea(
               child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const Gap(8),
                   Hero(
                     tag: quiz.correctChoice.entity.name,
                     child: const _QuestionButton(),
                   ),
                   const Gap(16),
-                  GridView.count(
-                    physics: const NeverScrollableScrollPhysics(),
-                    padding: const EdgeInsets.all(8),
-                    crossAxisSpacing: 4,
-                    mainAxisSpacing: 4,
-                    shrinkWrap: true,
-                    crossAxisCount: 2,
-                    children: quiz.choices
-                        .map(
-                          (choice) => _ChoiceCard(
-                            choice: choice,
-                          ),
-                        )
-                        .toList(),
+                  Expanded(
+                    child: Center(
+                      child: AspectRatio(
+                        aspectRatio: 1,
+                        child: GridView.count(
+                          physics: const NeverScrollableScrollPhysics(),
+                          padding: const EdgeInsets.all(8),
+                          crossAxisSpacing: 4,
+                          mainAxisSpacing: 4,
+                          shrinkWrap: true,
+                          crossAxisCount: 2,
+                          children: quiz.choices
+                              .map(
+                                (choice) => _ChoiceCard(
+                                  choice: choice,
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
