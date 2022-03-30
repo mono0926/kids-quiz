@@ -32,6 +32,9 @@ class QuizAnswerNotifier extends StateNotifier<QuizAnswerState> {
 
     if (correct) {
       _read(audioPlayerProvider).play('cheer.mp3');
+      state = state.copyWith(
+        correctChoice: choice,
+      );
       _read(routerProvider).goNamed(QuizResultPage.routeName);
     } else {
       state = state.copyWith(
@@ -48,6 +51,7 @@ class QuizAnswerNotifier extends StateNotifier<QuizAnswerState> {
 class QuizAnswerState with _$QuizAnswerState {
   const factory QuizAnswerState({
     @Default(<Document<Choice>>{}) Set<Document<Choice>> incorrectChoices,
+    Document<Choice>? correctChoice,
   }) = _QuizAnswerState;
   const QuizAnswerState._();
 }

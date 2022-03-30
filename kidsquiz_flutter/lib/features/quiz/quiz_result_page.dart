@@ -5,6 +5,7 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:kidsquiz/features/quiz/quiz_answer_notifier.dart';
 import 'package:kidsquiz/features/quiz/quiz_notifier.dart';
 import 'package:kidsquiz/router.dart';
 
@@ -50,11 +51,13 @@ class _Name extends ConsumerWidget {
   const _Name({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quiz = ref.watch(quizProvider).value!;
+    final choice = ref.watch(
+      quizAnswerProvider.select((s) => s.correctChoice!),
+    );
     return Hero(
-      tag: quiz.correctChoice.entity.name,
+      tag: choice.entity.name,
       child: Text(
-        quiz.correctChoice.entity.name,
+        choice.entity.name,
         style: Theme.of(context).textTheme.headline4!.copyWith(
               color: Theme.of(context).colorScheme.primary,
             ),
@@ -67,18 +70,20 @@ class _Image extends ConsumerWidget {
   const _Image({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quiz = ref.watch(quizProvider).value!;
+    final choice = ref.watch(
+      quizAnswerProvider.select((s) => s.correctChoice!),
+    );
     return FractionallySizedBox(
       widthFactor: 0.9,
       child: Center(
         child: AspectRatio(
           aspectRatio: 1,
           child: Hero(
-            tag: quiz.correctChoice.entity.imageUrl,
+            tag: choice.entity.imageUrl,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: ExtendedImage.network(
-                quiz.correctChoice.entity.imageUrl,
+                choice.entity.imageUrl,
                 fit: BoxFit.fitWidth,
               ),
             ),
@@ -108,8 +113,8 @@ class _NextButton extends ConsumerWidget {
           ),
         ),
         onPressed: () {
-          ref.read(quizProvider.notifier).next();
           ref.read(routerProvider).goNamed(QuizPage.routeName);
+          ref.read(quizProvider.notifier).next();
         },
       ),
     );

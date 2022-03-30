@@ -19,9 +19,11 @@ class _$QuizAnswerStateTearOff {
   const _$QuizAnswerStateTearOff();
 
   _QuizAnswerState call(
-      {Set<Document<Choice>> incorrectChoices = const <Document<Choice>>{}}) {
+      {Set<Document<Choice>> incorrectChoices = const <Document<Choice>>{},
+      Document<Choice>? correctChoice}) {
     return _QuizAnswerState(
       incorrectChoices: incorrectChoices,
+      correctChoice: correctChoice,
     );
   }
 }
@@ -33,6 +35,7 @@ const $QuizAnswerState = _$QuizAnswerStateTearOff();
 mixin _$QuizAnswerState {
   Set<Document<Choice>> get incorrectChoices =>
       throw _privateConstructorUsedError;
+  Document<Choice>? get correctChoice => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $QuizAnswerStateCopyWith<QuizAnswerState> get copyWith =>
@@ -44,7 +47,11 @@ abstract class $QuizAnswerStateCopyWith<$Res> {
   factory $QuizAnswerStateCopyWith(
           QuizAnswerState value, $Res Function(QuizAnswerState) then) =
       _$QuizAnswerStateCopyWithImpl<$Res>;
-  $Res call({Set<Document<Choice>> incorrectChoices});
+  $Res call(
+      {Set<Document<Choice>> incorrectChoices,
+      Document<Choice>? correctChoice});
+
+  $DocumentCopyWith<Choice, $Res>? get correctChoice;
 }
 
 /// @nodoc
@@ -59,13 +66,29 @@ class _$QuizAnswerStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? incorrectChoices = freezed,
+    Object? correctChoice = freezed,
   }) {
     return _then(_value.copyWith(
       incorrectChoices: incorrectChoices == freezed
           ? _value.incorrectChoices
           : incorrectChoices // ignore: cast_nullable_to_non_nullable
               as Set<Document<Choice>>,
+      correctChoice: correctChoice == freezed
+          ? _value.correctChoice
+          : correctChoice // ignore: cast_nullable_to_non_nullable
+              as Document<Choice>?,
     ));
+  }
+
+  @override
+  $DocumentCopyWith<Choice, $Res>? get correctChoice {
+    if (_value.correctChoice == null) {
+      return null;
+    }
+
+    return $DocumentCopyWith<Choice, $Res>(_value.correctChoice!, (value) {
+      return _then(_value.copyWith(correctChoice: value));
+    });
   }
 }
 
@@ -76,7 +99,12 @@ abstract class _$QuizAnswerStateCopyWith<$Res>
           _QuizAnswerState value, $Res Function(_QuizAnswerState) then) =
       __$QuizAnswerStateCopyWithImpl<$Res>;
   @override
-  $Res call({Set<Document<Choice>> incorrectChoices});
+  $Res call(
+      {Set<Document<Choice>> incorrectChoices,
+      Document<Choice>? correctChoice});
+
+  @override
+  $DocumentCopyWith<Choice, $Res>? get correctChoice;
 }
 
 /// @nodoc
@@ -93,12 +121,17 @@ class __$QuizAnswerStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? incorrectChoices = freezed,
+    Object? correctChoice = freezed,
   }) {
     return _then(_QuizAnswerState(
       incorrectChoices: incorrectChoices == freezed
           ? _value.incorrectChoices
           : incorrectChoices // ignore: cast_nullable_to_non_nullable
               as Set<Document<Choice>>,
+      correctChoice: correctChoice == freezed
+          ? _value.correctChoice
+          : correctChoice // ignore: cast_nullable_to_non_nullable
+              as Document<Choice>?,
     ));
   }
 }
@@ -106,16 +139,19 @@ class __$QuizAnswerStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_QuizAnswerState extends _QuizAnswerState {
-  const _$_QuizAnswerState({this.incorrectChoices = const <Document<Choice>>{}})
+  const _$_QuizAnswerState(
+      {this.incorrectChoices = const <Document<Choice>>{}, this.correctChoice})
       : super._();
 
   @JsonKey()
   @override
   final Set<Document<Choice>> incorrectChoices;
+  @override
+  final Document<Choice>? correctChoice;
 
   @override
   String toString() {
-    return 'QuizAnswerState(incorrectChoices: $incorrectChoices)';
+    return 'QuizAnswerState(incorrectChoices: $incorrectChoices, correctChoice: $correctChoice)';
   }
 
   @override
@@ -124,12 +160,16 @@ class _$_QuizAnswerState extends _QuizAnswerState {
         (other.runtimeType == runtimeType &&
             other is _QuizAnswerState &&
             const DeepCollectionEquality()
-                .equals(other.incorrectChoices, incorrectChoices));
+                .equals(other.incorrectChoices, incorrectChoices) &&
+            const DeepCollectionEquality()
+                .equals(other.correctChoice, correctChoice));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(incorrectChoices));
+      runtimeType,
+      const DeepCollectionEquality().hash(incorrectChoices),
+      const DeepCollectionEquality().hash(correctChoice));
 
   @JsonKey(ignore: true)
   @override
@@ -138,12 +178,15 @@ class _$_QuizAnswerState extends _QuizAnswerState {
 }
 
 abstract class _QuizAnswerState extends QuizAnswerState {
-  const factory _QuizAnswerState({Set<Document<Choice>> incorrectChoices}) =
-      _$_QuizAnswerState;
+  const factory _QuizAnswerState(
+      {Set<Document<Choice>> incorrectChoices,
+      Document<Choice>? correctChoice}) = _$_QuizAnswerState;
   const _QuizAnswerState._() : super._();
 
   @override
   Set<Document<Choice>> get incorrectChoices;
+  @override
+  Document<Choice>? get correctChoice;
   @override
   @JsonKey(ignore: true)
   _$QuizAnswerStateCopyWith<_QuizAnswerState> get copyWith =>
