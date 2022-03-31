@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mono_kit/extensions/extensions.dart';
 
 import 'router.dart';
 
@@ -12,17 +13,8 @@ class App extends ConsumerWidget {
     return MaterialApp.router(
       title: 'Kids Quiz',
       // TODO(mono): 調整
-      theme: ThemeData.from(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
-        ),
-      ),
-      darkTheme: ThemeData.from(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
-          brightness: Brightness.dark,
-        ),
-      ),
+      theme: lightTheme(),
+      darkTheme: darkTheme(),
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
     );
