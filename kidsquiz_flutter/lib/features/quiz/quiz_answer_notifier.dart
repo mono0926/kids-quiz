@@ -35,7 +35,7 @@ class QuizAnswerNotifier extends StateNotifier<QuizAnswerState> {
       state = state.copyWith(
         correctChoice: choice,
       );
-      _read(routerProvider).goNamed(QuizResultPage.routeName);
+      QuizResultPage.push(_read(routerProvider).context);
     } else {
       state = state.copyWith(
         incorrectChoices: {

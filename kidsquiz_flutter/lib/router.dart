@@ -1,8 +1,9 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidsquiz/features/quiz/quiz_page.dart';
-
-import 'features/quiz/quiz_result_page.dart';
+import 'package:mono_kit/widgets/go_router_location_button.dart';
 
 final routerProvider = Provider(
   (ref) => GoRouter(
@@ -12,11 +13,14 @@ final routerProvider = Provider(
         name: QuizPage.routeName,
         builder: (context, state) => const QuizPage(),
       ),
-      GoRoute(
-        path: '/result',
-        name: QuizResultPage.routeName,
-        builder: (context, state) => const QuizResultPage(),
-      ),
     ],
+    navigatorBuilder: (context, state, child) => GoRouterLocationButton(
+      child: child,
+      visible: kDebugMode,
+    ),
   ),
 );
+
+extension GoRouterX on GoRouter {
+  BuildContext get context => navigator!.context;
+}

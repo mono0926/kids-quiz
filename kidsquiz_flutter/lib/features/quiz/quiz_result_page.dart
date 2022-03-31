@@ -7,14 +7,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:kidsquiz/features/quiz/quiz_answer_notifier.dart';
 import 'package:kidsquiz/features/quiz/quiz_notifier.dart';
-import 'package:kidsquiz/router.dart';
-
-import 'quiz_page.dart';
+import 'package:mono_kit/mono_kit.dart';
 
 class QuizResultPage extends ConsumerWidget {
-  const QuizResultPage({Key? key}) : super(key: key);
+  const QuizResultPage._({Key? key}) : super(key: key);
 
   static const routeName = 'result';
+
+  static void push(BuildContext context) {
+    Navigator.of(context).push<void>(
+      FadePageRoute(
+        builder: (context) => const QuizResultPage._(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,20 +28,26 @@ class QuizResultPage extends ConsumerWidget {
       children: [
         Scaffold(
           appBar: AppBar(
-              // TODO(mono): あとで
-              // title: const Text(appName),
-              ),
+            automaticallyImplyLeading: false,
+            // TODO(mono): あとで
+            // title: const Text(appName),
+          ),
           body: SafeArea(
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: const [
+                  Spacer(),
                   _Name(),
-                  Gap(16),
-                  Expanded(child: _Image()),
-                  Gap(24),
-                  _NextButton(),
                   Gap(8),
+                  Expanded(
+                    flex: 20,
+                    child: _Image(),
+                  ),
+                  Spacer(),
+                  _NextButton(),
+                  Gap(16),
                 ],
               ),
             ),
@@ -61,6 +73,7 @@ class _Name extends ConsumerWidget {
         style: Theme.of(context).textTheme.headline4!.copyWith(
               color: Theme.of(context).colorScheme.primary,
             ),
+        textAlign: TextAlign.center,
       ),
     );
   }
@@ -113,7 +126,7 @@ class _NextButton extends ConsumerWidget {
           ),
         ),
         onPressed: () {
-          ref.read(routerProvider).goNamed(QuizPage.routeName);
+          Navigator.of(context).pop();
           ref.read(quizProvider.notifier).next();
         },
       ),

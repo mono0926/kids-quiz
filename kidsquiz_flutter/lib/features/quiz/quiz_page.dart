@@ -31,12 +31,11 @@ class QuizPage extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const Gap(8),
+                  const Gap(16),
                   Hero(
                     tag: quiz.correctChoice.entity.name,
                     child: const _QuestionButton(),
                   ),
-                  const Gap(16),
                   Expanded(
                     child: Center(
                       child: AspectRatio(

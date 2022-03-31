@@ -24,13 +24,14 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_hooks:
-  flutter_riverpod: '>=2.0.0-dev'
+  flutter_riverpod:
   flutter_tts:
   freezed_annotation:
   gap:
   go_router: any
-  hooks_riverpod: '>=2.0.0-dev'
+  hooks_riverpod:
   json_annotation:
+  mono_kit:
   riverpod:
   simple_logger:
 dev_dependencies:
@@ -41,6 +42,8 @@ dev_dependencies:
   freezed: any
   json_serializable:
   pedantic_mono:
+dependency_overrides:
+  flutter_riverpod: '>=2.0.0-dev'
 flutter:
   uses-material-design: true
   assets:
