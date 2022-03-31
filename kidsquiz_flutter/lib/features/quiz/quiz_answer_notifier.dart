@@ -10,7 +10,7 @@ import 'quiz_notifier.dart';
 part 'quiz_answer_notifier.freezed.dart';
 
 final quizAnswerProvider =
-    StateNotifierProvider.autoDispose<QuizAnswerNotifier, QuizAnswerState>(
+    StateNotifierProvider<QuizAnswerNotifier, QuizAnswerState>(
   (ref) => QuizAnswerNotifier(ref.read),
 );
 
@@ -32,6 +32,7 @@ class QuizAnswerNotifier extends StateNotifier<QuizAnswerState> {
 
     if (correct) {
       _read(audioPlayerProvider).play('cheer.mp3');
+      _reset();
       state = state.copyWith(
         correctChoice: choice,
       );
@@ -44,6 +45,10 @@ class QuizAnswerNotifier extends StateNotifier<QuizAnswerState> {
         },
       );
     }
+  }
+
+  void _reset() {
+    state = const QuizAnswerState();
   }
 }
 
