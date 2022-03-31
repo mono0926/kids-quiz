@@ -11,6 +11,12 @@
       "args": ["--web-port=57220"]
     },
     {
+      "name": "kidsquiz_flutter (tesla)",
+      "request": "launch",
+      "type": "dart",
+      "args": ["--web-port=57220", "--dart-define=TESLA=true"]
+    },
+    {
       "name": "kidsquiz_flutter (profile mode)",
       "request": "launch",
       "type": "dart",

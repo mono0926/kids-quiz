@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kidsquiz/main.dart';
 import 'package:kidsquiz/model/model.dart';
 import 'package:kidsquiz/util/util.dart';
 
@@ -12,7 +13,7 @@ final choicesRef = Provider(
 
 final choicesProvider = StreamProvider((ref) {
   // アップロードしたクイズの権限周りを真っ当に整えるまではデフォルトのクイズのみ
-  return Stream.value(_defaultChoices);
+  return Stream.value(isTeslaMode ? _teslaChoices : _defaultChoices);
   // ignore: dead_code
   return ref
       .watch(choicesRef)
@@ -30,6 +31,38 @@ final choicesProvider = StreamProvider((ref) {
         ],
       );
 });
+
+enum Tesla { s, e, x, y }
+
+extension on Tesla {
+  String get label {
+    switch (this) {
+      case Tesla.s:
+        return 'Model S';
+      case Tesla.e:
+        return 'Model 3';
+      case Tesla.x:
+        return 'Model X';
+      case Tesla.y:
+        return 'Model Y';
+    }
+  }
+}
+
+final _teslaChoices = Tesla.values
+    .map(
+      (t) => ['l', 'r', 'b'].map(
+        (group) => Choice(
+          name: t.label,
+          imageUrl:
+              'https://firebasestorage.googleapis.com/v0/b/kids-quiz-mono.appspot.com/o/images%2Ftesla%2F${t.name}%2F$group.jpg?alt=media',
+          group: group,
+        ),
+      ),
+    )
+    .expand((e) => e)
+    .map((c) => Document<Choice>(null, c))
+    .toList();
 
 final _defaultChoices = const [
   Choice(

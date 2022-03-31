@@ -17,5 +17,6 @@ Future<void> main() async {
   );
 }
 
+const isTeslaMode = bool.fromEnvironment('TESLA');
 // TODO(mono): l10n
-const appName = 'キッズクイズ';
+const appName = isTeslaMode ? '🚘 TESLA S3XY クイズ 👯‍♀️' : 'キッズクイズ';

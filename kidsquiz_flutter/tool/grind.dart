@@ -21,7 +21,7 @@ Future<void> deployWeb() async {
 }
 
 @Task('Deploy Web Tesla')
-Future<void> deployWebAdmin() async {
+Future<void> deployWebTesla() async {
   await _deployWeb(_WebAppType.tesla);
 }
 
