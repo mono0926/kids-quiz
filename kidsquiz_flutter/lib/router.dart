@@ -15,8 +15,8 @@ final routerProvider = Provider(
       ),
     ],
     navigatorBuilder: (context, state, child) => GoRouterLocationButton(
-      child: child,
       visible: kDebugMode,
+      child: child,
     ),
   ),
 );
