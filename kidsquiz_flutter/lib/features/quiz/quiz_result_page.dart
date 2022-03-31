@@ -46,7 +46,7 @@ class QuizResultPage extends ConsumerWidget {
                     child: _Image(),
                   ),
                   Spacer(),
-                  _NextButton(),
+                  Center(child: _NextButton()),
                   Gap(16),
                 ],
               ),
@@ -113,23 +113,23 @@ class _NextButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    return FractionallySizedBox(
-      widthFactor: 0.9,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.all(8),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(
+          vertical: 12,
+          horizontal: 32,
         ),
-        child: Text(
-          'つぎへ',
-          style: theme.textTheme.headline5!.copyWith(
-            color: colorScheme.onSecondary,
-          ),
-        ),
-        onPressed: () {
-          Navigator.of(context).pop();
-          ref.read(quizProvider.notifier).next();
-        },
       ),
+      child: Text(
+        'つぎへ',
+        style: theme.textTheme.headline5!.copyWith(
+          color: colorScheme.onSecondary,
+        ),
+      ),
+      onPressed: () {
+        Navigator.of(context).pop();
+        ref.read(quizProvider.notifier).next();
+      },
     );
   }
 }

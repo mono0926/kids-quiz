@@ -69,38 +69,41 @@ class _QuestionButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quiz = ref.watch(quizProvider).value;
+    final quiz = ref.watch(quizProvider).value!;
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
-    return quiz == null
-        ? centeredCircularProgressIndicator
-        : FractionallySizedBox(
-            widthFactor: 0.9,
-            child: ElevatedButton(
-              onPressed: () => ref.read(quizSpeechServiceProvider).speech(),
-              child: Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(
-                      text: quiz.correctChoice.entity.name,
-                      style: textTheme.headline5!.copyWith(
-                        color: colorScheme.onSecondary,
-                      ),
-                    ),
-                    const TextSpan(text: ' '),
-                    TextSpan(
-                      // TODO(mono): l10n
-                      text: 'はどれかな？',
-                      style: textTheme.headline6!.copyWith(
-                        color: colorScheme.onSecondary,
-                      ),
-                    ),
-                  ],
+    return Center(
+      child: ElevatedButton(
+        onPressed: () => ref.read(quizSpeechServiceProvider).speech(),
+        style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(
+            vertical: 12,
+            horizontal: 32,
+          ),
+        ),
+        child: Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: quiz.correctChoice.entity.name,
+                style: textTheme.headline5!.copyWith(
+                  color: colorScheme.onSecondary,
                 ),
               ),
-            ),
-          );
+              const TextSpan(text: ' '),
+              TextSpan(
+                // TODO(mono): l10n
+                text: 'はどれかな？',
+                style: textTheme.headline6!.copyWith(
+                  color: colorScheme.onSecondary,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
