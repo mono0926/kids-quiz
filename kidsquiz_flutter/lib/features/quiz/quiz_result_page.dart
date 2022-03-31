@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:kidsquiz/features/quiz/quiz_answer_notifier.dart';
 import 'package:kidsquiz/features/quiz/quiz_notifier.dart';
+import 'package:kidsquiz/main.dart';
 import 'package:mono_kit/mono_kit.dart';
 
 class QuizResultPage extends ConsumerWidget {
@@ -29,8 +30,7 @@ class QuizResultPage extends ConsumerWidget {
         Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            // TODO(mono): あとで
-            // title: const Text(appName),
+            title: const Text(appName),
           ),
           body: SafeArea(
             child: Center(

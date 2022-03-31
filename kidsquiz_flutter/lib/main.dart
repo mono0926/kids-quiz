@@ -16,3 +16,6 @@ Future<void> main() async {
     ),
   );
 }
+
+// TODO(mono): l10n
+const appName = 'キッズクイズ';
