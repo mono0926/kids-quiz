@@ -25,36 +25,39 @@ class QuizResultPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Stack(
-      children: [
-        Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            title: const Text(appName),
-          ),
-          body: SafeArea(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: const [
-                  Spacer(),
-                  _Name(),
-                  Gap(8),
-                  Expanded(
-                    flex: 20,
-                    child: _Image(),
-                  ),
-                  Spacer(),
-                  Center(child: _NextButton()),
-                  Gap(16),
-                ],
+    return WillPopScope(
+      onWillPop: () => Future.value(false),
+      child: Stack(
+        children: [
+          Scaffold(
+            appBar: AppBar(
+              automaticallyImplyLeading: false,
+              title: const Text(appName),
+            ),
+            body: SafeArea(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: const [
+                    Spacer(),
+                    _Name(),
+                    Gap(8),
+                    Expanded(
+                      flex: 20,
+                      child: _Image(),
+                    ),
+                    Spacer(),
+                    Center(child: _NextButton()),
+                    Gap(16),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        const _Confetti(),
-      ],
+          const _Confetti(),
+        ],
+      ),
     );
   }
 }
