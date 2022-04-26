@@ -26,7 +26,10 @@ Future<void> deployWebTesla() async {
 }
 
 Future<void> _deployWeb(_WebAppType type) async {
-  await _build(buildTarget: _BuildTarget.web);
+  await _build(
+    buildTarget: _BuildTarget.web,
+    webAppType: type,
+  );
   final typeString = type.name;
   const firebasePath = '../kidsquiz_firebase/';
   final targetDir = Directory(
@@ -59,6 +62,7 @@ Future<void> _deployWeb(_WebAppType type) async {
 
 Future<void> _build({
   required _BuildTarget buildTarget,
+  required _WebAppType webAppType,
 }) async {
   run(
     'flutter',
@@ -70,6 +74,7 @@ Future<void> _build({
         // https://twitter.com/_mono/status/1510937246773702658
         'canvaskit',
       ],
+      if (webAppType == _WebAppType.tesla) '--dart-define=TESLA=true',
     ],
   );
 }
