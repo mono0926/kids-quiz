@@ -14,18 +14,22 @@ class TextToSpeechService {
           _tts.awaitSpeakCompletion(true),
         ],
       );
-
+      _tts.completionHandler = () => _completed = true;
       _completer.complete();
     });
   }
 
   final _completer = Completer<void>();
   final _tts = FlutterTts();
+  var _completed = true;
 
   Future<void> speak(String text) async {
     await _completer.future;
-    await _tts.stop();
-    await Future<void>.delayed(const Duration(milliseconds: 100));
+    if (!_completed) {
+      await _tts.stop();
+      await Future<void>.delayed(const Duration(milliseconds: 100));
+    }
+    _completed = false;
     await _tts.speak(text);
   }
 }

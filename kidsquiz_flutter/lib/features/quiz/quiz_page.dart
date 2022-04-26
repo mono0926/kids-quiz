@@ -147,9 +147,12 @@ class _ChoiceCard extends HookConsumerWidget {
     });
     final card = Card(
       clipBehavior: Clip.hardEdge,
+      color: Theme.of(context).brightness == Brightness.light
+          ? Colors.white
+          : Colors.black,
       child: Ink.image(
         image: ExtendedNetworkImageProvider(choice.entity.imageUrl),
-        fit: BoxFit.cover,
+        fit: isTeslaMode ? null : BoxFit.cover,
         child: InkWell(
           onTap: () {
             ref.read(quizAnswerProvider.notifier).select(choice);
