@@ -8,7 +8,13 @@ final textToSpeechService = Provider((ref) => TextToSpeechService());
 class TextToSpeechService {
   TextToSpeechService() {
     Future(() async {
-      await _tts.setLanguage('ja-JP');
+      await Future.wait<void>(
+        [
+          _tts.setLanguage('ja-JP'),
+          _tts.awaitSpeakCompletion(true),
+        ],
+      );
+
       _completer.complete();
     });
   }
@@ -19,6 +25,7 @@ class TextToSpeechService {
   Future<void> speak(String text) async {
     await _completer.future;
     await _tts.stop();
+    await Future<void>.delayed(const Duration(milliseconds: 100));
     await _tts.speak(text);
   }
 }
