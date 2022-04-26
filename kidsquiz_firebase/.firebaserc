@@ -7,6 +7,9 @@
       "hosting": {
         "tesla": [
           "s3xy-quiz"
+        ],
+        "app": [
+          "kids-quiz-mono"
         ]
       }
     }
