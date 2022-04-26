@@ -37,6 +37,7 @@ dependencies:
   path:
   riverpod:
   simple_logger:
+  web_browser_detect:
 dev_dependencies:
   build_runner:
   flutter_lints:

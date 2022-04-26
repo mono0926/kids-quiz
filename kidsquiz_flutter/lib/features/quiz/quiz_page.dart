@@ -9,6 +9,7 @@ import 'package:kidsquiz/main.dart';
 import 'package:kidsquiz/model/model.dart';
 import 'package:kidsquiz/util/util.dart';
 import 'package:kidsquiz/widgets/widgets.dart';
+import 'package:mono_kit/mono_kit.dart';
 
 import 'quiz_speech_service.dart';
 
@@ -20,45 +21,70 @@ class QuizPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final quiz = ref.watch(quizProvider).value;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     return quiz == null
         ? centeredCircularProgressIndicator
         : Scaffold(
             appBar: AppBar(
               title: const Text(appName),
             ),
-            body: SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const Gap(16),
-                  Hero(
-                    tag: quiz.correctChoice.entity.name,
-                    child: const _QuestionButton(),
-                  ),
-                  Expanded(
-                    child: Center(
-                      child: AspectRatio(
-                        aspectRatio: 1,
-                        child: GridView.count(
-                          physics: const NeverScrollableScrollPhysics(),
-                          padding: const EdgeInsets.all(8),
-                          crossAxisSpacing: 4,
-                          mainAxisSpacing: 4,
-                          shrinkWrap: true,
-                          crossAxisCount: 2,
-                          children: quiz.choices
-                              .map(
-                                (choice) => _ChoiceCard(
-                                  choice: choice,
-                                ),
-                              )
-                              .toList(),
-                        ),
+            body: Column(
+              children: [
+                AnimatedExpansionVisibility(
+                  isVisible: ref.watch(ttsBannerVisibilityProvider),
+                  child: MaterialBanner(
+                    backgroundColor: colorScheme.error.withOpacity(0.2),
+                    content: const Text(
+                      '⚠️ デスクトップ版Chrome以外の環境では、音声読み上げが機能しない可能性があります。',
+                    ),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => ref
+                            .read(ttsBannerVisibilityProvider.notifier)
+                            .dismiss(),
+                        child: const Text('閉じる'),
                       ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: SafeArea(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const Gap(16),
+                        Hero(
+                          tag: quiz.correctChoice.entity.name,
+                          child: const _QuestionButton(),
+                        ),
+                        Expanded(
+                          child: Center(
+                            child: AspectRatio(
+                              aspectRatio: 1,
+                              child: GridView.count(
+                                physics: const NeverScrollableScrollPhysics(),
+                                padding: const EdgeInsets.all(8),
+                                crossAxisSpacing: 4,
+                                mainAxisSpacing: 4,
+                                shrinkWrap: true,
+                                crossAxisCount: 2,
+                                children: quiz.choices
+                                    .map(
+                                      (choice) => _ChoiceCard(
+                                        choice: choice,
+                                      ),
+                                    )
+                                    .toList(),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           );
   }

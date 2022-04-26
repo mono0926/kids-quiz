@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:web_browser_detect/web_browser_detect.dart';
 
 final textToSpeechService = Provider((ref) => TextToSpeechService());
 
@@ -31,5 +33,40 @@ class TextToSpeechService {
     }
     _completed = false;
     await _tts.speak(text);
+  }
+}
+
+final ttsBannerVisibilityProvider =
+    StateNotifierProvider<TtsBannerVisibilityNotifier, bool>(
+  (ref) => TtsBannerVisibilityNotifier(ref.read),
+);
+
+class TtsBannerVisibilityNotifier extends StateNotifier<bool> {
+  TtsBannerVisibilityNotifier(this._read) : super(false) {
+    if (!kIsWeb) {
+      return;
+    }
+    final browser = Browser();
+    if (browser.browserAgent != BrowserAgent.Chrome) {
+      state = true;
+      return;
+    }
+    final platform = defaultTargetPlatform;
+    switch (platform) {
+      case TargetPlatform.iOS:
+        state = true;
+        break;
+      case TargetPlatform.android:
+      case TargetPlatform.fuchsia:
+      case TargetPlatform.linux:
+      case TargetPlatform.windows:
+      case TargetPlatform.macOS:
+        break;
+    }
+  }
+  final Reader _read;
+
+  void dismiss() {
+    state = false;
   }
 }
