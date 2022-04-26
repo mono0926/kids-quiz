@@ -15,6 +15,7 @@ final routerProvider = Provider(
       ),
     ],
     navigatorBuilder: (context, state, child) => GoRouterLocationButton(
+      // ignore: avoid_redundant_argument_values
       visible: kDebugMode,
       child: child,
     ),
