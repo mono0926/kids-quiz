@@ -1,0 +1,21 @@
+name: Comment gid
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened, edited, deleted, closed, reopened, labeled]
+
+concurrency:
+  group: single
+  cancel-in-progress: true
+
+jobs:
+  grasp_issue:
+    runs-on: ubuntu-latest
+    name: Grasp issue dependencies
+    steps:
+      - uses: actions/checkout@v3
+      - uses: k-nasa/gid@main
+        with:
+          label: '☂️ umbrella'
+          github_token: ${{secrets.GITHUB_TOKEN}}
