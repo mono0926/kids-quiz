@@ -38,11 +38,11 @@ class TextToSpeechService {
 
 final ttsBannerVisibilityProvider =
     StateNotifierProvider<TtsBannerVisibilityNotifier, bool>(
-  (ref) => TtsBannerVisibilityNotifier(ref.read),
+  (ref) => TtsBannerVisibilityNotifier(),
 );
 
 class TtsBannerVisibilityNotifier extends StateNotifier<bool> {
-  TtsBannerVisibilityNotifier(this._read) : super(false) {
+  TtsBannerVisibilityNotifier() : super(false) {
     if (!kIsWeb) {
       return;
     }
@@ -64,7 +64,6 @@ class TtsBannerVisibilityNotifier extends StateNotifier<bool> {
         break;
     }
   }
-  final Reader _read;
 
   void dismiss() {
     state = false;
