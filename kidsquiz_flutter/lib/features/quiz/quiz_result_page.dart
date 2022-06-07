@@ -116,8 +116,9 @@ class _NextButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
+    final foregroundColor = colorScheme.onPrimary;
+    return FilledButton(
+      style: FilledButton.styleFrom(
         padding: const EdgeInsets.symmetric(
           vertical: 12,
           horizontal: 32,
@@ -126,7 +127,7 @@ class _NextButton extends ConsumerWidget {
       child: Text(
         'つぎへ',
         style: theme.textTheme.headline5!.copyWith(
-          color: colorScheme.onSecondary,
+          color: foregroundColor,
         ),
       ),
       onPressed: () {

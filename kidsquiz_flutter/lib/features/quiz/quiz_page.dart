@@ -99,10 +99,11 @@ class _QuestionButton extends ConsumerWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
+    final foregroundColor = colorScheme.onPrimary;
     return Center(
-      child: ElevatedButton(
+      child: FilledButton(
         onPressed: () => ref.read(quizSpeechServiceProvider).speech(),
-        style: ElevatedButton.styleFrom(
+        style: FilledButton.styleFrom(
           padding: const EdgeInsets.symmetric(
             vertical: 12,
             horizontal: 32,
@@ -114,7 +115,7 @@ class _QuestionButton extends ConsumerWidget {
               TextSpan(
                 text: quiz.correctChoice.entity.name,
                 style: textTheme.headline5!.copyWith(
-                  color: colorScheme.onSecondary,
+                  color: foregroundColor,
                 ),
               ),
               const TextSpan(text: ' '),
@@ -122,7 +123,7 @@ class _QuestionButton extends ConsumerWidget {
                 // TODO(mono): l10n
                 text: 'はどれかな？',
                 style: textTheme.headline6!.copyWith(
-                  color: colorScheme.onSecondary,
+                  color: foregroundColor,
                 ),
               ),
             ],
