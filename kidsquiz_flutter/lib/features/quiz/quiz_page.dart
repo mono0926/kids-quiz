@@ -14,7 +14,7 @@ import 'package:mono_kit/mono_kit.dart';
 import 'quiz_speech_service.dart';
 
 class QuizPage extends ConsumerWidget {
-  const QuizPage({Key? key}) : super(key: key);
+  const QuizPage({super.key});
 
   static const routeName = 'quiz';
 
@@ -91,7 +91,7 @@ class QuizPage extends ConsumerWidget {
 }
 
 class _QuestionButton extends ConsumerWidget {
-  const _QuestionButton({Key? key}) : super(key: key);
+  const _QuestionButton();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -135,9 +135,8 @@ class _QuestionButton extends ConsumerWidget {
 
 class _ChoiceCard extends HookConsumerWidget {
   const _ChoiceCard({
-    Key? key,
     required this.choice,
-  }) : super(key: key);
+  });
 
   final Document<Choice> choice;
 

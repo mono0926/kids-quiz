@@ -11,7 +11,7 @@ import 'package:kidsquiz/main.dart';
 import 'package:mono_kit/mono_kit.dart';
 
 class QuizResultPage extends ConsumerWidget {
-  const QuizResultPage._({Key? key}) : super(key: key);
+  const QuizResultPage._();
 
   static const routeName = 'result';
 
@@ -63,7 +63,7 @@ class QuizResultPage extends ConsumerWidget {
 }
 
 class _Name extends ConsumerWidget {
-  const _Name({Key? key}) : super(key: key);
+  const _Name();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final choice = ref.watch(
@@ -83,7 +83,7 @@ class _Name extends ConsumerWidget {
 }
 
 class _Image extends ConsumerWidget {
-  const _Image({Key? key}) : super(key: key);
+  const _Image();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final choice = ref.watch(
@@ -111,7 +111,7 @@ class _Image extends ConsumerWidget {
 }
 
 class _NextButton extends ConsumerWidget {
-  const _NextButton({Key? key}) : super(key: key);
+  const _NextButton();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
@@ -138,7 +138,7 @@ class _NextButton extends ConsumerWidget {
 }
 
 class _Confetti extends ConsumerWidget {
-  const _Confetti({Key? key}) : super(key: key);
+  const _Confetti();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
