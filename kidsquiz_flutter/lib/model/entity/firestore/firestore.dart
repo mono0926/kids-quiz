@@ -1,1 +1,1 @@
-export 'choice/choice.dart';
+export 'choice.dart';

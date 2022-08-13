@@ -1,2 +1,6 @@
-export 'document/document.dart';
-export 'json_converter/json_converter.dart';
+export 'document.dart';
+
+class TimestampField {
+  static const createdAt = 'createdAt';
+  static const updatedAt = 'updatedAt';
+}

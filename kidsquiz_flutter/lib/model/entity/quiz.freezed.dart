@@ -12,24 +12,7 @@ part of 'quiz.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$QuizTearOff {
-  const _$QuizTearOff();
-
-  _Quiz call(
-      {required List<Document<Choice>> choices,
-      required Document<Choice> correctChoice}) {
-    return _Quiz(
-      choices: choices,
-      correctChoice: correctChoice,
-    );
-  }
-}
-
-/// @nodoc
-const $Quiz = _$QuizTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Quiz {
@@ -83,9 +66,9 @@ class _$QuizCopyWithImpl<$Res> implements $QuizCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$QuizCopyWith<$Res> implements $QuizCopyWith<$Res> {
-  factory _$QuizCopyWith(_Quiz value, $Res Function(_Quiz) then) =
-      __$QuizCopyWithImpl<$Res>;
+abstract class _$$_QuizCopyWith<$Res> implements $QuizCopyWith<$Res> {
+  factory _$$_QuizCopyWith(_$_Quiz value, $Res Function(_$_Quiz) then) =
+      __$$_QuizCopyWithImpl<$Res>;
   @override
   $Res call({List<Document<Choice>> choices, Document<Choice> correctChoice});
 
@@ -94,22 +77,22 @@ abstract class _$QuizCopyWith<$Res> implements $QuizCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$QuizCopyWithImpl<$Res> extends _$QuizCopyWithImpl<$Res>
-    implements _$QuizCopyWith<$Res> {
-  __$QuizCopyWithImpl(_Quiz _value, $Res Function(_Quiz) _then)
-      : super(_value, (v) => _then(v as _Quiz));
+class __$$_QuizCopyWithImpl<$Res> extends _$QuizCopyWithImpl<$Res>
+    implements _$$_QuizCopyWith<$Res> {
+  __$$_QuizCopyWithImpl(_$_Quiz _value, $Res Function(_$_Quiz) _then)
+      : super(_value, (v) => _then(v as _$_Quiz));
 
   @override
-  _Quiz get _value => super._value as _Quiz;
+  _$_Quiz get _value => super._value as _$_Quiz;
 
   @override
   $Res call({
     Object? choices = freezed,
     Object? correctChoice = freezed,
   }) {
-    return _then(_Quiz(
+    return _then(_$_Quiz(
       choices: choices == freezed
-          ? _value.choices
+          ? _value._choices
           : choices // ignore: cast_nullable_to_non_nullable
               as List<Document<Choice>>,
       correctChoice: correctChoice == freezed
@@ -123,11 +106,19 @@ class __$QuizCopyWithImpl<$Res> extends _$QuizCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Quiz extends _Quiz {
-  const _$_Quiz({required this.choices, required this.correctChoice})
-      : super._();
+  const _$_Quiz(
+      {required final List<Document<Choice>> choices,
+      required this.correctChoice})
+      : _choices = choices,
+        super._();
 
+  final List<Document<Choice>> _choices;
   @override
-  final List<Document<Choice>> choices;
+  List<Document<Choice>> get choices {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_choices);
+  }
+
   @override
   final Document<Choice> correctChoice;
 
@@ -140,8 +131,8 @@ class _$_Quiz extends _Quiz {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Quiz &&
-            const DeepCollectionEquality().equals(other.choices, choices) &&
+            other is _$_Quiz &&
+            const DeepCollectionEquality().equals(other._choices, _choices) &&
             const DeepCollectionEquality()
                 .equals(other.correctChoice, correctChoice));
   }
@@ -149,19 +140,19 @@ class _$_Quiz extends _Quiz {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(choices),
+      const DeepCollectionEquality().hash(_choices),
       const DeepCollectionEquality().hash(correctChoice));
 
   @JsonKey(ignore: true)
   @override
-  _$QuizCopyWith<_Quiz> get copyWith =>
-      __$QuizCopyWithImpl<_Quiz>(this, _$identity);
+  _$$_QuizCopyWith<_$_Quiz> get copyWith =>
+      __$$_QuizCopyWithImpl<_$_Quiz>(this, _$identity);
 }
 
 abstract class _Quiz extends Quiz {
   const factory _Quiz(
-      {required List<Document<Choice>> choices,
-      required Document<Choice> correctChoice}) = _$_Quiz;
+      {required final List<Document<Choice>> choices,
+      required final Document<Choice> correctChoice}) = _$_Quiz;
   const _Quiz._() : super._();
 
   @override
@@ -170,5 +161,5 @@ abstract class _Quiz extends Quiz {
   Document<Choice> get correctChoice;
   @override
   @JsonKey(ignore: true)
-  _$QuizCopyWith<_Quiz> get copyWith => throw _privateConstructorUsedError;
+  _$$_QuizCopyWith<_$_Quiz> get copyWith => throw _privateConstructorUsedError;
 }

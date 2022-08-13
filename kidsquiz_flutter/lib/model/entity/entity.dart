@@ -1,2 +1,2 @@
 export 'firestore/firestore.dart';
-export 'quiz/quiz.dart';
+export 'quiz.dart';

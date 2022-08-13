@@ -11,17 +11,20 @@ _$_Choice _$$_ChoiceFromJson(Map json) => _$_Choice(
       imageUrl: json['imageUrl'] as String,
       group: json['group'] as String,
       createdAt: json['createdAt'] == null
-          ? const FirTimestamp.serverTimestamp()
-          : const FirTimestampConverter().fromJson(json['createdAt'] as Object),
+          ? const UnionTimestamp.serverTimestamp()
+          : const UnionTimestampConverter()
+              .fromJson(json['createdAt'] as Object),
       updatedAt: json['updatedAt'] == null
-          ? const FirTimestamp.serverTimestamp()
-          : const FirTimestampConverter().fromJson(json['updatedAt'] as Object),
+          ? const UnionTimestamp.serverTimestamp()
+          : UnionTimestampConverter.alwaysServerTimestampConverter
+              .fromJson(json['updatedAt'] as Object),
     );
 
 Map<String, dynamic> _$$_ChoiceToJson(_$_Choice instance) => <String, dynamic>{
       'name': instance.name,
       'imageUrl': instance.imageUrl,
       'group': instance.group,
-      'createdAt': const FirTimestampConverter().toJson(instance.createdAt),
-      'updatedAt': const FirTimestampConverter().toJson(instance.updatedAt),
+      'createdAt': const UnionTimestampConverter().toJson(instance.createdAt),
+      'updatedAt': UnionTimestampConverter.alwaysServerTimestampConverter
+          .toJson(instance.updatedAt),
     };

@@ -12,24 +12,7 @@ part of 'quiz_answer_notifier.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$QuizAnswerStateTearOff {
-  const _$QuizAnswerStateTearOff();
-
-  _QuizAnswerState call(
-      {Set<Document<Choice>> incorrectChoices = const <Document<Choice>>{},
-      Document<Choice>? correctChoice}) {
-    return _QuizAnswerState(
-      incorrectChoices: incorrectChoices,
-      correctChoice: correctChoice,
-    );
-  }
-}
-
-/// @nodoc
-const $QuizAnswerState = _$QuizAnswerStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$QuizAnswerState {
@@ -93,11 +76,11 @@ class _$QuizAnswerStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$QuizAnswerStateCopyWith<$Res>
+abstract class _$$_QuizAnswerStateCopyWith<$Res>
     implements $QuizAnswerStateCopyWith<$Res> {
-  factory _$QuizAnswerStateCopyWith(
-          _QuizAnswerState value, $Res Function(_QuizAnswerState) then) =
-      __$QuizAnswerStateCopyWithImpl<$Res>;
+  factory _$$_QuizAnswerStateCopyWith(
+          _$_QuizAnswerState value, $Res Function(_$_QuizAnswerState) then) =
+      __$$_QuizAnswerStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {Set<Document<Choice>> incorrectChoices,
@@ -108,24 +91,24 @@ abstract class _$QuizAnswerStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$QuizAnswerStateCopyWithImpl<$Res>
+class __$$_QuizAnswerStateCopyWithImpl<$Res>
     extends _$QuizAnswerStateCopyWithImpl<$Res>
-    implements _$QuizAnswerStateCopyWith<$Res> {
-  __$QuizAnswerStateCopyWithImpl(
-      _QuizAnswerState _value, $Res Function(_QuizAnswerState) _then)
-      : super(_value, (v) => _then(v as _QuizAnswerState));
+    implements _$$_QuizAnswerStateCopyWith<$Res> {
+  __$$_QuizAnswerStateCopyWithImpl(
+      _$_QuizAnswerState _value, $Res Function(_$_QuizAnswerState) _then)
+      : super(_value, (v) => _then(v as _$_QuizAnswerState));
 
   @override
-  _QuizAnswerState get _value => super._value as _QuizAnswerState;
+  _$_QuizAnswerState get _value => super._value as _$_QuizAnswerState;
 
   @override
   $Res call({
     Object? incorrectChoices = freezed,
     Object? correctChoice = freezed,
   }) {
-    return _then(_QuizAnswerState(
+    return _then(_$_QuizAnswerState(
       incorrectChoices: incorrectChoices == freezed
-          ? _value.incorrectChoices
+          ? _value._incorrectChoices
           : incorrectChoices // ignore: cast_nullable_to_non_nullable
               as Set<Document<Choice>>,
       correctChoice: correctChoice == freezed
@@ -140,12 +123,20 @@ class __$QuizAnswerStateCopyWithImpl<$Res>
 
 class _$_QuizAnswerState extends _QuizAnswerState {
   const _$_QuizAnswerState(
-      {this.incorrectChoices = const <Document<Choice>>{}, this.correctChoice})
-      : super._();
+      {final Set<Document<Choice>> incorrectChoices =
+          const <Document<Choice>>{},
+      this.correctChoice})
+      : _incorrectChoices = incorrectChoices,
+        super._();
 
-  @JsonKey()
+  final Set<Document<Choice>> _incorrectChoices;
   @override
-  final Set<Document<Choice>> incorrectChoices;
+  @JsonKey()
+  Set<Document<Choice>> get incorrectChoices {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_incorrectChoices);
+  }
+
   @override
   final Document<Choice>? correctChoice;
 
@@ -158,9 +149,9 @@ class _$_QuizAnswerState extends _QuizAnswerState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _QuizAnswerState &&
+            other is _$_QuizAnswerState &&
             const DeepCollectionEquality()
-                .equals(other.incorrectChoices, incorrectChoices) &&
+                .equals(other._incorrectChoices, _incorrectChoices) &&
             const DeepCollectionEquality()
                 .equals(other.correctChoice, correctChoice));
   }
@@ -168,19 +159,19 @@ class _$_QuizAnswerState extends _QuizAnswerState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(incorrectChoices),
+      const DeepCollectionEquality().hash(_incorrectChoices),
       const DeepCollectionEquality().hash(correctChoice));
 
   @JsonKey(ignore: true)
   @override
-  _$QuizAnswerStateCopyWith<_QuizAnswerState> get copyWith =>
-      __$QuizAnswerStateCopyWithImpl<_QuizAnswerState>(this, _$identity);
+  _$$_QuizAnswerStateCopyWith<_$_QuizAnswerState> get copyWith =>
+      __$$_QuizAnswerStateCopyWithImpl<_$_QuizAnswerState>(this, _$identity);
 }
 
 abstract class _QuizAnswerState extends QuizAnswerState {
   const factory _QuizAnswerState(
-      {Set<Document<Choice>> incorrectChoices,
-      Document<Choice>? correctChoice}) = _$_QuizAnswerState;
+      {final Set<Document<Choice>> incorrectChoices,
+      final Document<Choice>? correctChoice}) = _$_QuizAnswerState;
   const _QuizAnswerState._() : super._();
 
   @override
@@ -189,6 +180,6 @@ abstract class _QuizAnswerState extends QuizAnswerState {
   Document<Choice>? get correctChoice;
   @override
   @JsonKey(ignore: true)
-  _$QuizAnswerStateCopyWith<_QuizAnswerState> get copyWith =>
+  _$$_QuizAnswerStateCopyWith<_$_QuizAnswerState> get copyWith =>
       throw _privateConstructorUsedError;
 }

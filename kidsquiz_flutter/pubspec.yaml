@@ -33,6 +33,7 @@ dependencies:
   hooks_riverpod:
   io:
   json_annotation:
+  json_converter_helper:
   mono_kit:
   path:
   riverpod:

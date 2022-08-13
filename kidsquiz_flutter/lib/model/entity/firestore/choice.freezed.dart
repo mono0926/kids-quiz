@@ -12,50 +12,20 @@ part of 'choice.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Choice _$ChoiceFromJson(Map<String, dynamic> json) {
   return _Choice.fromJson(json);
 }
 
 /// @nodoc
-class _$ChoiceTearOff {
-  const _$ChoiceTearOff();
-
-  _Choice call(
-      {required String name,
-      required String imageUrl,
-      required String group,
-      @FirTimestampConverter()
-          FirTimestamp createdAt = const FirTimestamp.serverTimestamp(),
-      @FirTimestampConverter()
-          FirTimestamp updatedAt = const FirTimestamp.serverTimestamp()}) {
-    return _Choice(
-      name: name,
-      imageUrl: imageUrl,
-      group: group,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-    );
-  }
-
-  Choice fromJson(Map<String, Object?> json) {
-    return Choice.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Choice = _$ChoiceTearOff();
-
-/// @nodoc
 mixin _$Choice {
   String get name => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   String get group => throw _privateConstructorUsedError;
-  @FirTimestampConverter()
-  FirTimestamp get createdAt => throw _privateConstructorUsedError;
-  @FirTimestampConverter()
-  FirTimestamp get updatedAt => throw _privateConstructorUsedError;
+  UnionTimestamp get createdAt => throw _privateConstructorUsedError;
+  @UnionTimestampConverter.alwaysServerTimestampConverter
+  UnionTimestamp get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -70,11 +40,12 @@ abstract class $ChoiceCopyWith<$Res> {
       {String name,
       String imageUrl,
       String group,
-      @FirTimestampConverter() FirTimestamp createdAt,
-      @FirTimestampConverter() FirTimestamp updatedAt});
+      UnionTimestamp createdAt,
+      @UnionTimestampConverter.alwaysServerTimestampConverter
+          UnionTimestamp updatedAt});
 
-  $FirTimestampCopyWith<$Res> get createdAt;
-  $FirTimestampCopyWith<$Res> get updatedAt;
+  $UnionTimestampCopyWith<$Res> get createdAt;
+  $UnionTimestampCopyWith<$Res> get updatedAt;
 }
 
 /// @nodoc
@@ -109,55 +80,56 @@ class _$ChoiceCopyWithImpl<$Res> implements $ChoiceCopyWith<$Res> {
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as FirTimestamp,
+              as UnionTimestamp,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as FirTimestamp,
+              as UnionTimestamp,
     ));
   }
 
   @override
-  $FirTimestampCopyWith<$Res> get createdAt {
-    return $FirTimestampCopyWith<$Res>(_value.createdAt, (value) {
+  $UnionTimestampCopyWith<$Res> get createdAt {
+    return $UnionTimestampCopyWith<$Res>(_value.createdAt, (value) {
       return _then(_value.copyWith(createdAt: value));
     });
   }
 
   @override
-  $FirTimestampCopyWith<$Res> get updatedAt {
-    return $FirTimestampCopyWith<$Res>(_value.updatedAt, (value) {
+  $UnionTimestampCopyWith<$Res> get updatedAt {
+    return $UnionTimestampCopyWith<$Res>(_value.updatedAt, (value) {
       return _then(_value.copyWith(updatedAt: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$ChoiceCopyWith<$Res> implements $ChoiceCopyWith<$Res> {
-  factory _$ChoiceCopyWith(_Choice value, $Res Function(_Choice) then) =
-      __$ChoiceCopyWithImpl<$Res>;
+abstract class _$$_ChoiceCopyWith<$Res> implements $ChoiceCopyWith<$Res> {
+  factory _$$_ChoiceCopyWith(_$_Choice value, $Res Function(_$_Choice) then) =
+      __$$_ChoiceCopyWithImpl<$Res>;
   @override
   $Res call(
       {String name,
       String imageUrl,
       String group,
-      @FirTimestampConverter() FirTimestamp createdAt,
-      @FirTimestampConverter() FirTimestamp updatedAt});
+      UnionTimestamp createdAt,
+      @UnionTimestampConverter.alwaysServerTimestampConverter
+          UnionTimestamp updatedAt});
 
   @override
-  $FirTimestampCopyWith<$Res> get createdAt;
+  $UnionTimestampCopyWith<$Res> get createdAt;
   @override
-  $FirTimestampCopyWith<$Res> get updatedAt;
+  $UnionTimestampCopyWith<$Res> get updatedAt;
 }
 
 /// @nodoc
-class __$ChoiceCopyWithImpl<$Res> extends _$ChoiceCopyWithImpl<$Res>
-    implements _$ChoiceCopyWith<$Res> {
-  __$ChoiceCopyWithImpl(_Choice _value, $Res Function(_Choice) _then)
-      : super(_value, (v) => _then(v as _Choice));
+class __$$_ChoiceCopyWithImpl<$Res> extends _$ChoiceCopyWithImpl<$Res>
+    implements _$$_ChoiceCopyWith<$Res> {
+  __$$_ChoiceCopyWithImpl(_$_Choice _value, $Res Function(_$_Choice) _then)
+      : super(_value, (v) => _then(v as _$_Choice));
 
   @override
-  _Choice get _value => super._value as _Choice;
+  _$_Choice get _value => super._value as _$_Choice;
 
   @override
   $Res call({
@@ -167,7 +139,7 @@ class __$ChoiceCopyWithImpl<$Res> extends _$ChoiceCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_Choice(
+    return _then(_$_Choice(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -183,26 +155,26 @@ class __$ChoiceCopyWithImpl<$Res> extends _$ChoiceCopyWithImpl<$Res>
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as FirTimestamp,
+              as UnionTimestamp,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as FirTimestamp,
+              as UnionTimestamp,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_Choice with DiagnosticableTreeMixin implements _Choice {
+
+@allJsonConvertersSerializable
+class _$_Choice implements _Choice {
   const _$_Choice(
       {required this.name,
       required this.imageUrl,
       required this.group,
-      @FirTimestampConverter()
-          this.createdAt = const FirTimestamp.serverTimestamp(),
-      @FirTimestampConverter()
-          this.updatedAt = const FirTimestamp.serverTimestamp()});
+      this.createdAt = const UnionTimestamp.serverTimestamp(),
+      @UnionTimestampConverter.alwaysServerTimestampConverter
+          this.updatedAt = const UnionTimestamp.serverTimestamp()});
 
   factory _$_Choice.fromJson(Map<String, dynamic> json) =>
       _$$_ChoiceFromJson(json);
@@ -213,37 +185,24 @@ class _$_Choice with DiagnosticableTreeMixin implements _Choice {
   final String imageUrl;
   @override
   final String group;
-  @JsonKey()
   @override
-  @FirTimestampConverter()
-  final FirTimestamp createdAt;
   @JsonKey()
+  final UnionTimestamp createdAt;
   @override
-  @FirTimestampConverter()
-  final FirTimestamp updatedAt;
+  @JsonKey()
+  @UnionTimestampConverter.alwaysServerTimestampConverter
+  final UnionTimestamp updatedAt;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Choice(name: $name, imageUrl: $imageUrl, group: $group, createdAt: $createdAt, updatedAt: $updatedAt)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Choice'))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('imageUrl', imageUrl))
-      ..add(DiagnosticsProperty('group', group))
-      ..add(DiagnosticsProperty('createdAt', createdAt))
-      ..add(DiagnosticsProperty('updatedAt', updatedAt));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Choice &&
+            other is _$_Choice &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
             const DeepCollectionEquality().equals(other.group, group) &&
@@ -251,6 +210,7 @@ class _$_Choice with DiagnosticableTreeMixin implements _Choice {
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -262,22 +222,25 @@ class _$_Choice with DiagnosticableTreeMixin implements _Choice {
 
   @JsonKey(ignore: true)
   @override
-  _$ChoiceCopyWith<_Choice> get copyWith =>
-      __$ChoiceCopyWithImpl<_Choice>(this, _$identity);
+  _$$_ChoiceCopyWith<_$_Choice> get copyWith =>
+      __$$_ChoiceCopyWithImpl<_$_Choice>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ChoiceToJson(this);
+    return _$$_ChoiceToJson(
+      this,
+    );
   }
 }
 
 abstract class _Choice implements Choice {
   const factory _Choice(
-      {required String name,
-      required String imageUrl,
-      required String group,
-      @FirTimestampConverter() FirTimestamp createdAt,
-      @FirTimestampConverter() FirTimestamp updatedAt}) = _$_Choice;
+      {required final String name,
+      required final String imageUrl,
+      required final String group,
+      final UnionTimestamp createdAt,
+      @UnionTimestampConverter.alwaysServerTimestampConverter
+          final UnionTimestamp updatedAt}) = _$_Choice;
 
   factory _Choice.fromJson(Map<String, dynamic> json) = _$_Choice.fromJson;
 
@@ -288,12 +251,12 @@ abstract class _Choice implements Choice {
   @override
   String get group;
   @override
-  @FirTimestampConverter()
-  FirTimestamp get createdAt;
+  UnionTimestamp get createdAt;
   @override
-  @FirTimestampConverter()
-  FirTimestamp get updatedAt;
+  @UnionTimestampConverter.alwaysServerTimestampConverter
+  UnionTimestamp get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$ChoiceCopyWith<_Choice> get copyWith => throw _privateConstructorUsedError;
+  _$$_ChoiceCopyWith<_$_Choice> get copyWith =>
+      throw _privateConstructorUsedError;
 }

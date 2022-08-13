@@ -12,22 +12,7 @@ part of 'document.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$DocumentTearOff {
-  const _$DocumentTearOff();
-
-  _Document<E> call<E>(String? id, E entity) {
-    return _Document<E>(
-      id,
-      entity,
-    );
-  }
-}
-
-/// @nodoc
-const $Document = _$DocumentTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Document<E> {
@@ -74,31 +59,31 @@ class _$DocumentCopyWithImpl<E, $Res> implements $DocumentCopyWith<E, $Res> {
 }
 
 /// @nodoc
-abstract class _$DocumentCopyWith<E, $Res>
+abstract class _$$_DocumentCopyWith<E, $Res>
     implements $DocumentCopyWith<E, $Res> {
-  factory _$DocumentCopyWith(
-          _Document<E> value, $Res Function(_Document<E>) then) =
-      __$DocumentCopyWithImpl<E, $Res>;
+  factory _$$_DocumentCopyWith(
+          _$_Document<E> value, $Res Function(_$_Document<E>) then) =
+      __$$_DocumentCopyWithImpl<E, $Res>;
   @override
   $Res call({String? id, E entity});
 }
 
 /// @nodoc
-class __$DocumentCopyWithImpl<E, $Res> extends _$DocumentCopyWithImpl<E, $Res>
-    implements _$DocumentCopyWith<E, $Res> {
-  __$DocumentCopyWithImpl(
-      _Document<E> _value, $Res Function(_Document<E>) _then)
-      : super(_value, (v) => _then(v as _Document<E>));
+class __$$_DocumentCopyWithImpl<E, $Res> extends _$DocumentCopyWithImpl<E, $Res>
+    implements _$$_DocumentCopyWith<E, $Res> {
+  __$$_DocumentCopyWithImpl(
+      _$_Document<E> _value, $Res Function(_$_Document<E>) _then)
+      : super(_value, (v) => _then(v as _$_Document<E>));
 
   @override
-  _Document<E> get _value => super._value as _Document<E>;
+  _$_Document<E> get _value => super._value as _$_Document<E>;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? entity = freezed,
   }) {
-    return _then(_Document<E>(
+    return _then(_$_Document<E>(
       id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -130,7 +115,7 @@ class _$_Document<E> extends _Document<E> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Document<E> &&
+            other is _$_Document<E> &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.entity, entity));
   }
@@ -143,12 +128,12 @@ class _$_Document<E> extends _Document<E> {
 
   @JsonKey(ignore: true)
   @override
-  _$DocumentCopyWith<E, _Document<E>> get copyWith =>
-      __$DocumentCopyWithImpl<E, _Document<E>>(this, _$identity);
+  _$$_DocumentCopyWith<E, _$_Document<E>> get copyWith =>
+      __$$_DocumentCopyWithImpl<E, _$_Document<E>>(this, _$identity);
 }
 
 abstract class _Document<E> extends Document<E> {
-  const factory _Document(String? id, E entity) = _$_Document<E>;
+  const factory _Document(final String? id, final E entity) = _$_Document<E>;
   const _Document._() : super._();
 
   @override
@@ -157,6 +142,6 @@ abstract class _Document<E> extends Document<E> {
   E get entity;
   @override
   @JsonKey(ignore: true)
-  _$DocumentCopyWith<E, _Document<E>> get copyWith =>
+  _$$_DocumentCopyWith<E, _$_Document<E>> get copyWith =>
       throw _privateConstructorUsedError;
 }
