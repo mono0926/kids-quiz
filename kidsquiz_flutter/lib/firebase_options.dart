@@ -19,7 +19,6 @@ class DefaultFirebaseOptions {
     if (kIsWeb) {
       return web;
     }
-    // ignore: missing_enum_constant_in_switch
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
@@ -27,11 +26,11 @@ class DefaultFirebaseOptions {
         return ios;
       case TargetPlatform.macOS:
         return macos;
+      default:
+        throw UnsupportedError(
+          'DefaultFirebaseOptions are not supported for this platform.',
+        );
     }
-
-    throw UnsupportedError(
-      'DefaultFirebaseOptions are not supported for this platform.',
-    );
   }
 
   static const FirebaseOptions web = FirebaseOptions(
@@ -61,8 +60,7 @@ class DefaultFirebaseOptions {
     projectId: 'kids-quiz-mono',
     databaseURL: 'https://kids-quiz-mono.firebaseio.com',
     storageBucket: 'kids-quiz-mono.appspot.com',
-    iosClientId:
-        '532876534894-o4pqvrju5ah9bdlr0ceg3l026i1p4bpd.apps.googleusercontent.com',
+    iosClientId: '532876534894-o4pqvrju5ah9bdlr0ceg3l026i1p4bpd.apps.googleusercontent.com',
     iosBundleId: 'com.mono0926.kidsquiz',
   );
 
@@ -73,8 +71,7 @@ class DefaultFirebaseOptions {
     projectId: 'kids-quiz-mono',
     databaseURL: 'https://kids-quiz-mono.firebaseio.com',
     storageBucket: 'kids-quiz-mono.appspot.com',
-    iosClientId:
-        '532876534894-o4pqvrju5ah9bdlr0ceg3l026i1p4bpd.apps.googleusercontent.com',
+    iosClientId: '532876534894-o4pqvrju5ah9bdlr0ceg3l026i1p4bpd.apps.googleusercontent.com',
     iosBundleId: 'com.mono0926.kidsquiz',
   );
 }
