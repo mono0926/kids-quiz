@@ -22,6 +22,16 @@
       ]
     },
     {
+      "name": "kidsquiz_flutter (tesla, release mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "args": [
+        "--web-port=57220",
+        "--dart-define=TESLA=true"
+      ]
+    },
+    {
       "name": "kidsquiz_flutter (profile mode)",
       "request": "launch",
       "type": "dart",
