@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kidsquiz/features/quiz/menu_button.dart';
 import 'package:kidsquiz/features/quiz/quiz_answer_notifier.dart';
 import 'package:kidsquiz/features/quiz/quiz_notifier.dart';
+import 'package:kidsquiz/features/quiz/size_dialog.dart';
 import 'package:kidsquiz/main.dart';
 import 'package:kidsquiz/model/model.dart';
 import 'package:kidsquiz/util/util.dart';
@@ -28,6 +30,7 @@ class QuizPage extends ConsumerWidget {
         : Scaffold(
             appBar: AppBar(
               title: const Text(appName),
+              actions: const [MenuButton()],
             ),
             body: Column(
               children: [
@@ -62,20 +65,24 @@ class QuizPage extends ConsumerWidget {
                           child: Center(
                             child: AspectRatio(
                               aspectRatio: 1,
-                              child: GridView.count(
-                                physics: const NeverScrollableScrollPhysics(),
-                                padding: const EdgeInsets.all(8),
-                                crossAxisSpacing: 4,
-                                mainAxisSpacing: 4,
-                                shrinkWrap: true,
-                                crossAxisCount: 2,
-                                children: quiz.choices
-                                    .map(
-                                      (choice) => _ChoiceCard(
-                                        choice: choice,
-                                      ),
-                                    )
-                                    .toList(),
+                              child: FractionallySizedBox(
+                                widthFactor: ref.watch(sizeProvider),
+                                heightFactor: ref.watch(sizeProvider),
+                                child: GridView.count(
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  padding: const EdgeInsets.all(8),
+                                  crossAxisSpacing: 4,
+                                  mainAxisSpacing: 4,
+                                  shrinkWrap: true,
+                                  crossAxisCount: 2,
+                                  children: quiz.choices
+                                      .map(
+                                        (choice) => _ChoiceCard(
+                                          choice: choice,
+                                        ),
+                                      )
+                                      .toList(),
+                                ),
                               ),
                             ),
                           ),
