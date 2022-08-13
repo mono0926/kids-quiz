@@ -1,13 +1,13 @@
-import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audioplayers.dart' as ap;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final audioPlayerProvider = Provider((ref) => const AudioPlayer());
-final _audioPlayer = AudioCache(prefix: 'assets/sound/');
+final _audioPlayer = ap.AudioPlayer();
 
 class AudioPlayer {
   const AudioPlayer();
 
   void play(String filename) {
-    _audioPlayer.play(filename);
+    _audioPlayer.play(ap.AssetSource('assets/sound/$filename'));
   }
 }
