@@ -8,6 +8,6 @@ class AudioPlayer {
   const AudioPlayer();
 
   void play(String filename) {
-    _audioPlayer.play(ap.AssetSource('assets/sound/$filename'));
+    _audioPlayer.play(ap.AssetSource('sound/$filename'));
   }
 }
