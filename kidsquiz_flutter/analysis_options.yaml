@@ -5,5 +5,4 @@ analyzer:
     # https://github.com/rrousselGit/freezed/issues/488
     invalid_annotation_target: ignore
   exclude:
-    - lib/**/*.g.dart
     - lib/generated_plugin_registrant.dart
