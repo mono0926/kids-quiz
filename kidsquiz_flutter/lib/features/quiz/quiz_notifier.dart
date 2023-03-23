@@ -7,15 +7,12 @@ part 'quiz_notifier.g.dart';
 @riverpod
 class AsyncQuiz extends _$AsyncQuiz {
   @override
-  Future<Quiz> build() => _next();
-
-// TODO(mono): リファクタ
-  Future<Quiz> _next() async {
-    final choices = List.of(await ref.read(choicesProvider.future))..shuffle();
+  Future<Quiz> build() async {
+    final choices = List.of(await ref.watch(choicesProvider.future))..shuffle();
     assert(choices.length >= 4);
     final choice = choices.first;
     if (choice == state.value?.correctChoice) {
-      return _next();
+      return build();
     }
     final quiz = Quiz(
       correctChoice: choice,
@@ -34,6 +31,6 @@ class AsyncQuiz extends _$AsyncQuiz {
   }
 
   Future<void> next() async {
-    state = AsyncData(await _next());
+    ref.invalidateSelf();
   }
 }

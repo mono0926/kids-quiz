@@ -1,22 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidsquiz/consts.dart';
 import 'package:kidsquiz/model/model.dart';
 import 'package:kidsquiz/util/util.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final choicesRef = Provider(
-  (ref) => FirebaseFirestore.instance.collection('choices').withConverter(
-        fromFirestore: (snapshot, _) => Choice.fromJson(snapshot.data()!),
-        toFirestore: (choice, _) => choice.toJson(),
-      ),
-);
+part 'choices_provider.g.dart';
 
-final choicesProvider = StreamProvider((ref) {
+@riverpod
+CollectionReference<Choice> choicesRef(ChoicesRefRef ref) =>
+    FirebaseFirestore.instance.collection('choices').withConverter(
+          fromFirestore: (snapshot, _) => Choice.fromJson(snapshot.data()!),
+          toFirestore: (choice, _) => choice.toJson(),
+        );
+
+@riverpod
+Stream<List<Document<Choice>>> choices(ChoicesRef ref) {
   // アップロードしたクイズの権限周りを真っ当に整えるまではデフォルトのクイズのみ
   return Stream.value(isTeslaMode ? _teslaChoices : _defaultChoices);
   // ignore: dead_code
   return ref
-      .watch(choicesRef)
+      .watch(choicesRefProvider)
       .orderBy(TimestampField.createdAt, descending: true)
       .snapshots()
       .map(
@@ -30,7 +33,7 @@ final choicesProvider = StreamProvider((ref) {
           ..._defaultChoices,
         ],
       );
-});
+}
 
 enum Tesla { s, e, x, y }
 

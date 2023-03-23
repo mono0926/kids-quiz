@@ -2,25 +2,26 @@
 
 // ignore_for_file: type=lint, implicit_dynamic_parameter, implicit_dynamic_type, implicit_dynamic_method, strict_raw_type
 
-part of 'quiz_answer_notifier.dart';
+part of 'quiz_speech_service.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$quizAnswerHash() => r'a0d91044d12f10ac628bf15d4c8823b8f50c27e8';
+String _$quizSpeechServiceHash() => r'1ec9fc232347cfab3ffacb915062f0a128712343';
 
-/// See also [QuizAnswer].
-@ProviderFor(QuizAnswer)
-final quizAnswerProvider =
-    AutoDisposeNotifierProvider<QuizAnswer, QuizAnswerState>.internal(
-  QuizAnswer.new,
-  name: r'quizAnswerProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$quizAnswerHash,
+/// See also [quizSpeechService].
+@ProviderFor(quizSpeechService)
+final quizSpeechServiceProvider =
+    AutoDisposeProvider<QuizSpeechService>.internal(
+  quizSpeechService,
+  name: r'quizSpeechServiceProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$quizSpeechServiceHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$QuizAnswer = AutoDisposeNotifier<QuizAnswerState>;
+typedef QuizSpeechServiceRef = AutoDisposeProviderRef<QuizSpeechService>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
