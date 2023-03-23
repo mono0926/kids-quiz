@@ -1,0 +1,11 @@
+[
+  {
+    "origin": [
+      "http://localhost:57220",
+      "https://kids-quiz-mono.web.app",
+      "https://s3xy-quiz.web.app"
+    ],
+    "method": ["GET"],
+    "maxAgeSeconds": 86400
+  }
+]

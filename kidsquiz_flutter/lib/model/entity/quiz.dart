@@ -1,16 +1,16 @@
-import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kidsquiz/model/model.dart';
+import 'package:kidsquiz/util/util.dart';
 
-import 'choice/choice.dart';
-import 'entity.dart';
+part 'quiz.freezed.dart';
 
-@immutable
-class Quiz {
-  const Quiz({
-    @required this.choices,
-    @required this.correctChoice,
-  });
-  final List<Document<Choice>> choices;
-  final Document<Choice> correctChoice;
+@freezed
+class Quiz with _$Quiz {
+  const factory Quiz({
+    required List<Document<Choice>> choices,
+    required Document<Choice> correctChoice,
+  }) = _Quiz;
+  const Quiz._();
 }
 
 class GroupNames {

@@ -1,4 +1,2 @@
-export 'package:firestore_ref/firestore_ref.dart';
-
-export 'choice/choice.dart';
+export 'firestore/firestore.dart';
 export 'quiz.dart';

@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "kids-quiz-mono"
+  },
+  "targets": {
+    "kids-quiz-mono": {
+      "hosting": {
+        "tesla": [
+          "s3xy-quiz"
+        ],
+        "app": [
+          "kids-quiz-mono"
+        ]
+      }
+    }
   }
 }
