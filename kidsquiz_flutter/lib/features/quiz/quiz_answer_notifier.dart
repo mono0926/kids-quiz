@@ -16,11 +16,11 @@ class QuizAnswer extends _$QuizAnswer {
   QuizAnswerState build() => const QuizAnswerState();
 
   Future<void> select(Document<Choice> choice) async {
-    final quiz = ref.read(asyncQuizProvider).value!;
+    final quiz = ref.read(asyncQuizProvider).requireValue;
     final correct = quiz.correctChoice == choice;
     logger.info('correct: $correct');
     // ignore: unawaited_futures
-    ref.read(textToSpeechService).speak(
+    ref.read(textToSpeechServiceProvider).speak(
           correct
               ? 'あたり！すごいねー！${choice.entity.name}だねー'
               : 'それは${choice.entity.name}だよ、'
@@ -29,8 +29,7 @@ class QuizAnswer extends _$QuizAnswer {
 
     if (correct) {
       ref.read(audioPlayerProvider).play('cheer.mp3');
-      _reset();
-      state = state.copyWith(
+      state = const QuizAnswerState().copyWith(
         correctChoice: choice,
       );
       QuizResultPage.push(ref.read(navigatorKey).currentContext!);
@@ -42,10 +41,6 @@ class QuizAnswer extends _$QuizAnswer {
         },
       );
     }
-  }
-
-  void _reset() {
-    state = const QuizAnswerState();
   }
 }
 

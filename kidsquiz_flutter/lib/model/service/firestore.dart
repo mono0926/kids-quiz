@@ -1,4 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final firestoreProvider = Provider((ref) => FirebaseFirestore.instance);
+part 'firestore.g.dart';
+
+@riverpod
+FirebaseFirestore firestore(FirestoreRef ref) => FirebaseFirestore.instance;

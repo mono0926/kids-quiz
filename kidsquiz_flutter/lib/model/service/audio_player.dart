@@ -1,7 +1,10 @@
 import 'package:audioplayers/audioplayers.dart' as ap;
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final audioPlayerProvider = Provider((ref) => const AudioPlayer());
+part 'audio_player.g.dart';
+
+@riverpod
+AudioPlayer audioPlayer(AudioPlayerRef ref) => const AudioPlayer();
 final _audioPlayer = ap.AudioPlayer();
 
 class AudioPlayer {

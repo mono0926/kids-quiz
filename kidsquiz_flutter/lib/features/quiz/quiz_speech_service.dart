@@ -15,7 +15,7 @@ class QuizSpeechService {
 
   void speech() {
     // TODO(mono): l10n
-    _ref.read(textToSpeechService).speak(
+    _ref.read(textToSpeechServiceProvider).speak(
           '${_ref.read(asyncQuizProvider).value!.correctChoice.entity.name}。はどれかな？',
         );
   }

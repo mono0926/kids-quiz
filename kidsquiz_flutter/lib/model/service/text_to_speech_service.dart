@@ -1,11 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:web_browser_detect/web_browser_detect.dart';
 
-final textToSpeechService = Provider((ref) => TextToSpeechService());
+part 'text_to_speech_service.g.dart';
+
+@riverpod
+TextToSpeechService textToSpeechService(TextToSpeechServiceRef ref) =>
+    TextToSpeechService();
 
 class TextToSpeechService {
   TextToSpeechService() {
@@ -36,32 +40,27 @@ class TextToSpeechService {
   }
 }
 
-final ttsBannerVisibilityProvider =
-    StateNotifierProvider<TtsBannerVisibilityNotifier, bool>(
-  (ref) => TtsBannerVisibilityNotifier(),
-);
-
-class TtsBannerVisibilityNotifier extends StateNotifier<bool> {
-  TtsBannerVisibilityNotifier() : super(false) {
+@riverpod
+class TtsBannerVisibility extends _$TtsBannerVisibility {
+  @override
+  bool build() {
     if (!kIsWeb) {
-      return;
+      return false;
     }
     final browser = Browser();
     if (browser.browserAgent != BrowserAgent.Chrome) {
-      state = true;
-      return;
+      return true;
     }
     final platform = defaultTargetPlatform;
     switch (platform) {
       case TargetPlatform.iOS:
-        state = true;
-        break;
+        return true;
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
       case TargetPlatform.windows:
       case TargetPlatform.macOS:
-        break;
+        return false;
     }
   }
 
