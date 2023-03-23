@@ -1,25 +1,21 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidsquiz/features/quiz/quiz_speech_service.dart';
 import 'package:kidsquiz/model/model.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final quizProvider = StateNotifierProvider<QuizNotifier, AsyncValue<Quiz>>(
-  (ref) => QuizNotifier(ref.read),
-);
+part 'quiz_notifier.g.dart';
 
-class QuizNotifier extends StateNotifier<AsyncValue<Quiz>> {
-  QuizNotifier(this._read) : super(const AsyncLoading()) {
-    next();
-  }
+@riverpod
+class AsyncQuiz extends _$AsyncQuiz {
+  @override
+  Future<Quiz> build() => _next();
 
-  final Reader _read;
-
-  Future<void> next() async {
-    final choices = List.of(await _read(choicesProvider.future))..shuffle();
+// TODO(mono): リファクタ
+  Future<Quiz> _next() async {
+    final choices = List.of(await ref.read(choicesProvider.future))..shuffle();
     assert(choices.length >= 4);
     final choice = choices.first;
     if (choice == state.value?.correctChoice) {
-      await next();
-      return;
+      return _next();
     }
     final quiz = Quiz(
       correctChoice: choice,
@@ -30,7 +26,14 @@ class QuizNotifier extends StateNotifier<AsyncValue<Quiz>> {
           .toList()
         ..shuffle(),
     );
-    state = AsyncData(quiz);
-    _read(quizSpeechServiceProvider).speech();
+    // ignore: unawaited_futures
+    Future.microtask(() {
+      ref.read(quizSpeechServiceProvider).speech();
+    });
+    return quiz;
+  }
+
+  Future<void> next() async {
+    state = AsyncData(await _next());
   }
 }

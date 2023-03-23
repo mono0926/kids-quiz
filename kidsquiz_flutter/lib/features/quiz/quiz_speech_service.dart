@@ -4,17 +4,17 @@ import 'package:kidsquiz/model/model.dart';
 import 'quiz_notifier.dart';
 
 final quizSpeechServiceProvider = Provider(
-  (ref) => QuizSpeechService(ref.read),
+  QuizSpeechService.new,
 );
 
 class QuizSpeechService {
-  const QuizSpeechService(this._read);
-  final Reader _read;
+  const QuizSpeechService(this._ref);
+  final Ref _ref;
 
   void speech() {
     // TODO(mono): l10n
-    _read(textToSpeechService).speak(
-      '${_read(quizProvider).value!.correctChoice.entity.name}。はどれかな？',
-    );
+    _ref.read(textToSpeechService).speak(
+          '${_ref.read(asyncQuizProvider).value!.correctChoice.entity.name}。はどれかな？',
+        );
   }
 }

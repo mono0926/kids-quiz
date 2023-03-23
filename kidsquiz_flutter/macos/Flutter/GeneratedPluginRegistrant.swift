@@ -18,7 +18,7 @@ import firebase_remote_config
 import firebase_storage
 import flutter_tts
 import macos_ui
-import path_provider_macos
+import path_provider_foundation
 import url_launcher_macos
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {

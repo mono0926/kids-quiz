@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kidsquiz/consts.dart';
 import 'package:kidsquiz/features/quiz/menu_button.dart';
 import 'package:kidsquiz/features/quiz/quiz_answer_notifier.dart';
 import 'package:kidsquiz/features/quiz/quiz_notifier.dart';
 import 'package:kidsquiz/features/quiz/size_dialog.dart';
-import 'package:kidsquiz/main.dart';
 import 'package:kidsquiz/model/model.dart';
 import 'package:kidsquiz/util/util.dart';
 import 'package:kidsquiz/widgets/widgets.dart';
@@ -22,7 +22,7 @@ class QuizPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quiz = ref.watch(quizProvider).value;
+    final quiz = ref.watch(asyncQuizProvider).value;
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     return quiz == null
@@ -102,7 +102,7 @@ class _QuestionButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quiz = ref.watch(quizProvider).value!;
+    final quiz = ref.watch(asyncQuizProvider).value!;
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
@@ -121,7 +121,7 @@ class _QuestionButton extends ConsumerWidget {
             children: [
               TextSpan(
                 text: quiz.correctChoice.entity.name,
-                style: textTheme.headline5!.copyWith(
+                style: textTheme.headlineSmall!.copyWith(
                   color: foregroundColor,
                 ),
               ),
@@ -129,7 +129,7 @@ class _QuestionButton extends ConsumerWidget {
               TextSpan(
                 // TODO(mono): l10n
                 text: 'はどれかな？',
-                style: textTheme.headline6!.copyWith(
+                style: textTheme.titleLarge!.copyWith(
                   color: foregroundColor,
                 ),
               ),
@@ -150,7 +150,7 @@ class _ChoiceCard extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quiz = ref.watch(quizProvider).value!;
+    final quiz = ref.watch(asyncQuizProvider).value!;
     final showLabel =
         quizAnswerProvider.select((s) => s.incorrectChoices.contains(choice));
     final animationController = useAnimationController(
@@ -204,9 +204,10 @@ class _ChoiceCard extends HookConsumerWidget {
                 color: Theme.of(context).primaryColor.withOpacity(0.85),
                 child: Text(
                   choice.entity.name,
-                  style: Theme.of(context).primaryTextTheme.subtitle1!.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                  style:
+                      Theme.of(context).primaryTextTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
                   textAlign: TextAlign.center,
                 ),
               ),

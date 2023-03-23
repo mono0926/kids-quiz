@@ -6,3 +6,6 @@ analyzer:
     invalid_annotation_target: ignore
   exclude:
     - lib/generated_plugin_registrant.dart
+    - lib/firebase_options.dart
+  plugins:
+    - custom_lint

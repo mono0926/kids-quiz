@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'quiz_answer_notifier.dart';
 
@@ -29,7 +29,8 @@ mixin _$QuizAnswerState {
 abstract class $QuizAnswerStateCopyWith<$Res> {
   factory $QuizAnswerStateCopyWith(
           QuizAnswerState value, $Res Function(QuizAnswerState) then) =
-      _$QuizAnswerStateCopyWithImpl<$Res>;
+      _$QuizAnswerStateCopyWithImpl<$Res, QuizAnswerState>;
+  @useResult
   $Res call(
       {Set<Document<Choice>> incorrectChoices,
       Document<Choice>? correctChoice});
@@ -38,39 +39,42 @@ abstract class $QuizAnswerStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$QuizAnswerStateCopyWithImpl<$Res>
+class _$QuizAnswerStateCopyWithImpl<$Res, $Val extends QuizAnswerState>
     implements $QuizAnswerStateCopyWith<$Res> {
   _$QuizAnswerStateCopyWithImpl(this._value, this._then);
 
-  final QuizAnswerState _value;
   // ignore: unused_field
-  final $Res Function(QuizAnswerState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? incorrectChoices = freezed,
+    Object? incorrectChoices = null,
     Object? correctChoice = freezed,
   }) {
     return _then(_value.copyWith(
-      incorrectChoices: incorrectChoices == freezed
+      incorrectChoices: null == incorrectChoices
           ? _value.incorrectChoices
           : incorrectChoices // ignore: cast_nullable_to_non_nullable
               as Set<Document<Choice>>,
-      correctChoice: correctChoice == freezed
+      correctChoice: freezed == correctChoice
           ? _value.correctChoice
           : correctChoice // ignore: cast_nullable_to_non_nullable
               as Document<Choice>?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $DocumentCopyWith<Choice, $Res>? get correctChoice {
     if (_value.correctChoice == null) {
       return null;
     }
 
     return $DocumentCopyWith<Choice, $Res>(_value.correctChoice!, (value) {
-      return _then(_value.copyWith(correctChoice: value));
+      return _then(_value.copyWith(correctChoice: value) as $Val);
     });
   }
 }
@@ -82,6 +86,7 @@ abstract class _$$_QuizAnswerStateCopyWith<$Res>
           _$_QuizAnswerState value, $Res Function(_$_QuizAnswerState) then) =
       __$$_QuizAnswerStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Set<Document<Choice>> incorrectChoices,
       Document<Choice>? correctChoice});
@@ -92,26 +97,24 @@ abstract class _$$_QuizAnswerStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_QuizAnswerStateCopyWithImpl<$Res>
-    extends _$QuizAnswerStateCopyWithImpl<$Res>
+    extends _$QuizAnswerStateCopyWithImpl<$Res, _$_QuizAnswerState>
     implements _$$_QuizAnswerStateCopyWith<$Res> {
   __$$_QuizAnswerStateCopyWithImpl(
       _$_QuizAnswerState _value, $Res Function(_$_QuizAnswerState) _then)
-      : super(_value, (v) => _then(v as _$_QuizAnswerState));
+      : super(_value, _then);
 
-  @override
-  _$_QuizAnswerState get _value => super._value as _$_QuizAnswerState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? incorrectChoices = freezed,
+    Object? incorrectChoices = null,
     Object? correctChoice = freezed,
   }) {
     return _then(_$_QuizAnswerState(
-      incorrectChoices: incorrectChoices == freezed
+      incorrectChoices: null == incorrectChoices
           ? _value._incorrectChoices
           : incorrectChoices // ignore: cast_nullable_to_non_nullable
               as Set<Document<Choice>>,
-      correctChoice: correctChoice == freezed
+      correctChoice: freezed == correctChoice
           ? _value.correctChoice
           : correctChoice // ignore: cast_nullable_to_non_nullable
               as Document<Choice>?,
@@ -133,6 +136,7 @@ class _$_QuizAnswerState extends _QuizAnswerState {
   @override
   @JsonKey()
   Set<Document<Choice>> get incorrectChoices {
+    if (_incorrectChoices is EqualUnmodifiableSetView) return _incorrectChoices;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableSetView(_incorrectChoices);
   }
@@ -152,18 +156,17 @@ class _$_QuizAnswerState extends _QuizAnswerState {
             other is _$_QuizAnswerState &&
             const DeepCollectionEquality()
                 .equals(other._incorrectChoices, _incorrectChoices) &&
-            const DeepCollectionEquality()
-                .equals(other.correctChoice, correctChoice));
+            (identical(other.correctChoice, correctChoice) ||
+                other.correctChoice == correctChoice));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_incorrectChoices),
-      const DeepCollectionEquality().hash(correctChoice));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_incorrectChoices), correctChoice);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_QuizAnswerStateCopyWith<_$_QuizAnswerState> get copyWith =>
       __$$_QuizAnswerStateCopyWithImpl<_$_QuizAnswerState>(this, _$identity);
 }

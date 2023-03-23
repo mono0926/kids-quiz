@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'choice.dart';
 
@@ -35,7 +35,8 @@ mixin _$Choice {
 /// @nodoc
 abstract class $ChoiceCopyWith<$Res> {
   factory $ChoiceCopyWith(Choice value, $Res Function(Choice) then) =
-      _$ChoiceCopyWithImpl<$Res>;
+      _$ChoiceCopyWithImpl<$Res, Choice>;
+  @useResult
   $Res call(
       {String name,
       String imageUrl,
@@ -49,56 +50,61 @@ abstract class $ChoiceCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ChoiceCopyWithImpl<$Res> implements $ChoiceCopyWith<$Res> {
+class _$ChoiceCopyWithImpl<$Res, $Val extends Choice>
+    implements $ChoiceCopyWith<$Res> {
   _$ChoiceCopyWithImpl(this._value, this._then);
 
-  final Choice _value;
   // ignore: unused_field
-  final $Res Function(Choice) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? imageUrl = freezed,
-    Object? group = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
+    Object? name = null,
+    Object? imageUrl = null,
+    Object? group = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: imageUrl == freezed
+      imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      group: group == freezed
+      group: null == group
           ? _value.group
           : group // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: createdAt == freezed
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as UnionTimestamp,
-      updatedAt: updatedAt == freezed
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as UnionTimestamp,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $UnionTimestampCopyWith<$Res> get createdAt {
     return $UnionTimestampCopyWith<$Res>(_value.createdAt, (value) {
-      return _then(_value.copyWith(createdAt: value));
+      return _then(_value.copyWith(createdAt: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $UnionTimestampCopyWith<$Res> get updatedAt {
     return $UnionTimestampCopyWith<$Res>(_value.updatedAt, (value) {
-      return _then(_value.copyWith(updatedAt: value));
+      return _then(_value.copyWith(updatedAt: value) as $Val);
     });
   }
 }
@@ -108,6 +114,7 @@ abstract class _$$_ChoiceCopyWith<$Res> implements $ChoiceCopyWith<$Res> {
   factory _$$_ChoiceCopyWith(_$_Choice value, $Res Function(_$_Choice) then) =
       __$$_ChoiceCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String name,
       String imageUrl,
@@ -123,40 +130,39 @@ abstract class _$$_ChoiceCopyWith<$Res> implements $ChoiceCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ChoiceCopyWithImpl<$Res> extends _$ChoiceCopyWithImpl<$Res>
+class __$$_ChoiceCopyWithImpl<$Res>
+    extends _$ChoiceCopyWithImpl<$Res, _$_Choice>
     implements _$$_ChoiceCopyWith<$Res> {
   __$$_ChoiceCopyWithImpl(_$_Choice _value, $Res Function(_$_Choice) _then)
-      : super(_value, (v) => _then(v as _$_Choice));
+      : super(_value, _then);
 
-  @override
-  _$_Choice get _value => super._value as _$_Choice;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? imageUrl = freezed,
-    Object? group = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
+    Object? name = null,
+    Object? imageUrl = null,
+    Object? group = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_$_Choice(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: imageUrl == freezed
+      imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      group: group == freezed
+      group: null == group
           ? _value.group
           : group // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: createdAt == freezed
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as UnionTimestamp,
-      updatedAt: updatedAt == freezed
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as UnionTimestamp,
@@ -203,25 +209,24 @@ class _$_Choice implements _Choice {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Choice &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
-            const DeepCollectionEquality().equals(other.group, group) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.group, group) || other.group == group) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(imageUrl),
-      const DeepCollectionEquality().hash(group),
-      const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(updatedAt));
+  int get hashCode =>
+      Object.hash(runtimeType, name, imageUrl, group, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ChoiceCopyWith<_$_Choice> get copyWith =>
       __$$_ChoiceCopyWithImpl<_$_Choice>(this, _$identity);
 

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kidsquiz/main.dart';
+import 'package:kidsquiz/consts.dart';
 import 'package:kidsquiz/model/model.dart';
 import 'package:kidsquiz/util/util.dart';
 

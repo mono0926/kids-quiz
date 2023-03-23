@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'document.dart';
 
@@ -28,33 +28,37 @@ mixin _$Document<E> {
 abstract class $DocumentCopyWith<E, $Res> {
   factory $DocumentCopyWith(
           Document<E> value, $Res Function(Document<E>) then) =
-      _$DocumentCopyWithImpl<E, $Res>;
+      _$DocumentCopyWithImpl<E, $Res, Document<E>>;
+  @useResult
   $Res call({String? id, E entity});
 }
 
 /// @nodoc
-class _$DocumentCopyWithImpl<E, $Res> implements $DocumentCopyWith<E, $Res> {
+class _$DocumentCopyWithImpl<E, $Res, $Val extends Document<E>>
+    implements $DocumentCopyWith<E, $Res> {
   _$DocumentCopyWithImpl(this._value, this._then);
 
-  final Document<E> _value;
   // ignore: unused_field
-  final $Res Function(Document<E>) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
     Object? entity = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      entity: entity == freezed
+      entity: freezed == entity
           ? _value.entity
           : entity // ignore: cast_nullable_to_non_nullable
               as E,
-    ));
+    ) as $Val);
   }
 }
 
@@ -65,30 +69,30 @@ abstract class _$$_DocumentCopyWith<E, $Res>
           _$_Document<E> value, $Res Function(_$_Document<E>) then) =
       __$$_DocumentCopyWithImpl<E, $Res>;
   @override
+  @useResult
   $Res call({String? id, E entity});
 }
 
 /// @nodoc
-class __$$_DocumentCopyWithImpl<E, $Res> extends _$DocumentCopyWithImpl<E, $Res>
+class __$$_DocumentCopyWithImpl<E, $Res>
+    extends _$DocumentCopyWithImpl<E, $Res, _$_Document<E>>
     implements _$$_DocumentCopyWith<E, $Res> {
   __$$_DocumentCopyWithImpl(
       _$_Document<E> _value, $Res Function(_$_Document<E>) _then)
-      : super(_value, (v) => _then(v as _$_Document<E>));
+      : super(_value, _then);
 
-  @override
-  _$_Document<E> get _value => super._value as _$_Document<E>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
     Object? entity = freezed,
   }) {
     return _then(_$_Document<E>(
-      id == freezed
+      freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      entity == freezed
+      freezed == entity
           ? _value.entity
           : entity // ignore: cast_nullable_to_non_nullable
               as E,
@@ -116,18 +120,17 @@ class _$_Document<E> extends _Document<E> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Document<E> &&
-            const DeepCollectionEquality().equals(other.id, id) &&
+            (identical(other.id, id) || other.id == id) &&
             const DeepCollectionEquality().equals(other.entity, entity));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(entity));
+  int get hashCode =>
+      Object.hash(runtimeType, id, const DeepCollectionEquality().hash(entity));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DocumentCopyWith<E, _$_Document<E>> get copyWith =>
       __$$_DocumentCopyWithImpl<E, _$_Document<E>>(this, _$identity);
 }

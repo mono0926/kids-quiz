@@ -1,42 +1,39 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidsquiz/features/quiz/quiz_result_page.dart';
 import 'package:kidsquiz/model/model.dart';
 import 'package:kidsquiz/router.dart';
 import 'package:kidsquiz/util/util.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'quiz_notifier.dart';
 
 part 'quiz_answer_notifier.freezed.dart';
+part 'quiz_answer_notifier.g.dart';
 
-final quizAnswerProvider =
-    StateNotifierProvider<QuizAnswerNotifier, QuizAnswerState>(
-  (ref) => QuizAnswerNotifier(ref.read),
-);
-
-class QuizAnswerNotifier extends StateNotifier<QuizAnswerState> {
-  QuizAnswerNotifier(this._read) : super(const QuizAnswerState());
-  final Reader _read;
+@riverpod
+class QuizAnswer extends _$QuizAnswer {
+  @override
+  QuizAnswerState build() => const QuizAnswerState();
 
   Future<void> select(Document<Choice> choice) async {
-    final quiz = _read(quizProvider).value!;
+    final quiz = ref.read(asyncQuizProvider).value!;
     final correct = quiz.correctChoice == choice;
     logger.info('correct: $correct');
     // ignore: unawaited_futures
-    _read(textToSpeechService).speak(
-      correct
-          ? 'あたり！すごいねー！${choice.entity.name}だねー'
-          : 'それは${choice.entity.name}だよ、'
-              '${quiz.correctChoice.entity.name} を選んでね',
-    );
+    ref.read(textToSpeechService).speak(
+          correct
+              ? 'あたり！すごいねー！${choice.entity.name}だねー'
+              : 'それは${choice.entity.name}だよ、'
+                  '${quiz.correctChoice.entity.name} を選んでね',
+        );
 
     if (correct) {
-      _read(audioPlayerProvider).play('cheer.mp3');
+      ref.read(audioPlayerProvider).play('cheer.mp3');
       _reset();
       state = state.copyWith(
         correctChoice: choice,
       );
-      QuizResultPage.push(_read(routerProvider).context);
+      QuizResultPage.push(ref.read(navigatorKey).currentContext!);
     } else {
       state = state.copyWith(
         incorrectChoices: {

@@ -5,9 +5,9 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:kidsquiz/consts.dart';
 import 'package:kidsquiz/features/quiz/quiz_answer_notifier.dart';
 import 'package:kidsquiz/features/quiz/quiz_notifier.dart';
-import 'package:kidsquiz/main.dart';
 import 'package:mono_kit/mono_kit.dart';
 
 class QuizResultPage extends ConsumerWidget {
@@ -73,7 +73,7 @@ class _Name extends ConsumerWidget {
       tag: choice.entity.name,
       child: Text(
         choice.entity.name,
-        style: Theme.of(context).textTheme.headline4!.copyWith(
+        style: Theme.of(context).textTheme.headlineMedium!.copyWith(
               color: Theme.of(context).colorScheme.primary,
             ),
         textAlign: TextAlign.center,
@@ -126,13 +126,13 @@ class _NextButton extends ConsumerWidget {
       ),
       child: Text(
         'つぎへ',
-        style: theme.textTheme.headline5!.copyWith(
+        style: theme.textTheme.headlineSmall!.copyWith(
           color: foregroundColor,
         ),
       ),
       onPressed: () {
         Navigator.of(context).pop();
-        ref.read(quizProvider.notifier).next();
+        ref.read(asyncQuizProvider.notifier).next();
       },
     );
   }
