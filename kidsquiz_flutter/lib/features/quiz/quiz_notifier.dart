@@ -14,7 +14,11 @@ class AsyncQuiz extends _$AsyncQuiz {
     if (choice == state.value?.correctChoice) {
       return build();
     }
-    final quiz = Quiz(
+    // ignore: unawaited_futures
+    Future.microtask(() {
+      ref.read(quizSpeechServiceProvider).speech();
+    });
+    return Quiz(
       correctChoice: choice,
       choices: choices
           .where((c) => c.entity.group == choice.entity.group)
@@ -23,11 +27,6 @@ class AsyncQuiz extends _$AsyncQuiz {
           .toList()
         ..shuffle(),
     );
-    // ignore: unawaited_futures
-    Future.microtask(() {
-      ref.read(quizSpeechServiceProvider).speech();
-    });
-    return quiz;
   }
 
   Future<void> next() async {
