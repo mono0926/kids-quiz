@@ -8,7 +8,7 @@ part of 'generated_quiz.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$generatedQuizHash() => r'f6cf0de9fe8596e91eb141c650f77e9ba3465efb';
+String _$generatedQuizHash() => r'f8ff2f26bd66671b360db931131124c645c28f2e';
 
 /// See also [GeneratedQuiz].
 @ProviderFor(GeneratedQuiz)

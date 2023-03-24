@@ -1,4 +1,3 @@
-import 'package:kidsquiz/features/quiz/quiz_speech_service.dart';
 import 'package:kidsquiz/model/model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -14,10 +13,7 @@ class GeneratedQuiz extends _$GeneratedQuiz {
     if (choice == state.value?.correctChoice) {
       return build();
     }
-    // ignore: unawaited_futures
-    Future.microtask(() {
-      ref.read(quizSpeechServiceProvider).speech();
-    });
+
     return Quiz(
       correctChoice: choice,
       choices: choices

@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidsquiz/model/model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -10,8 +9,18 @@ QuizSpeechService quizSpeechService(QuizSpeechServiceRef ref) =>
     QuizSpeechService(ref);
 
 class QuizSpeechService {
-  const QuizSpeechService(this._ref);
-  final Ref _ref;
+  QuizSpeechService(this._ref) {
+    _ref.listen(
+      generatedQuizProvider
+          .select((value) => value.value?.correctChoice.entity.name),
+      (_, choiceName) {
+        if (choiceName != null) {
+          speech();
+        }
+      },
+    );
+  }
+  final QuizSpeechServiceRef _ref;
 
   void speech() {
     // TODO(mono): l10n
