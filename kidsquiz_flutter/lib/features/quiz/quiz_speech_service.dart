@@ -24,8 +24,10 @@ class QuizSpeechService {
 
   void speech() {
     // TODO(mono): l10n
+    final choiceName =
+        _ref.read(generatedQuizProvider).value!.correctChoice.entity.name;
     _ref.read(textToSpeechServiceProvider).speak(
-          '${_ref.read(generatedQuizProvider).value!.correctChoice.entity.name}。はどれかな？',
+          '$choiceName。はどれかな？',
         );
   }
 }
