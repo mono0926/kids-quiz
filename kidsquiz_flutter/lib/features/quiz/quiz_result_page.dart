@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:kidsquiz/consts.dart';
+import 'package:kidsquiz/features/quiz/generated_quiz.dart';
 import 'package:kidsquiz/features/quiz/quiz_answer_notifier.dart';
-import 'package:kidsquiz/features/quiz/quiz_notifier.dart';
 import 'package:mono_kit/mono_kit.dart';
 
 class QuizResultPage extends ConsumerWidget {

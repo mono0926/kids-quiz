@@ -5,7 +5,7 @@ import 'package:kidsquiz/router.dart';
 import 'package:kidsquiz/util/util.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'quiz_notifier.dart';
+import 'generated_quiz.dart';
 
 part 'quiz_answer_notifier.freezed.dart';
 part 'quiz_answer_notifier.g.dart';

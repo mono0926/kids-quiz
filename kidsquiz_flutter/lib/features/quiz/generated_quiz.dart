@@ -2,7 +2,7 @@ import 'package:kidsquiz/features/quiz/quiz_speech_service.dart';
 import 'package:kidsquiz/model/model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'quiz_notifier.g.dart';
+part 'generated_quiz.g.dart';
 
 @riverpod
 class GeneratedQuiz extends _$GeneratedQuiz {
