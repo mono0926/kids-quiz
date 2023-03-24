@@ -5,7 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'quiz_notifier.g.dart';
 
 @riverpod
-class AsyncQuiz extends _$AsyncQuiz {
+class GeneratedQuiz extends _$GeneratedQuiz {
   @override
   Future<Quiz> build() async {
     final choices = List.of(await ref.watch(choicesProvider.future))..shuffle();

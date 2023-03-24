@@ -132,7 +132,7 @@ class _NextButton extends ConsumerWidget {
       ),
       onPressed: () {
         Navigator.of(context).pop();
-        ref.read(asyncQuizProvider.notifier).next();
+        ref.read(generatedQuizProvider.notifier).next();
       },
     );
   }

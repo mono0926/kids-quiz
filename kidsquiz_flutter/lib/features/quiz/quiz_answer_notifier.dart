@@ -16,7 +16,7 @@ class QuizAnswer extends _$QuizAnswer {
   QuizAnswerState build() => const QuizAnswerState();
 
   Future<void> select(Document<Choice> choice) async {
-    final quiz = ref.read(asyncQuizProvider).requireValue;
+    final quiz = ref.read(generatedQuizProvider).requireValue;
     final correct = quiz.correctChoice == choice;
     logger.info('correct: $correct');
     // ignore: unawaited_futures

@@ -22,7 +22,7 @@ class QuizPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quiz = ref.watch(asyncQuizProvider).value;
+    final quiz = ref.watch(generatedQuizProvider).value;
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     return quiz == null
@@ -102,7 +102,7 @@ class _QuestionButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quiz = ref.watch(asyncQuizProvider).value!;
+    final quiz = ref.watch(generatedQuizProvider).value!;
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
@@ -150,7 +150,7 @@ class _ChoiceCard extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quiz = ref.watch(asyncQuizProvider).value!;
+    final quiz = ref.watch(generatedQuizProvider).value!;
     final showLabel =
         quizAnswerProvider.select((s) => s.incorrectChoices.contains(choice));
     final animationController = useAnimationController(
