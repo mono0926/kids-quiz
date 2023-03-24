@@ -11,8 +11,7 @@ QuizSpeechService quizSpeechService(QuizSpeechServiceRef ref) =>
 class QuizSpeechService {
   QuizSpeechService(this._ref) {
     _ref.listen(
-      generatedQuizProvider
-          .select((value) => value.value?.correctChoice.entity.name),
+      generatedQuizProvider.select((value) => value.value?.correctChoice),
       (_, choiceName) {
         if (choiceName != null) {
           speech();
