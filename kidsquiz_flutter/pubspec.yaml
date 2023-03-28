@@ -25,6 +25,7 @@ dependencies:
   firebase_storage: any
   flutter:
     sdk: flutter
+  flutter_animate:
   flutter_hooks:
   flutter_riverpod:
   flutter_tts:

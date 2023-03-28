@@ -1,6 +1,6 @@
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kidsquiz/consts.dart';
@@ -151,33 +151,9 @@ class _ChoiceCard extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final quiz = ref.watch(generatedQuizProvider).value!;
-    final showLabel =
-        quizAnswerProvider.select((s) => s.incorrectChoices.contains(choice));
-    final animationController = useAnimationController(
-      duration: const Duration(milliseconds: 500),
+    final showLabel = ref.watch(
+      quizAnswerProvider.select((s) => s.incorrectChoices.contains(choice)),
     );
-    final animation = useMemoized(
-      () {
-        return animationController
-            .drive(CurveTween(curve: Curves.elasticIn))
-            .drive(
-              Tween(
-                begin: Offset.zero,
-                end: const Offset(0.2, 0),
-              ),
-            );
-      },
-      [animationController],
-    );
-    ref.listen(showLabel, (_, bool showLabel) {
-      if (showLabel) {
-        Future(() async {
-          // TODO(mono): Staggered animationにしたい
-          await animationController.forward(from: 0);
-          await animationController.reverse();
-        });
-      }
-    });
     final card = Card(
       clipBehavior: Clip.hardEdge,
       color: Theme.of(context).brightness == Brightness.light
@@ -192,7 +168,7 @@ class _ChoiceCard extends HookConsumerWidget {
           },
           child: AnimatedOpacity(
             duration: const Duration(milliseconds: 400),
-            opacity: ref.watch(showLabel) ? 1 : 0,
+            opacity: showLabel ? 1 : 0,
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Container(
@@ -222,9 +198,8 @@ class _ChoiceCard extends HookConsumerWidget {
             tag: choice.entity.imageUrl,
             child: card,
           )
-        : SlideTransition(
-            position: animation,
-            child: card,
-          );
+        : showLabel
+            ? card.animate().shake(rotation: 0, offset: const Offset(20, 0))
+            : card;
   }
 }
