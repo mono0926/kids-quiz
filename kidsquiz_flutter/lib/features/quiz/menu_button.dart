@@ -19,7 +19,6 @@ class MenuButton extends ConsumerWidget {
         switch (menu) {
           case Menu.size:
             SizeDialog.show(context: context);
-            break;
         }
       },
     );
