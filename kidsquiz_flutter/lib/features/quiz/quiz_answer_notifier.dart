@@ -32,6 +32,7 @@ class QuizAnswer extends _$QuizAnswer {
       state = const QuizAnswerState().copyWith(
         correctChoice: choice,
       );
+// ignore: avoid_manual_providers_as_generated_provider_dependency
       QuizResultPage.push(ref.read(navigatorKey).currentContext!);
     } else {
       state = state.copyWith(

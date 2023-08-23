@@ -34,7 +34,7 @@ class SizeDialog extends ConsumerWidget {
             divisions: 9,
             min: 0.1,
           ),
-        )
+        ),
       ],
     );
   }

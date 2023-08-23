@@ -144,5 +144,5 @@ final _defaultChoices = const [
     imageUrl:
         'https://firebasestorage.googleapis.com/v0/b/kids-quiz-mono.appspot.com/o/images%2FIMG_9056.JPG?alt=media',
     group: GroupNames.vehicle,
-  )
+  ),
 ].map((c) => Document<Choice>(null, c)).toList();

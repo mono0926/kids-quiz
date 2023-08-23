@@ -34,12 +34,12 @@ class QuizResultPage extends ConsumerWidget {
               automaticallyImplyLeading: false,
               title: const Text(appName),
             ),
-            body: SafeArea(
+            body: const SafeArea(
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: const [
+                  children: [
                     Spacer(),
                     _Name(),
                     Gap(8),
